@@ -1,4 +1,4 @@
-const panel = require("dbm/command");
+//const panel = require("dbm/command");
 
 Events.on(ClientLoadEvent, () => {
 try{
@@ -19,9 +19,9 @@ try{
 
         t.clicked(() => {
         try{
-        panel.panel();
+        //panel.panel();
         } catch(e){
-       Vars.ui.showInfoToast(e,15);
+        Vars.ui.showInfoToast(e,15);
         }});
     });
 
