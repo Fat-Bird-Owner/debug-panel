@@ -1,10 +1,9 @@
 function panel(){
-
-        const block = tile.block();
+        
         const build = Vars.player;
 
         if (!build) return;
-        const buildTeam = build.team;
+        const buildTeam = build.team();
 
         Sounds.click.at(build.x, build.y);
 
