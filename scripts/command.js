@@ -1,8 +1,5 @@
 function panel(){
 
-        const tile = e.tile;
-        const player = e.player;
-
         const block = tile.block();
         const build = Vars.player;
 
@@ -217,6 +214,6 @@ function panel(){
 
 }
 
-module.export = {
+module.exports = {
 panel
 }
