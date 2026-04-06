@@ -215,4 +215,4 @@ function panel(){
 
 module.exports = {
 panel
-}
+};
