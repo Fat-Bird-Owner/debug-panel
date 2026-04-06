@@ -11,7 +11,7 @@ try{
 
     tab.table(Tex.pane, t => {
         let b = new Button(Styles.none);
-        let icon = new TextureRegionDrawable(Core.atlas.find("dbm-command-block"));
+        let icon = new TextureRegionDrawable(Core.atlas.find("gr-command-block-modern"));
         b.button(icon, () => {
 
         });
@@ -19,7 +19,7 @@ try{
 
         t.clicked(() => {
         try{
-        //panel.panel();
+        panel.panel();
         } catch(e){
         Vars.ui.showInfoToast(e,15);
         }});
