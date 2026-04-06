@@ -1,7 +1,8 @@
-Events.on(ContentInitEvent, () => {
+const panel = require("dbm/command");
+
+Events.on(ClientLoadEvent, () => {
 try{
 
-function setupUI() {
     let overlaymarkerTable = Vars.ui.hudGroup.find("statustable");
     overlaymarkerTable.row();
 
@@ -17,15 +18,17 @@ function setupUI() {
         t.add(b);
 
         t.clicked(() => {
-
-        });
+        try{
+        panel.panel();
+        } catch(e){
+       Vars.ui.showInfoToast(e,15);
+        }});
     });
 
     tab.visibility = () => {
         // return (Vars.ui.hudfrag.shown && Vars.mobile && !Vars.net.client() ? true : false)
         return (Vars.ui.hudfrag.shown && !Vars.net.client() ? true : false)
     }
-}
 
 } catch(e){
 Vars.ui.showInfoToast(e,15);
