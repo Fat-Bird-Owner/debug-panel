@@ -1,4 +1,4 @@
-//const panel = require("dbm/command");
+const panel = require("dbp/command");
 
 Events.on(ClientLoadEvent, () => {
 try{
