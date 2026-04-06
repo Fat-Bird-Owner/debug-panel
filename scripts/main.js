@@ -27,7 +27,7 @@ try{
 
     tab.visibility = () => {
         // return (Vars.ui.hudfrag.shown && Vars.mobile && !Vars.net.client() ? true : false)
-        return (Vars.ui.hudfrag.shown && !Vars.net.client() ? true : false)
+        return (!Vars.net.client() ? true : false)
     }
 
 } catch(e){
