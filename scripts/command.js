@@ -213,6 +213,4 @@ function panel(){
 
 }
 
-module.exports = {
-panel: panel
-};
+exports.panel = panel;
