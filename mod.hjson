@@ -1,5 +1,5 @@
 // file name very used in logic like template-block.
-name: "dbm"
+name: "dbp"
 
 displayName: "Debug Mod"
 repo: "Fat-Bird-Owner/debug-panel"
