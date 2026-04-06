@@ -1,3 +1,6 @@
+var lastUnit = "";
+var lastCommand = "";
+
 function panel(){
         
         const build = Vars.player;
