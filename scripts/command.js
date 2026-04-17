@@ -171,9 +171,16 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null || unit.internal ) return;
+
+                const width = Core.graphics.getWidth() * 0.15;
+                const height = Core.graphics.getHeight() * 0.15;
+                        
                 const button = new Button();
+                button.image(unit.uiIcon).size(width * 0.85, height * 85);
+                button.row();
                 button.add(unit.localizedName);
 
+                button.size(width,height);
                 button.clicked(() => {
                 lastUnit = unit.name;
                 Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
@@ -183,8 +190,8 @@ function panel(){
                     p.add(button);
                     p.add().width(10);
                         count++;
-                   if(count % 4 == 0){
-                        p.row(); // 👈 NEW LINE
+                   if(count % 3 == 0){
+                        p.row();
                     }
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
