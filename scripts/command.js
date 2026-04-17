@@ -10,8 +10,6 @@ function panel(){
 
         const target = Vars.content.block("gr-command-block");
 
-        if (block != target) return;
-
         Sounds.click.at(build.x, build.y);
 
         Vars.ui.showMenu(
