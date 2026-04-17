@@ -127,19 +127,20 @@ function panel(){
 
                 let count = 0;
 
+                dialog.cont.pane(p => {
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null) return;
-                    dialog.cont.add(unit.localizedName);
-                    dialog.cont.add().width(10);
+                    p.add(unit.localizedName);
+                    p.add().width(10);
                         count++;
                    if(count % 5 == 0){
-                        dialog.cont.row(); // 👈 NEW LINE
+                        p.row(); // 👈 NEW LINE
                     }
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
-
+                }).size(300,400);
                     //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
