@@ -180,16 +180,15 @@ function panel(){
                 button.row();
                 button.add(unit.localizedName);
 
-                button.size(width,height);
                 button.clicked(() => {
                 lastUnit = unit.name;
                 Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
                 dialog.hide();
                 });
                         
-                    p.add(button);
-                    p.add().width(10);
-                        count++;
+                p.add(button).size(width,height);;
+                p.add().width(10);
+                count++;
                    if(count % 3 == 0){
                         p.row();
                     }
