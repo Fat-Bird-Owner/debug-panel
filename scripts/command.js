@@ -122,10 +122,11 @@ function panel(){
                     Sounds.uiButton.play();
                     var units = [];
                         
-                   Vars.content.unit.each(unit => {
+                    
+                    Vars.content.units().each(unit => {
                     try{
                     if (unit != null){
-                    units.push(unit.name);
+                    units.push(unit.localizedName);
                     }} catch(e){
                     Vars.ui.showInfoToast(e,10);
                     }});
