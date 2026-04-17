@@ -170,7 +170,7 @@ function panel(){
                 dialog.cont.pane(p => {
                 Vars.content.units().each(unit => {
                 try{
-                  if(unit == null) return;
+                  if(unit == null || !Vars.content.unit(unit.name) ) return;
                 const button = new Button();
                 button.add(unit.localizedName);
 
