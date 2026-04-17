@@ -123,16 +123,18 @@ function panel(){
                     var units = [];
                         
                     
-                    Vars.content.units().each(unit => {
-                    try{
-                    if (unit != null){
-                    units.push(unit.localizedName);
-                    }} catch(e){
-                    Vars.ui.showInfoToast(e,10);
-                    }});
+                const dialog = new BaseDialog("Units");
 
-                    const dialog = new BaseDialog("Units")
-                    dialog.cont.add(units.join(" "));
+                let count = 0;
+
+                Vars.content.units().each(unit => {
+                        if(unit == null) return;
+                        dialog.cont.add(unit.localizedName).pad(4);
+                        count++;
+                            if(count % 5 == 0){
+                                dialog.cont.row(); // 👈 NEW LINE
+                            }
+                        });
 
                     dialog.addCloseButton();
                     dialog.show();
