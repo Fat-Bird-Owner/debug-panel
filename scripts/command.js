@@ -3,29 +3,41 @@ var lastCommand = "";
 
 function panel(){
         
-        const build = Vars.player;
+if (!e || !e.tile || !e.player) return;
+
+        const tile = e.tile;
+        const player = e.player;
+
+        if (!tile.block() || player.selectedBlock != null) return;
+
+        const block = tile.block();
+        const build = tile.build;
 
         if (!build) return;
-        const buildTeam = build.team();
+        const buildTeam = build.team;
+
+        const target = Vars.content.block("gr-command-block");
+
+        if (block != target) return;
 
         Sounds.click.at(build.x, build.y);
 
         Vars.ui.showMenu(
-            "<Commands List>",
-            "[lightgrey]Free will at last. [red]<Crashes is possibles>[]",
+            Core.bundle.format("commandblock.title"),
+            Core.bundle.format("commandblock.description"),
             [
-                ["Clear Units"],
-                ["Stop Player"],
-                ["Change Team"],
-                ["Toggle canGameover"],
-                ["Toggle Editor"],
-                ["Toggle disableUnitCap"],
-                ["Spawn Unit"],
-                ["Get Current Unit"],
-                ["Unit Library [grey]<Vanilla Only>[]"],
-                ["Fill Core"],
-                ["Run Javascript"],
-                ["Close"]
+                [Core.bundle.format("commandblock.commands.clear-units")],
+                [Core.bundle.format("commandblock.commands.stop-player")],
+                [Core.bundle.format("commandblock.commands.change-team")],
+                [Core.bundle.format("commandblock.commands.toggle-cancanover")],
+                [Core.bundle.format("commandblock.commands.toggle-editor")],
+                [Core.bundle.format("commandblock.commands.toggle-disable-unitcap")],
+                [Core.bundle.format("commandblock.commands.spawn-unit")],
+                [Core.bundle.format("commandblock.commands.get-current-unit")],
+                [Core.bundle.format("commandblock.commands.unit-library")],
+                [Core.bundle.format("commandblock.commands.fill-core")],
+                [Core.bundle.format("commandblock.commands.run-javascript")],
+                [Core.bundle.format("close")]
             ],
             i => {
 
@@ -33,19 +45,19 @@ function panel(){
 
                     Sounds.uiButton.play();
                     Groups.unit.clear();
-                    Vars.ui.hudfrag.showToast(Icon.tree, "[green]All units cleared");
+                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.clear-units"));
 
                 } else if (i == 1) {
                     try {
 
                         Sounds.uiButton.play();
+
                         const p = Vars.player;
                         if (!p) {
                             Vars.ui.hudfrag.showToast(Icon.tree, "[grey]Player does not exist.");
                             return;
                         }
                         const unit = p.unit();
-
                         if (!unit) {
                             Vars.ui.hudfrag.showToast(Icon.tree, "[grey]No unit found");
                             return;
@@ -61,47 +73,6 @@ function panel(){
                 } else if (i == 2) {
                     try {
 
-                        Vars.ui.showTextInput("Change Team", "Enter team id", 100, lastUnit, true, text => {
-                        try{
-
-                        Sounds.uiButton.play();
-                        const p = Vars.player;
-                        if (!p) {
-                            Vars.ui.showInfoToast("Wheres the player vro.", 3);
-                            return;
-                        }
-
-                        const currentTeam = p.team();
-                        const newTeam = Team.get(text);
-
-                        p.team(newTeam);
-                        Vars.ui.hudfrag.showToast(Icon.tree, "[accent]Team changed");
-
-                        } catch(e){
-                        Vars.ui.showInfoToast(e,10);
-                        }});
-
-                    } catch (err) {
-                        Vars.ui.showInfoToast(String(err), 15);
-                    }} else if (i == 3){
-                        try{
-
-                    Sounds.uiButton.play();
-                    const gameOver = Vars.state.rules.canGameOver;
-                    Vars.state.rules.canGameOver = !gameOver;
-
-                    Vars.ui.hudfrag.showToast(Icon.tree, "[accent]Toggled canGameOver: [lightgrey]" + !gameOver);
-                        
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,5);    
-                    }} else if (i == 4){
-                        try {
-
-                    const editor = Vars.state.rules.editor;
-                    Vars.state.rules.editor = !editor;
-
-                    Vars.ui.hudfrag.showToast(Icon.tree, "[accent]Toggled editor: [lightgrey]" + !editor);
-                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);  
                     }} else if (i == 5){
@@ -111,7 +82,7 @@ function panel(){
                     const disableUnitCap = Vars.state.rules.disableUnitCap;
                     Vars.state.rules.disableUnitCap = !disableUnitCap;
 
-                    Vars.ui.hudfrag.showToast(Icon.tree, "[accent]Toggled disableUnitCap: [lightgrey]" + !disableUnitCap);
+                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-disable-unitcap") + "[lightgrey]" + !disableUnitCap);
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
@@ -119,13 +90,13 @@ function panel(){
                         try{
 
                     Sounds.uiButton.play();
-                    Vars.ui.showTextInput("SpawnUnit", "Enter unit's internal name (modName-fileName)", 100, lastUnit, false, text => {
+                    Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.spawn-unit"), Core.bundle.format("commandblock.showtoast.spawn-unit-1"), 100, lastUnit, false, text => {
                         try{
                     lastUnit = text;
                     const unit = Vars.content.getByName(ContentType.unit, text);
 
                     if (unit == null){
-                    Vars.ui.hudfrag.showToast(Icon.chat,"[red]Unit Invalid[]");
+                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.spawn-unit-2"));
                     return;
                     }
                         
@@ -133,7 +104,7 @@ function panel(){
                     Sounds.waveSpawn.at(build.x,build.y);
                     Fx.spawn.at(build.x,build.y);
                             
-                    Vars.ui.hudfrag.showToast(Icon.chat, "[accent]Spawned in a(n) []" + unit.localizedName);
+                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.spawn-unit-3") + unit.localizedName);
 
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
@@ -151,7 +122,7 @@ function panel(){
                     if (!unit) return;
                     const type = unit.type.name;
                     lastUnit = type;
-                    Vars.ui.hudfrag.showToast(Icon.eye,"[lightgrey]Copied to spawn unit");
+                    Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
@@ -188,21 +159,21 @@ function panel(){
                     Vars.ui.showInfoToast(e,15);
                     }});
 
-                    Vars.ui.hudfrag.showToast(Icon.effect,"[accent]Filled core with []" + amount + "[accent] different items");
+                    Vars.ui.hudfrag.showToast(Icon.effect, Core.bundle.format("commandblock.showtoast.fill-core-1") + amount + Core.bundle.format("commandblock.showtoast.fill-core-2"));
                     
                     } else if (i == 10){
                     try{
 
                     Sounds.uiButton.play();
-                    Vars.ui.showTextInput("<Run Javascript>", "May break the game depending on the script", 100, lastCommand, false, text => {
+                    Vars.ui.showTextInput("<" + Core.bundle.format("commandblock.commands.run-javascript") + ">", Core.bundle.format("commandblock.showtoast.run-javascript-1"), 100, lastCommand, false, text => {
                     try{      
 
-                    const error = "[red]Error Found";
+                    const error = Core.bundle.format("commandblock.showtoast.run-javascript-2");
                     lastCommand = text;
                     eval("try{ " + text + "} catch(e) { Vars.ui.showText(error,e)}");
                     
                     Sounds.waveSpawn.play();
-                    Vars.ui.hudfrag.showToast(Icon.chat, "[accent]Ran: []" + text);
+                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.run-javascript-3") + text);
                     
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
@@ -213,6 +184,7 @@ function panel(){
                     }}
             }
         );
+
 
 }
 
