@@ -181,9 +181,8 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
-                lastUnit = unit.name;
-                Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
-                dialog.hide();
+                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
+                Sounds.uiChat.play();
                 });
                         
                 p.add(button).size(width,height);;
