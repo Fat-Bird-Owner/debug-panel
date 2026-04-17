@@ -9,7 +9,7 @@ function panel(){
         if (!build) return;
         const buildTeam = build.team;
 
-        Sounds.click.at(build.x, build.y);
+        Sounds.click.play();
 
         Vars.ui.showMenu(
             Core.bundle.format("commandblock.title"),
