@@ -140,7 +140,7 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
-                }).size(300,400);
+                }).size(Core.graphics.getWidth() * 0.75, Core.graphics.getHeight() * 0.75);
                     //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
