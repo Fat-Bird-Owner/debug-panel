@@ -90,7 +90,7 @@ function panel(){
                     return;
                     }
                         
-                    unit.spawn(buildTeam,build.x,build.y,90);
+                    unit.spawn(build.team(),build.x,build.y,build.rotation);
                     Sounds.waveSpawn.at(build.x,build.y);
                     Fx.spawn.at(build.x,build.y);
                             
