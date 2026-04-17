@@ -122,17 +122,6 @@ function panel(){
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
-                    }} else if (i == 5){
-                        try{
-
-                    Sounds.uiButton.play();
-                    const disableUnitCap = Vars.state.rules.disableUnitCap;
-                    Vars.state.rules.disableUnitCap = !disableUnitCap;
-
-                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-disable-unitcap") + "[lightgrey]" + !disableUnitCap);
-                            
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,10);
                     }} else if (i == 6){
                         try{
 
