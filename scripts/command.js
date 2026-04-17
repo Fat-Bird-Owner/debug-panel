@@ -128,13 +128,16 @@ function panel(){
                 let count = 0;
 
                 Vars.content.units().each(unit => {
-                        if(unit == null) return;
-                        dialog.cont.add(unit.localizedName).pad(4);
+                try{
+                  if(unit == null) return;
+                    dialog.cont.add(unit.localizedName).pad(4);
                         count++;
-                            if(count % 5 == 0){
-                                dialog.cont.row(); // 👈 NEW LINE
-                            }
-                        });
+                   if(count % 5 == 0){
+                        dialog.cont.row(); // 👈 NEW LINE
+                    }
+                } catch(e){
+                Vars.ui.showInfoToast(e, 5);           
+                }});
 
                     dialog.addCloseButton();
                     dialog.show();
