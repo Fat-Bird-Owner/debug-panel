@@ -171,7 +171,8 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null) return;
-                const button = new TextButton(unit.localizedName);
+                const button = new Button();
+                button.add(unit.localizedName);
 
                 button.click(() => {
                 lastUnit = unit.name;
