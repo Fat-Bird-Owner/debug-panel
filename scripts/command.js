@@ -64,7 +64,6 @@ function panel(){
                 } else if (i == 2) {
                     try {
 
-                    } catch(e){
                     Vars.ui.showInfoToast(e,5);  
                     }}  else if (i == 2) {
                     try {
