@@ -140,7 +140,7 @@ function panel(){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
 
-                    dialog.cont.pane({}).size(400,300);
+                    //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
                     
