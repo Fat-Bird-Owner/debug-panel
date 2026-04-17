@@ -3,7 +3,7 @@ const panel = require("dbp/command");
 Events.on(ClientLoadEvent, () => {
 try{
 
-    let overlaymarkerTable = Vars.ui.hudGroup.find("statustable");
+    let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
     overlaymarkerTable.row();
 
     let tab = new Table();
@@ -26,7 +26,6 @@ try{
     });
 
     tab.visibility = () => {
-        // return (Vars.ui.hudfrag.shown && Vars.mobile && !Vars.net.client() ? true : false)
         return (!Vars.net.client() ? true : false)
     }
 
