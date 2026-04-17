@@ -90,7 +90,7 @@ function panel(){
                     return;
                     }
                         
-                    unit.spawn(build.team(),build.x,build.y,build.rotation);
+                    unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                     Sounds.waveSpawn.at(build.x,build.y);
                     Fx.spawn.at(build.x,build.y);
                             
@@ -122,15 +122,19 @@ function panel(){
                     Sounds.uiButton.play();
                     var units = [];
                         
-                   Object.keys(UnitTypes).forEach(unit => {
+                   Vars.content.unit.each(unit => {
                     try{
-                    if (unit != null || unit != "load"){
-                    units.push(unit);
+                    if (unit != null){
+                    units.push(unit.name);
                     }} catch(e){
                     Vars.ui.showInfoToast(e,10);
                     }});
 
-                    Vars.ui.showStartupInfo(units.join(" "));
+                    const dialog = new BaseDialog("Units")
+                    dialog.cont.add(units.join(" "));
+
+                    dialog.addCloseButton();
+                    dialog.show();
                     
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
