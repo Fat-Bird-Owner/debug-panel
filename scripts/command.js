@@ -164,7 +164,7 @@ function panel(){
                         
                     
                 const dialog = new BaseDialog("Units");
-
+                dialog.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info").top();
                 let count = 0;
 
                 dialog.cont.pane(p => {
