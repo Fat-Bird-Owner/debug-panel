@@ -64,10 +64,6 @@ function panel(){
                 } else if (i == 2) {
                     try {
 
-                    Vars.ui.showInfoToast(e,5);  
-                    }}  else if (i == 2) {
-                    try {
-
                         Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.change-team"), Core.bundle.format("commandblock.showtoast.change-team-1"), 100, lastTeam, false, text => {
                         try{
 
