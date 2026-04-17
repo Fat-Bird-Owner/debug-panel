@@ -65,6 +65,63 @@ function panel(){
 
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);  
+                    }}  else if (i == 2) {
+                    try {
+
+                        Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.change-team"), Core.bundle.format("commandblock.showtoast.change-team-1"), 100, lastUnit, true, text => {
+                        try{
+
+                        Sounds.uiButton.play();
+                        const p = Vars.player;
+                        if (!p) {
+                            Vars.ui.showInfoToast(Core.bundle.format("commandblock.showtoast.change-team-2"), 3);
+                            return;
+                        }
+
+                        const currentTeam = p.team();
+                        const newTeam = Team.get(text);
+
+                        p.team(newTeam);
+                        Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.change-team-3"));
+
+                        } catch(e){
+                        Vars.ui.showInfoToast(e,10);
+                        }});
+
+                    } catch (err) {
+                        Vars.ui.showInfoToast(String(err), 15);
+                    }} else if (i == 3){
+                        try{
+
+                    Sounds.uiButton.play();
+                    const gameOver = Vars.state.rules.canGameOver;
+                    Vars.state.rules.canGameOver = !gameOver;
+
+                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-cancanover") + "[lightgrey]" + !gameOver);
+                        
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);    
+                    }} else if (i == 4){
+                        try {
+
+                    const editor = Vars.state.rules.editor;
+                    Vars.state.rules.editor = !editor;
+
+                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-editor") + "[lightgrey]" + !editor);
+                             
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);  
+                    }} else if (i == 5){
+                        try{
+
+                    Sounds.uiButton.play();
+                    const disableUnitCap = Vars.state.rules.disableUnitCap;
+                    Vars.state.rules.disableUnitCap = !disableUnitCap;
+
+                    Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-disable-unitcap") + "[lightgrey]" + !disableUnitCap);
+                            
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,10);
                     }} else if (i == 5){
                         try{
 
