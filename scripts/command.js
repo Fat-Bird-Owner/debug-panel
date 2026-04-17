@@ -1,5 +1,6 @@
 var lastUnit = "";
 var lastCommand = "";
+var lastTeam = 1;
 
 function panel(){
 
@@ -68,7 +69,7 @@ function panel(){
                     }}  else if (i == 2) {
                     try {
 
-                        Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.change-team"), Core.bundle.format("commandblock.showtoast.change-team-1"), 100, lastUnit, true, text => {
+                        Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.change-team"), Core.bundle.format("commandblock.showtoast.change-team-1"), 100, lastTeam, false, text => {
                         try{
 
                         Sounds.uiButton.play();
