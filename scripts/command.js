@@ -130,7 +130,8 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null) return;
-                    dialog.cont.add(unit.localizedName).pad(4);
+                    dialog.cont.add(unit.localizedName);
+                    dialog.cont.add().width(10);
                         count++;
                    if(count % 5 == 0){
                         dialog.cont.row(); // 👈 NEW LINE
