@@ -9,8 +9,6 @@ function panel(){
         if (!build) return;
         const buildTeam = build.team;
 
-        const target = Vars.content.block("gr-command-block");
-
         Sounds.click.at(build.x, build.y);
 
         Vars.ui.showMenu(
