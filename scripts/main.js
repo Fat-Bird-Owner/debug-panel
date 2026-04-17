@@ -12,7 +12,7 @@ try{
     tab.table(Tex.pane, t => {
         let b = new Button(Styles.none);
         let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
-        let icon = new TextureRegionDrawable(Core.atlas.find("gr-command-block-modern"));
+        let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
         b.button(icon, () => {
 
         });
