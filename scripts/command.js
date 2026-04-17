@@ -171,7 +171,15 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null) return;
-                    p.add(unit.localizedName);
+                const button = new Button(unit.localizedName);
+
+                button.click(() => {
+                lastUnit = unit.name;
+                Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
+                dialog.hide();
+                });
+                        
+                    p.add(button);
                     p.add().width(10);
                         count++;
                    if(count % 4 == 0){
