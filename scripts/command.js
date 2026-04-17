@@ -2,16 +2,8 @@ var lastUnit = "";
 var lastCommand = "";
 
 function panel(){
-        
-if (!e || !e.tile || !e.player) return;
 
-        const tile = e.tile;
-        const player = e.player;
-
-        if (!tile.block() || player.selectedBlock != null) return;
-
-        const block = tile.block();
-        const build = tile.build;
+        const build = Vars.player;
 
         if (!build) return;
         const buildTeam = build.team;
