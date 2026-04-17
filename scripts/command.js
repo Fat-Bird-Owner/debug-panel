@@ -21,8 +21,6 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.toggle-cancanover")],
                 [Core.bundle.format("commandblock.commands.toggle-editor")],
                 [Core.bundle.format("commandblock.commands.toggle-disable-unitcap")],
-                [Core.bundle.format("commandblock.commands.spawn-unit")],
-                [Core.bundle.format("commandblock.commands.get-current-unit")],
                 [Core.bundle.format("commandblock.commands.unit-library")],
                 [Core.bundle.format("commandblock.commands.fill-core")],
                 [Core.bundle.format("commandblock.commands.run-javascript")],
@@ -116,47 +114,7 @@ function panel(){
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
-                    }} else if (i == 6){
-                        try{
-
-                    Sounds.uiButton.play();
-                    Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.spawn-unit"), Core.bundle.format("commandblock.showtoast.spawn-unit-1"), 100, lastUnit, false, text => {
-                        try{
-                    lastUnit = text;
-                    const unit = Vars.content.getByName(ContentType.unit, text);
-
-                    if (unit == null){
-                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.spawn-unit-2"));
-                    return;
-                    }
-                        
-                    unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                    Sounds.waveSpawn.at(build.x,build.y);
-                    Fx.spawn.at(build.x,build.y);
-                            
-                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.spawn-unit-3") + unit.localizedName);
-
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,5);
-                    }});
-
-                            
-
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,5);
-                    }} else if (i == 7){
-                        try{
-
-                    Sounds.uiButton.play();
-                    const unit = Vars.player.unit();
-                    if (!unit) return;
-                    const type = unit.type.name;
-                    lastUnit = type;
-                    Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
-                            
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,5);
-                    }} else if(i == 8){
+                    }} else if(i == 6){
                     try{
 
                     Sounds.uiButton.play();
@@ -201,7 +159,7 @@ function panel(){
                     
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
-                    }} else if(i == 9){
+                    }} else if(i == 7){
 
                     Sounds.uiButton.play();
                     let core = Vars.player.core();
@@ -218,7 +176,7 @@ function panel(){
 
                     Vars.ui.hudfrag.showToast(Icon.effect, Core.bundle.format("commandblock.showtoast.fill-core-1") + amount + Core.bundle.format("commandblock.showtoast.fill-core-2"));
                     
-                    } else if (i == 10){
+                    } else if (i == 8){
                     try{
 
                     Sounds.uiButton.play();
