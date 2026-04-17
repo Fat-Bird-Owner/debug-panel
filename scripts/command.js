@@ -176,7 +176,7 @@ function panel(){
                 const height = Core.graphics.getHeight() * 0.15;
                         
                 const button = new Button();
-                button.image(unit.uiIcon).size(width * 0.85, height * 85);
+                button.image(unit.uiIcon).size(40);
                 button.row();
                 button.add(unit.localizedName);
 
