@@ -174,7 +174,7 @@ function panel(){
                 const button = new Button();
                 button.add(unit.localizedName);
 
-                button.click(() => {
+                button.clicked(() => {
                 lastUnit = unit.name;
                 Vars.ui.hudfrag.showToast(Icon.eye, Core.bundle.format("commandblock.showtoast.get-current-unit"));
                 dialog.hide();
