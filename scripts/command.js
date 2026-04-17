@@ -130,8 +130,8 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null) return;
-                    dialog.cont.add(unit.localizedName);
-                    dialog.cont.add().width(10);
+                    dialog.cont.pane.add(unit.localizedName);
+                    dialog.cont.pane.add().width(10);
                         count++;
                    if(count % 5 == 0){
                         dialog.cont.row(); // 👈 NEW LINE
@@ -140,6 +140,7 @@ function panel(){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
 
+                    dialog.cont.pane().size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
                     
