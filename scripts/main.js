@@ -11,10 +11,13 @@ try{
 
     tab.table(Tex.pane, t => {
         let b = new Button(Styles.none);
+        let lab = new Label(Core.bundle.format("commandblock.title"));
         let icon = new TextureRegionDrawable(Core.atlas.find("gr-command-block-modern"));
         b.button(icon, () => {
 
         });
+
+        t.add(lab).row();
         t.add(b);
 
         t.clicked(() => {
