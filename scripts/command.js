@@ -2,7 +2,7 @@ var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
 var consolePanel = null;
-var errorLog = null;
+var consoleTable = null;
 
 function panel(){
 
@@ -214,10 +214,12 @@ function panel(){
                     consolePanel = new BaseDialog("panel");
                     consolePanel.cont.top();
 
+                     consolePanel.cont.pane(p => {
+                     consoleTable = p;
+                     }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
+                            
                         function output(string){
-                        consolePanel.cont.pane(p => {
-                        p.add(string).bottom();
-                        }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2)
+                        consoleTable.add(string).row();
                         }
                             
                     const field = new TextField("");
