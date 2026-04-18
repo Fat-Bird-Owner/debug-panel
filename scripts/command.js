@@ -182,7 +182,7 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
-                for (let i = 0; i < value; i++){
+                for (let i = 0; i >= value; i++){
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 }
                 
