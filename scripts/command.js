@@ -100,7 +100,7 @@ function panel(){
                     }
                             
                     }
-                    })
+                    }).grow();
 
                     dialog.addCloseButton();
                     dialog.show();
