@@ -158,7 +158,7 @@ function panel(){
                             
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
-                label.setText(value);
+                label.setText(String(value));
                 });
 
                 dialog.cont.add(slider).width(200).row();
