@@ -222,7 +222,8 @@ function panel(){
                     const button = new Button();
                     button.add("Use");
                     consolePanel.cont.add(button);
-
+                    consolePanel.cont.row();
+                            
                    consoleTable = new Table();
                    consolePanel.cont.add(consoleTable);
 
