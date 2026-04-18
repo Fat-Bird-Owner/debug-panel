@@ -22,7 +22,9 @@ try{
 
         t.clicked(() => {
         try{
+        
         panel.panel();
+        
         } catch(e){
         Vars.ui.showInfoToast(e,15);
         }});
