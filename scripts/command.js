@@ -216,7 +216,7 @@ function panel(){
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
                 
-                    consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
+                    consolePanel.cont.table.add(field).width(Core.graphics.getWidth() / 2);
 
                     const button = new Button();
                     button.add("Use");
@@ -227,10 +227,10 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);  
                     }});
 
-                    consolePanel.cont.add(button);
+                    consolePanel.cont.table.add(button);
+                    consolePanel.addCloseButton();
                     }
-
-                    consolePanel.addCloseButton();          
+  
                     consolePanel.show();
                    
                     } catch(e){
