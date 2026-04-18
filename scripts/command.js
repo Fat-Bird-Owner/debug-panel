@@ -184,9 +184,9 @@ function panel(){
                 let i = 0;
 
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                while (i < value){
+                for (let i = 0; i < value; i++){
+                    Vars.ui.showInfoToast("loop tick " + i,5);
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                i++;
                 }
                 
                 Sounds.waveSpawn.play();
