@@ -183,10 +183,10 @@ function panel(){
                 Vars.ui.showInfoToast(value + ":" + unit,10);
     
                 
-               for (let i = 0; i < value; i++){
-               Vars.ui.showInfoToast("loop tick " + i,5);
-                unit.spawn(Vars.player.team(),Vars.player.x,Vars.player.y,0);
-               }
+                for (let i = 0; i < value; i++){
+                Vars.ui.showInfoToast("loop tick " + i,5);
+                unit.spawn(build.team(),build.x,build.y,0);
+                }
                 
                 Sounds.waveSpawn.play();
                 });
