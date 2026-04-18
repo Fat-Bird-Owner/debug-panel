@@ -1,7 +1,7 @@
 var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
-var panel = null;
+var consolePanel = null;
 
 function panel(){
 
