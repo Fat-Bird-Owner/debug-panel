@@ -159,7 +159,7 @@ function panel(){
                 label.setText(String(value));
                 });
 
-                dialog.cont.add(slider).growX();
+                dialog.cont.add(slider).width(200);
                 dialog.cont.add().width(15);
                 dialog.cont.add(label).row();
                             
