@@ -234,7 +234,7 @@ function panel(){
                          consoleTable = new Table();
                          p.add(consoleTable).grow(); // IMPORTANT: attach to pane
 
-                        }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+                        }).grow();
                             
                    let errorV = null;
                             
