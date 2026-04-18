@@ -130,12 +130,12 @@ function panel(){
                 try{
                   if(unit == null || unit.internal ) return;
 
-                const width = Core.graphics.getWidth() * 0.15;
-                const height = Core.graphics.getHeight() * 0.15;
+                let width = Core.graphics.getWidth() * 0.15;
+                let height = Core.graphics.getHeight() * 0.15;
 
                 if (height > width) height = Core.graphics.getHeight() * 0.05;
                         
-                const button = new Button(Styles.defaultb);
+                const button = new Button(Styles.logict);
                         
                 button.image(unit.uiIcon).size(40).pad(12);
                 button.row();
