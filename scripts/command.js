@@ -228,13 +228,11 @@ function panel(){
 
                    let errorV = null;
                             
-                   consoleTable.table(Tex.pane,t => {
-                   errorV = t;
-                   });
-                            
                         function output(string){
                         if (!consoleTable) return;
-                        errorV.add(string).row();
+                           consoleTable.table(Tex.pane,t => {
+                           t.add(string).row();
+                           });
                         }
                             
                     button.clicked(() => {
