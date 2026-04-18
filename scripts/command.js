@@ -211,7 +211,7 @@ function panel(){
                     Sounds.uiButton.play();
                     if (consolePanel == null){
                     consolePanel = new BaseDialog("panel");
-                    consolePanel.cont.top().padTop(20);
+                    consolePanel.cont.top();
 
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
