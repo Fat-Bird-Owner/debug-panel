@@ -183,11 +183,6 @@ function panel(){
 
     const amt = Number(value);
 
-    if(isNaN(amt)) {
-        Vars.ui.showInfoToast("Invalid value: " + value, 10);
-        return;
-    }
-
     Vars.ui.showInfoToast(amt + ":" + unit, 10);
 
     for (let i = 0; i < amt; i++){
