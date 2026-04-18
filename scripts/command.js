@@ -227,7 +227,7 @@ function panel(){
                    consolePanel.cont.pane(p => {
                    consoleTable = new Table();
                    consolePanel.cont.add(consoleTable);
-                   }).size(Core.graphics.getWidth(), Core.graphics.getHeight() / 2);
+                   }).size(0, Core.graphics.getHeight() / 2);
                             
                    let errorV = null;
                             
