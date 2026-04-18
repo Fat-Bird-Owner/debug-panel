@@ -2,6 +2,7 @@ var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
 var consolePanel = null;
+var errorLog = null;
 
 function panel(){
 
@@ -208,20 +209,19 @@ function panel(){
                     try{
 
                     Sounds.uiButton.play();
-                    Vars.ui.showTextInput("<" + Core.bundle.format("commandblock.commands.run-javascript") + ">", Core.bundle.format("commandblock.showtoast.run-javascript-1"), 100, lastCommand, false, text => {
-                    try{      
+                    if (consolePanel == null){
+                    consolePanel = new BaseDialog("panel");
 
-                    const error = Core.bundle.format("commandblock.showtoast.run-javascript-2");
-                    lastCommand = text;
-                    eval("try{ " + text + "} catch(e) { Vars.ui.showText(error,e)}");
-                    
-                    Sounds.waveSpawn.play();
-                    Vars.ui.hudfrag.showToast(Icon.chat, Core.bundle.format("commandblock.showtoast.run-javascript-3") + text);
-                    
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,10);
-                    }});
-                        
+                    const field = new TextField("");
+                    field.setMessageText("Insert Command");
+                
+                    consolePanel.cont.add(field).width(300).top().padTop(45);
+
+                    }
+
+                            
+                    consolePanel.show();
+           
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);       
                     }}
