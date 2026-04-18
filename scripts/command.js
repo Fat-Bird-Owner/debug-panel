@@ -250,8 +250,9 @@ function panel(){
 
                     const clearButton = new Button();
                     clearButton.add("clear");
-                            
-                    consolePanel.cont.add(button).row();
+
+                    comsole.cont.row();
+                    consolePanel.cont.add(button);
                     consolePanel.cont.add(clearButton);
                     consolePanel.cont.row();
                 
