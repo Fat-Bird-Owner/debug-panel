@@ -215,22 +215,27 @@ function panel(){
                     consolePanel = new BaseDialog("panel");
                     consolePanel.cont.top().row();
 
+                    const field = new TextField("");
+                    field.setMessageText("Insert Command");
+                    consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
+
                     const button = new Button();
                     button.add("Use");
                     consolePanel.cont.add(button);
 
                    consoleTable = new Table();
                    consolePanel.add(consoleTable);
-                        
+
+                   let errorV = null;
+                            
+                   consoleTable.table(Tex.panel,t => {
+                   errorV = t;
+                   });
+                            
                         function output(string){
                         if (!consoleTable) return;
-                        consoleTable.table.add(string).row();
+                        errorV.add(string).row();
                         }
-                            
-                    const field = new TextField("");
-                    field.setMessageText("Insert Command");
-                
-                    consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
                             
                     button.clicked(() => {
                     try{
