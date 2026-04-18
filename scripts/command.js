@@ -151,6 +151,19 @@ function panel(){
                 let count = 0;
 
                 dialog.cont.pane(p => {
+
+                var value = 0;
+                const slider = new Slider(0, 100, 1, false);
+                const label = new Labal("0");
+                p.row.add(slider);
+                pow.add().width(15);
+                pow.add(label);
+
+                slider.changed(() => {
+                value = Math.floor(slider.getValue());
+                label.setText(value);
+                });
+                        
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null || unit.internal ) return;
@@ -167,7 +180,10 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
+                for (let i = 0; i < value; i++){
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
+                }
+                
                 Sounds.waveSpawn.play();
                 });
                         
@@ -180,6 +196,7 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
+                        
                 }).width(Core.graphics.getWidth()).growY();
                     //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
