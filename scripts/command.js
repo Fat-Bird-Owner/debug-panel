@@ -4,13 +4,6 @@ var lastTeam = 1;
 var consolePanel = null;
 var value = 0;
 
-function spawnUnits(unit){
- for (let i = 0; i < value; i++){
-  Vars.ui.showInfoToast("loop tick " + i,5);
-  unit.spawn(Vars.player.team(),Vars.player.x,Vars.player.y,0);
- }
-}
-
 function panel(){
 
         const build = Vars.player;
@@ -188,9 +181,12 @@ function panel(){
 
                 button.clicked(() => {
                 Vars.ui.showInfoToast(value + ":" + unit,10);
-                let i = 0;
-
-                spawnUnits(unit);
+    
+                
+               for (let i = 0; i < value; i++){
+               Vars.ui.showInfoToast("loop tick " + i,5);
+                unit.spawn(Vars.player.team(),Vars.player.x,Vars.player.y,0);
+               }
                 
                 Sounds.waveSpawn.play();
                 });
