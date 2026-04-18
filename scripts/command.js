@@ -73,7 +73,7 @@ function panel(){
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
                     dialog.cont.pane(p => {
-                    for (let i = 0; i <= teams.length; i++){
+                    for (let i = 0; i < teams.length; i++){
 
                     let team = teams[i]
                             
