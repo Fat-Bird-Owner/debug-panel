@@ -180,7 +180,7 @@ function panel(){
                 button.add(unit.localizedName);
 
  button.clicked(() => {
-    Vars.ui.showInfoToast(balue + ":" + unit, 10);
+    Vars.ui.showInfoToast(value + ":" + unit, 10);
 
     for (let i = 0; i < value; i++){
         Vars.ui.showInfoToast("loop tick " + i, 5);
