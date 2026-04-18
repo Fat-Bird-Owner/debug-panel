@@ -243,7 +243,7 @@ function panel(){
                     eval(field.getText());
                     output("ran: " + field.getText());
                     } catch(e){
-                    output(e);  
+                    output(String(e));  
                     }});
 
                     consolePanel.addCloseButton();
