@@ -60,25 +60,30 @@ function panel(){
                 } else if (i == 2) {
                     try {
 
-                        Vars.ui.showTextInput(Core.bundle.format("commandblock.commands.change-team"), Core.bundle.format("commandblock.showtoast.change-team-1"), 100, lastTeam, false, text => {
-                        try{
+                    const teams = Team.all;
+                    const dialog = new BaseDialog("dialog");
+   
+                    let width = Core.graphics.getWidth() * 0.15;
+                    let height = Core.graphics.getHeight() * 0.15;
 
-                        Sounds.uiButton.play();
-                        const p = Vars.player;
-                        if (!p) {
-                            Vars.ui.showInfoToast(Core.bundle.format("commandblock.showtoast.change-team-2"), 3);
-                            return;
-                        }
+                    if (height > width) height = Core.graphics.getHeight() * 0.05;
+                            
+                    dialog.cont.pane(p => {
+                    for (let i = 0; i < teams.length; i++){
+                    const button = new Button(Styles.squareTogglet);
+                    button.cont.image(Tex.whiteui).size(60).color(teams[i].color);
+                    button.row();
+                    button.add(teams[i].name);
 
-                        const currentTeam = p.team();
-                        const newTeam = Team.get(text);
+                    button.clicked(() => {
+                    const player = Vars.player;
+                    player.team(teams[i]);
+                    dialog.hide();
+                    }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
 
-                        p.team(newTeam);
-                        Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.change-team-3"));
-
-                        } catch(e){
-                        Vars.ui.showInfoToast(e,10);
-                        }});
+                    p.add(button);
+                    }
+                    });
 
                     } catch (err) {
                         Vars.ui.showInfoToast(String(err), 15);
