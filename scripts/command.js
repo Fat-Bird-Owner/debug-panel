@@ -210,19 +210,27 @@ function panel(){
 
                     Sounds.uiButton.play();
                     if (consolePanel == null){
+                            
                     consolePanel = new BaseDialog("panel");
                     consolePanel.cont.top();
 
+                        function output(string){
+                        consolePanel.cont.pane(p => {
+                        p.add(string).bottom();
+                        }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2)
+                        }
+                            
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
                 
                     consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
-
+                            
                     const button = new Button();
                     button.add("Use");
                     button.clicked(() => {
                     try{
-                    eval("try{ " + field.getText() + "} catch(e) { Vars.ui.showText(error,e)}");
+                    eval("try{ " + field.getText() + "} catch(e) { output(error)}");
+                    output("ran: " + field.getText());
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);  
                     }});
