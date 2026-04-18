@@ -184,6 +184,7 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
+                Vars.ui.showInfoToast(value,10);
                 for (let i = 0; i < value; i++){
                 unitType.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 }
