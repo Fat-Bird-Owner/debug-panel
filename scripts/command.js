@@ -251,14 +251,15 @@ function panel(){
                     const clearButton = new Button();
                     clearButton.add("clear");
                             
-                    consolePanel.cont.add(button);
+                    consolePanel.cont.add(button).row();
                     consolePanel.cont.add(clearButton);
                     consolePanel.cont.row();
                 
                         consolePanel.cont.pane(p => {
 
                          consoleTable = new Table();
-                        consoleTable.table(Tex.pane,{});
+                        consoleTable.background(Tex.button);
+                        
                          p.add(consoleTable).grow(); // IMPORTANT: attach to pane
 
                         }).grow();
