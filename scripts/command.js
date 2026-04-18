@@ -78,7 +78,7 @@ function panel(){
                     const button = new Button(Styles.squareTogglet);
                     button.image(Tex.whiteui).size(60).color(team.color);
                     button.row();
-                    button.add(team.name);
+                    button.add(team.coloredName);
                             
                     button.clicked(() => {
                     try{
