@@ -211,11 +211,12 @@ function panel(){
                     Sounds.uiButton.play();
                     if (consolePanel == null){
                     consolePanel = new BaseDialog("panel");
+                    consolePanel.top().padTop(20);
 
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
                 
-                    consolePanel.cont.add(field).width(300).top().padTop(10);
+                    consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
 
                     const button = new Button();
                     button.add("Use");
