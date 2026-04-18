@@ -135,7 +135,7 @@ function panel(){
 
                 if (height > width) height = Core.graphics.getHeight() * 0.05;
                         
-                const button = new Button(Styles.flatTogglet);
+                const button = new Button(Styles.logict);
                         
                 button.image(unit.uiIcon).size(40).pad(12);
                 button.row();
@@ -155,7 +155,7 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
-                }).size(Core.graphics.getWidth() * 0.5, Core.graphics.getHeight() * 0.5);
+                }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
                     //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
