@@ -2,13 +2,13 @@ name: "dbp"
 
 displayName: "Debug Mod"
 repo: "Fat-Bird-Owner/debug-panel"
-subtitle: "[grey[]]v1 - [accent[]]Debug Panel[[]]"
+subtitle: "v1[grey[]] - [accent[]]Debug Panel[[]]"
 author: "Fat Bird's Owner"
 
 description: ""
 
 iosCompatible: true
-version: "v1 - [accent[]]Debug Panel[[]"
+version: "v1 - [accent[]]Debug Panel[[]]"
 minGameVersion: "156"
 dependencies: []
 hidden: false
