@@ -3,6 +3,7 @@ var lastCommand = "";
 var lastTeam = 1;
 var consolePanel = null;
 var value = 0;
+var unitsTab = null;
 
 function panel(){
 
@@ -147,9 +148,9 @@ function panel(){
                     Sounds.uiButton.play();
                     var units = [];
                         
-                    
-                const dialog = new BaseDialog("Units");
-                dialog.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
+                if (unitsTab == null){  
+                unitsTab = new BaseDialog("Units");
+                unitsTab.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
                 let count = 0;
 
                 // Remove because of being too unreliable to work with
@@ -165,7 +166,7 @@ function panel(){
                 dialog.cont.add(label).row();
                   */
                             
-                dialog.cont.pane(p => {
+                unitsTab.cont.pane(p => {
                         
                 Vars.content.units().each(unit => {
                 try{
@@ -209,8 +210,9 @@ function panel(){
                         
                 }).width(Core.graphics.getWidth()).growY();
                     //dialog.cont.pane({}).size(400,300);
-                    dialog.addCloseButton();
-                    dialog.show();
+                    unitsTab.addCloseButton();
+                }
+                    unitsTab.show();
                     
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);
