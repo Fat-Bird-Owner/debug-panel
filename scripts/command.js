@@ -151,6 +151,7 @@ function panel(){
                 if (unitsTab == null){  
                 unitsTab = new BaseDialog("Units");
                 unitsTab.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
+                unitsTab.shouldPause = true;
                 let count = 0;
 
                 // Remove because of being too unreliable to work with
@@ -242,6 +243,7 @@ function panel(){
                     let consoleTable = null;
                             
                     consolePanel = new BaseDialog(Core.bundle.format("commandblock.commands.run-javascript"));
+                    consolePanel.shouldPause = true;
                     consolePanel.cont.top().row();
 
                     const field = new TextField("");
@@ -304,7 +306,8 @@ function panel(){
                     }} else if (i == 9){
 
                     const dialog = new BaseDialog("dialog");
-
+                    dialog.shouldPause = true;
+                        
                     let count = 0;
    
                     let width = Core.graphics.getWidth() * 0.075;
