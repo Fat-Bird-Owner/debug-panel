@@ -217,7 +217,7 @@ function panel(){
 
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
-                    consolePanel.cont.add(field).growX().row();
+                    consolePanel.cont.add(field).growX();
 
                     const button = new Button();
                     button.add("Use");
