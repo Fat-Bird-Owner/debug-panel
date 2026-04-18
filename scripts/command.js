@@ -86,13 +86,16 @@ function panel(){
                     p.add(button).size(width,height);
                     count++;
 
-                    if (count >= 3){
+                    if (count >= 5){
                     p.row();
                     count = 0;
                     }
                             
                     }
                     }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+
+                    dialog.addCloseButton();
+                    dialog.show();
 
                     } catch (err) {
                         Vars.ui.showInfoToast(String(err), 15);
