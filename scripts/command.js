@@ -1,6 +1,7 @@
 var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
+var panel = null;
 
 function panel(){
 
@@ -167,7 +168,7 @@ function panel(){
 
                 button.clicked(() => {
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                Sounds.uiChat.play();
+                Sounds.waveSpawn.play();
                 });
                         
                 p.add(button).size(width,height).padTop(10);
