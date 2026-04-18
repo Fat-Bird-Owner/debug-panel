@@ -183,6 +183,7 @@ function panel(){
     Vars.ui.showInfoToast(value + ":" + unit, 10);
 const p = Vars.player;
 
+unit.spawn(p.team(), p.x, p.y, p.unit().rotation);
 for (let i = value; i > 0; i--){
     Vars.ui.showInfoToast("loop tick " + i, 5);
     unit.spawn(p.team(), p.x, p.y, p.unit().rotation);
