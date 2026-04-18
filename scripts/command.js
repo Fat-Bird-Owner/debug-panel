@@ -170,6 +170,8 @@ function panel(){
                 try{
                   if(unit == null || unit.internal ) return;
 
+                const unitType = unit;
+                        
                 let width = Core.graphics.getWidth() * 0.15;
                 let height = Core.graphics.getHeight() * 0.15;
 
@@ -182,8 +184,8 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
-                for (let i = 0; i >= value; i++){
-                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
+                for (let i = 0; i < value; i++){
+                unitType.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 }
                 
                 Sounds.waveSpawn.play();
