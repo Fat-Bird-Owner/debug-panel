@@ -135,7 +135,7 @@ function panel(){
 
                 if (height > width) height = Core.graphics.getHeight() * 0.05;
                         
-                const button = new Button(Styles.geni);
+                const button = new Button(Styles.graySquarei);
                         
                 button.image(unit.uiIcon).size(40).pad(12);
                 button.row();
