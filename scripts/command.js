@@ -244,8 +244,8 @@ function panel(){
                             
                     button.clicked(() => {
                     try{
-                    eval(field.getText());
-                    output("ran: " + field.getText());
+                    const code = eval(field.getText());
+                    output("ran: " + field.getText() + " (" + code + ")");
                     } catch(e){
                     output(String(e));  
                     }});
