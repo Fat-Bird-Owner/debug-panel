@@ -224,7 +224,7 @@ function panel(){
                     consolePanel.cont.add(button);
 
                    consoleTable = new Table();
-                   consolePanel.add(consoleTable);
+                   consolePanel.cont.add(consoleTable);
 
                    let errorV = null;
                             
