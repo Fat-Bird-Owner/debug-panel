@@ -213,7 +213,7 @@ function panel(){
                     let consoleTable = null;
                             
                     consolePanel = new BaseDialog("panel");
-                    consolePanel.cont.top().row();
+                    //consolePanel.cont.top().row();
 
                     const button = new Button();
                     button.add("Use");
