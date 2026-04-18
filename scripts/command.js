@@ -132,8 +132,10 @@ function panel(){
 
                 const width = Core.graphics.getWidth() * 0.15;
                 const height = Core.graphics.getHeight() * 0.15;
+
+                if (height > width) height = Core.graphics.getHeight() * 0.05;
                         
-                const button = new Button();
+                const button = new Button(Styles.grayt);
                 button.image(unit.uiIcon).size(40);
                 button.row();
                 button.add(unit.localizedName);
