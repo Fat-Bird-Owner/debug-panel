@@ -258,6 +258,7 @@ function panel(){
                         consolePanel.cont.pane(p => {
 
                          consoleTable = new Table();
+                        consoleTable.table(Tex.pane,{});
                          p.add(consoleTable).grow(); // IMPORTANT: attach to pane
 
                         }).grow();
