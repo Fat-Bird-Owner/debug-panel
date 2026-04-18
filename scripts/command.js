@@ -213,23 +213,18 @@ function panel(){
                     let consoleTable = null;
                             
                     consolePanel = new BaseDialog("panel");
-                    //consolePanel.cont.top().row();
+                    consolePanel.cont.top().row();
 
                     const button = new Button();
                     button.add("Use");
                     consolePanel.cont.add(button);
 
-                   let table = new Table();
-                            
-                     consolePanel.cont.pane(p => {
-                    p.add(table).grow();
-                     }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
-
-                   consoleTable = table;
-                            
+                   consoleTable = new Table();
+                   consolePanel.add(consoleTable);
+                        
                         function output(string){
                         if (!consoleTable) return;
-                        consoleTable.add(string).row();
+                        consoleTable.table.add(string).row();
                         }
                             
                     const field = new TextField("");
