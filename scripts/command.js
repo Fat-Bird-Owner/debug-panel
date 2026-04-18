@@ -307,7 +307,21 @@ function panel(){
    
                     let width = Core.graphics.getWidth() * 0.075;
                     let height = Core.graphics.getHeight() * 0.075;
+
+                    const slider = new Slider(0, 325, 1, false);
+                    const label = new Label(String(value));
                             
+                    slider.changed(() => {
+                    value = Math.floor(slider.getValue());
+                    if (value >= 305){
+                    value = Infinity;
+                    }
+                    label.setText(String(value));
+                    });
+
+                    dialog.cont.add(slider).width(350).row();
+                    dialog.cont.add(label).row();
+                        
                     dialog.cont.pane(p => {
                     Vars.content.statusEffects().each(e => {
                             
@@ -319,7 +333,7 @@ function panel(){
                     button.clicked(() => {
                     try{
                     const player = Vars.player;
-                    player.unit().apply(e,100*60);
+                    player.unit().apply(e,value*60);
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
                     }});
