@@ -155,9 +155,6 @@ function panel(){
                 var value = 0;
                 const slider = new Slider(0, 100, 1, false);
                 const label = new Label("0");
-                p.row.add(slider);
-                pow.add().width(15);
-                pow.add(label);
 
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
@@ -196,6 +193,10 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
+
+                p.add(slider);
+                p.add().width(15);
+                p.add(label);
                         
                 }).width(Core.graphics.getWidth()).growY();
                     //dialog.cont.pane({}).size(400,300);
