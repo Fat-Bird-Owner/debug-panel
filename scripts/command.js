@@ -150,16 +150,20 @@ function panel(){
                 dialog.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
                 let count = 0;
 
-                dialog.cont.pane(p => {
-
                 var value = 0;
                 const slider = new Slider(0, 100, 1, false);
                 const label = new Label("0");
 
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
-                label.setText(value);
+                label.setText(String(value));
                 });
+
+                dialog.cont.add(slider);
+                dialog.cont.add().width(15);
+                dialog.cont.add(label);
+                            
+                dialog.cont.pane(p => {
                         
                 Vars.content.units().each(unit => {
                 try{
@@ -193,10 +197,6 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
-
-                p.add(slider);
-                p.add().width(15);
-                p.add(label);
                         
                 }).width(Core.graphics.getWidth()).growY();
                     //dialog.cont.pane({}).size(400,300);
