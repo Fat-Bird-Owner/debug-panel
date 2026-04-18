@@ -161,7 +161,7 @@ function panel(){
                 label.setText(value + "");
                 });
 
-                dialog.cont.add(slider).width(200).padBottom(10).row();
+                dialog.cont.add(slider).width(200).padBottom(10);
                 dialog.cont.add(label);
                             
                 dialog.cont.pane(p => {
