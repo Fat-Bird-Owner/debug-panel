@@ -228,7 +228,7 @@ function panel(){
 
                    let errorV = null;
                             
-                   consoleTable.table(Tex.panel,t => {
+                   consoleTable.table(Tex.pane,t => {
                    errorV = t;
                    });
                             
