@@ -227,7 +227,7 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);  
                     }});
 
-                    consolePanel.add(button);
+                    consolePanel.cont.add(button);
                     }
 
                     consolePanel.addCloseButton();          
