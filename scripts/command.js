@@ -181,9 +181,11 @@ function panel(){
 
                 button.clicked(() => {
                 Vars.ui.showInfoToast(value + ":" + unit,10);
-                for (let i = 0; i < value; i++){
+                let i = 0;
+                
+                while (i < value){
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                Vars.ui.hudfrag.showToast(i);
+                i++;
                 }
                 
                 Sounds.waveSpawn.play();
