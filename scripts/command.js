@@ -179,17 +179,24 @@ function panel(){
                 button.row();
                 button.add(unit.localizedName);
 
-                button.clicked(() => {
-                Vars.ui.showInfoToast(value + ":" + unit,10);
-    
-                
-                for (let i = 0; i < value; i++){
-                Vars.ui.showInfoToast("loop tick " + i,5);
-                unit.spawn(build.team(),build.x,build.y,0);
-                }
-                
-                Sounds.waveSpawn.play();
-                });
+ button.clicked(() => {
+
+    const amt = Number(value);
+
+    if(!amt || amt <= 0) {
+        Vars.ui.showInfoToast("Invalid value: " + value, 10);
+        return;
+    }
+
+    Vars.ui.showInfoToast(amt + ":" + unit, 10);
+
+    for (let i = 0; i < amt; i++){
+        Vars.ui.showInfoToast("loop tick " + i, 5);
+        unit.spawn(build.team(), build.x, build.y, 0);
+    }
+
+    Sounds.waveSpawn.play();
+});
                         
                 p.add(button).size(width,height).padTop(10);
                 p.add().width(10);
