@@ -71,7 +71,7 @@ function panel(){
                     dialog.cont.pane(p => {
                     for (let i = 0; i < teams.length; i++){
                     const button = new Button(Styles.squareTogglet);
-                    button.image(Tex.whiteui).size(60, 60).color(teams[i].color);
+                    button.image(Tex.whiteui).size(60).color(teams[i].color);
                     button.row();
                     button.add(teams[i].name);
 
@@ -81,7 +81,7 @@ function panel(){
                     dialog.hide();
                     }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
 
-                    p.add(button);
+                    p.add(button).size(width,height);
                     }
                     });
 
