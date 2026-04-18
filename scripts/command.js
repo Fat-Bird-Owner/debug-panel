@@ -137,9 +137,8 @@ function panel(){
                         
                 const button = new Button(Styles.defaultb);
                         
-                button.image(unit.uiIcon).size(40);
+                button.image(unit.uiIcon).size(40).pad(6);
                 button.row();
-                button.pad(10);
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
