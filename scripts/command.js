@@ -4,6 +4,13 @@ var lastTeam = 1;
 var consolePanel = null;
 var value = 0;
 
+function spawnUnits(unit){
+ for (let i = 0; i < value; i++){
+  Vars.ui.showInfoToast("loop tick " + i,5);
+  unit.spawn(Vars.player.team(),Vars.player.x,Vars.player.y,0);
+ }
+}
+
 function panel(){
 
         const build = Vars.player;
@@ -73,7 +80,7 @@ function panel(){
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
                     dialog.cont.pane(p => {
-                    for (let i = 0; i < teams.length; i++){
+                    for (let i = 0; i <= teams.length; i++){
 
                     let team = teams[i]
                             
@@ -183,11 +190,7 @@ function panel(){
                 Vars.ui.showInfoToast(value + ":" + unit,10);
                 let i = 0;
 
-                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                for (let i = 0; i < value; i++){
-                    Vars.ui.showInfoToast("loop tick " + i,5);
-                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                }
+                spawnUnits(unit);
                 
                 Sounds.waveSpawn.play();
                 });
