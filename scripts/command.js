@@ -215,13 +215,23 @@ function panel(){
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
                 
-                    consolePanel.cont.add(field).width(300).top().padTop(45);
+                    consolePanel.cont.add(field).width(300).top().padTop(10);
 
+                    const button = new Button();
+                    button.add("Use");
+                    button.clicked(() => {
+                    try{
+                    eval("try{ " + field.getText() + "} catch(e) { Vars.ui.showText(error,e)}");
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);  
+                    }});
+
+                    consolePanel.add(button);
                     }
 
-                            
+                    consolePanel.addCloseButton();          
                     consolePanel.show();
-           
+                   
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);       
                     }}
