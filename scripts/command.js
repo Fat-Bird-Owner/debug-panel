@@ -235,7 +235,7 @@ function panel(){
                         try{
                         if (!consoleTable) return;
                            consoleTable.add(string).row();
-                           consoleTable.parent.setScrollY(999999);
+                           //consoleTable.parent.setScrollY(999999);
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
