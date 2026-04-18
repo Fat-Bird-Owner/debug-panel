@@ -2,6 +2,7 @@ var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
 var consolePanel = null;
+var value = 0;
 
 function panel(){
 
@@ -150,7 +151,6 @@ function panel(){
                 dialog.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
                 let count = 0;
 
-                var value = 0;
                 const slider = new Slider(0, 100, 1, false);
                 const label = new Label("0");
 
