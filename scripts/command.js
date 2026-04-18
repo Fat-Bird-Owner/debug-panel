@@ -180,12 +180,9 @@ function panel(){
                 button.add(unit.localizedName);
 
  button.clicked(() => {
+    Vars.ui.showInfoToast(balue + ":" + unit, 10);
 
-    const amt = Number(value);
-
-    Vars.ui.showInfoToast(amt + ":" + unit, 10);
-
-    for (let i = 0; i < amt; i++){
+    for (let i = 0; i < value; i++){
         Vars.ui.showInfoToast("loop tick " + i, 5);
         unit.spawn(build.team(), build.x, build.y, 0);
     }
