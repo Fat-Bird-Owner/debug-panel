@@ -211,12 +211,12 @@ function panel(){
                     Sounds.uiButton.play();
                     if (consolePanel == null){
                     consolePanel = new BaseDialog("panel");
-                    consolePanel.cont.table().top().padTop(20);
+                    consolePanel.cont.top().padTop(20);
 
                     const field = new TextField("");
                     field.setMessageText("Insert Command");
                 
-                    consolePanel.cont.table.add(field).width(Core.graphics.getWidth() / 2);
+                    consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
 
                     const button = new Button();
                     button.add("Use");
@@ -227,7 +227,7 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);  
                     }});
 
-                    consolePanel.cont.table.add(button);
+                    consolePanel.cont.add(button);
                     consolePanel.addCloseButton();
                     }
   
