@@ -139,6 +139,7 @@ function panel(){
                         
                 button.image(unit.uiIcon).size(40);
                 button.row();
+                button.pad(10);
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
