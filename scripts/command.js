@@ -2,7 +2,6 @@ var lastUnit = "";
 var lastCommand = "";
 var lastTeam = 1;
 var consolePanel = null;
-var consoleTable;
 
 function panel(){
 
@@ -210,6 +209,8 @@ function panel(){
 
                     Sounds.uiButton.play();
                     if (consolePanel == null){
+
+                    let consoleTable;
                             
                     consolePanel = new BaseDialog("panel");
                     consolePanel.cont.top();
