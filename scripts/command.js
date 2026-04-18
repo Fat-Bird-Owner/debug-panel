@@ -158,10 +158,11 @@ function panel(){
                             
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
-                label.setText(value + "");
+                label.setText(value);
                 });
 
-                dialog.cont.add(slider).width(200).padBottom(10);
+                dialog.cont.add(slider).width(200);
+                dialog.cont.row();
                 dialog.cont.add(label);
                             
                 dialog.cont.pane(p => {
