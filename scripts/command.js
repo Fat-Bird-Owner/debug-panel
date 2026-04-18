@@ -100,7 +100,7 @@ function panel(){
                     }
                             
                     }
-                    }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+                    })
 
                     dialog.addCloseButton();
                     dialog.show();
@@ -227,7 +227,7 @@ function panel(){
                    consolePanel.cont.pane(p => {
                    consoleTable = new Table();
                    consolePanel.cont.add(consoleTable);
-                   }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+                   }).size(Core.graphics.getWidth(), Core.graphics.getHeight() / 2);
                             
                    let errorV = null;
                             
@@ -235,6 +235,7 @@ function panel(){
                         try{
                         if (!consoleTable) return;
                            consoleTable.add(string).row();
+                           consoleTable.parent.setScrollY(999999);
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
