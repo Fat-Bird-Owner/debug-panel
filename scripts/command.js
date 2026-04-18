@@ -218,10 +218,14 @@ function panel(){
                     const button = new Button();
                     button.add("Use");
                     consolePanel.cont.add(button);
+
+                   let table = new Table();
                             
                      consolePanel.cont.pane(p => {
-                     consoleTable = p;
+                    p.add(table).grow();
                      }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
+
+                   consolePanel = table;
                             
                         function output(string){
                         if (!consoleTable) return;
@@ -235,7 +239,7 @@ function panel(){
                             
                     button.clicked(() => {
                     try{
-                    eval("try{ " + field.getText() + "} catch(e) { output(e)}");
+                    eval(field.getText());
                     output("ran: " + field.getText());
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);  
