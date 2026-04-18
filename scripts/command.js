@@ -152,9 +152,7 @@ function panel(){
                 let count = 0;
 
                 const slider = new Slider(0, 100, 1, false);
-                const label = new Label("0");
-
-                value = slider.getValue();
+                const label = new Label(String(value));
                             
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
