@@ -229,7 +229,7 @@ function panel(){
                     button.add("Use");
                     button.clicked(() => {
                     try{
-                    eval("try{ " + field.getText() + "} catch(e) { output(error)}");
+                    eval("try{ " + field.getText() + "} catch(e) { output(e)}");
                     output("ran: " + field.getText());
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);  
