@@ -240,7 +240,7 @@ function panel(){
                     eval(field.getText());
                     output("ran: " + field.getText());
                     } catch(e){
-                    Vars.ui.showInfoToast(e,5);  
+                    output(e);  
                     }});
 
                     consolePanel.addCloseButton();
