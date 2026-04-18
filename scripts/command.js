@@ -135,7 +135,7 @@ function panel(){
 
                 if (height > width) height = Core.graphics.getHeight() * 0.05;
                         
-                const button = new Button(Styles.logicTogglet);
+                const button = new Button(Styles.grayt);
                 button.image(unit.uiIcon).size(40);
                 button.row();
                 button.add(unit.localizedName);
