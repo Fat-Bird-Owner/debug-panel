@@ -8,13 +8,13 @@ author: "Fat Bird's Owner"
 description: "
 Debug panel with a varity of features.
 
-Such as:[accent]
+Such as:[accent[]]
 - Clear unit
 - Change team
 - Stop player
 - Disable gameover
 - Disable unitCap
-- Editor mode [grey](Crashes if saved while enabled)[]
+- Editor mode [grey[]](Crashes if saved while enabled)[[]]
 - Spawn unit/Unit library
 - Fill core
 - And run javascript
