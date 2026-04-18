@@ -154,13 +154,15 @@ function panel(){
                 const slider = new Slider(0, 100, 1, false);
                 const label = new Label("0");
 
+                value = slider.getValue();
+                            
                 slider.changed(() => {
                 value = Math.floor(slider.getValue());
-                label.setText(String(value));
+                label.setText(value + "");
                 });
 
-                dialog.cont.add(slider).width(200).padBottom(10);
-                dialog.cont.add(label)
+                dialog.cont.add(slider).width(200).padBottom(10).row();
+                dialog.cont.add(label);
                             
                 dialog.cont.pane(p => {
                         
