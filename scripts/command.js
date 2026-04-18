@@ -210,7 +210,7 @@ function panel(){
                     Sounds.uiButton.play();
                     if (consolePanel == null){
 
-                    let consoleTable;
+                    let consoleTable = null;
                             
                     consolePanel = new BaseDialog("panel");
                     consolePanel.cont.top();
@@ -220,6 +220,7 @@ function panel(){
                      }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
                             
                         function output(string){
+                        if (consoleTable == null) return;
                         consoleTable.add(string).row();
                         }
                             
