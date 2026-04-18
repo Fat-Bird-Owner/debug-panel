@@ -154,7 +154,7 @@ function panel(){
 
                 var value = 0;
                 const slider = new Slider(0, 100, 1, false);
-                const label = new Labal("0");
+                const label = new Label("0");
                 p.row.add(slider);
                 pow.add().width(15);
                 pow.add(label);
