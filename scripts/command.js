@@ -238,7 +238,7 @@ function panel(){
 
                     let consoleTable = null;
                             
-                    consolePanel = new BaseDialog("panel");
+                    consolePanel = new BaseDialog(Core.bundle.format("commandblock.commands.run-javascript"));
                     consolePanel.cont.top().row();
 
                     const field = new TextField("");
@@ -275,7 +275,7 @@ function panel(){
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
-                            
+        
                     button.clicked(() => {
                     try{
                     const code = eval(field.getText());
