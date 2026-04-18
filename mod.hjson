@@ -8,7 +8,7 @@ author: "Fat Bird's Owner"
 description: ""
 
 iosCompatible: true
-version: "v1 - [accent[]]Debug Panel[[]]"
+version: "v1 - [accent]Debug Panel[]"
 minGameVersion: "156"
 dependencies: []
 hidden: false
