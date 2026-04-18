@@ -182,7 +182,8 @@ function panel(){
                 button.clicked(() => {
                 Vars.ui.showInfoToast(value + ":" + unit,10);
                 let i = 0;
-                
+
+                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 while (i < value){
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 i++;
