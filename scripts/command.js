@@ -65,8 +65,8 @@ function panel(){
 
                     let count = 0;
    
-                    let width = Core.graphics.getWidth() * 0.5;
-                    let height = Core.graphics.getHeight() * 0.5;
+                    let width = Core.graphics.getWidth() * 0.05;
+                    let height = Core.graphics.getHeight() * 0.05;
 
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
@@ -78,10 +78,13 @@ function panel(){
                     button.add(teams[i].name);
 
                     button.clicked(() => {
+                    try{
                     const player = Vars.player;
                     player.team(teams[i]);
                     dialog.hide();
-                    });
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
 
                     p.add(button).size(width,height);
                     count++;
