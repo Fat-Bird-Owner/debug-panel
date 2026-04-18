@@ -250,9 +250,9 @@ function panel(){
                     button.clicked(() => {
                     try{
                     const code = eval(field.getText());
-                    output("ran: " + field.getText() + " (" + code + ")");
+                    output("[accent]ran:[] " + field.getText() + " [grey](" + code + ")");
                     } catch(e){
-                    output(String(e));  
+                    output("[red]" + String(e));  
                     }});
 
                     clearButton.clicked(() => {
