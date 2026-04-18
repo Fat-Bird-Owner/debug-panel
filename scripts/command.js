@@ -184,7 +184,7 @@ function panel(){
                 Vars.ui.showInfoToast(value + ":" + unit, 10);
                 const p = Vars.player;
 
-                value = silder.getValue();
+                value = Math.floor(slider.getValue());
                          
                 for (let i = 0; i < value; i++){
                 unit.spawn(build.team(), build.x, build.y, build.unit().rotation);
