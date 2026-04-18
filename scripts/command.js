@@ -159,9 +159,9 @@ function panel(){
                 label.setText(String(value));
                 });
 
-                dialog.cont.add(slider);
+                dialog.cont.add(slider).growX();
                 dialog.cont.add().width(15);
-                dialog.cont.add(label);
+                dialog.cont.add(label).row();
                             
                 dialog.cont.pane(p => {
                         
