@@ -169,8 +169,6 @@ function panel(){
                 Vars.content.units().each(unit => {
                 try{
                   if(unit == null || unit.internal ) return;
-
-                const unitType = unit;
                         
                 let width = Core.graphics.getWidth() * 0.15;
                 let height = Core.graphics.getHeight() * 0.15;
@@ -186,7 +184,7 @@ function panel(){
                 button.clicked(() => {
                 Vars.ui.showInfoToast(value,10);
                 for (let i = 0; i < value; i++){
-                unitType.spawn(build.team(),build.x,build.y,build.unit().rotation);
+                unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 Vars.ui.hudfrag.showToast(i);
                 }
                 
