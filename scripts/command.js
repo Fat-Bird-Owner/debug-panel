@@ -79,7 +79,6 @@ function panel(){
                     button.image(Tex.whiteui).size(60).color(team.color);
                     button.row();
                     button.add(team.name);
-                    button.add().width(10);
                             
                     button.clicked(() => {
                     try{
@@ -91,6 +90,7 @@ function panel(){
                     }});
 
                     p.add(button).size(width,height).padTop(10);
+                    p.add().width(10);
                     count++;
 
                     if (count >= 5){
