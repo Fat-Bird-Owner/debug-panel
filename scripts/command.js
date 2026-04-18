@@ -220,13 +220,11 @@ function panel(){
                     consolePanel.cont.add(button);
                             
                      consolePanel.cont.pane(p => {
-                     consoleTable = new Table();
-                     p.row();
-                     p.add(consoleTable).grow();
+                     consoleTable = p;
                      }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
                             
                         function output(string){
-                        if (consoleTable == null) return;
+                        if (!consoleTable) return;
                         consoleTable.add(string).row();
                         }
                             
