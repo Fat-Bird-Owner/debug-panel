@@ -180,7 +180,7 @@ function panel(){
                 } catch(e){
                 Vars.ui.showInfoToast(e, 5);           
                 }});
-                }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+                }).width(Core.graphics.getWidth()).growY();
                     //dialog.cont.pane({}).size(400,300);
                     dialog.addCloseButton();
                     dialog.show();
