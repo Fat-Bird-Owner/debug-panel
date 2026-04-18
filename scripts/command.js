@@ -180,7 +180,7 @@ function panel(){
                 button.add(unit.localizedName);
 
                 button.clicked(() => {
-                Vars.ui.showInfoToast(value,10);
+                Vars.ui.showInfoToast(value + ":" + unit,10);
                 for (let i = 0; i < value; i++){
                 unit.spawn(build.team(),build.x,build.y,build.unit().rotation);
                 Vars.ui.hudfrag.showToast(i);
