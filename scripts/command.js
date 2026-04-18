@@ -160,7 +160,7 @@ function panel(){
                 });
 
                 dialog.cont.add(slider).width(200).padBottom(10);
-                dialog.cont.add(label).row();
+                dialog.cont.add(label)
                             
                 dialog.cont.pane(p => {
                         
