@@ -183,7 +183,7 @@ function panel(){
                 Vars.ui.showInfoToast(value + ":" + unit,10);
     
                 
-                for (let i = 0; i < value; i++){
+                for (let i = 0; i < slider.getValue(); i++){
                 Vars.ui.showInfoToast("loop tick " + i,5);
                 unit.spawn(build.team(),build.x,build.y,0);
                 }
