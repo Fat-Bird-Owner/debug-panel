@@ -151,6 +151,7 @@ function panel(){
                 dialog.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
                 let count = 0;
 
+                /*
                 const slider = new Slider(0, 100, 1, false);
                 const label = new Label(String(value));
                             
@@ -161,6 +162,7 @@ function panel(){
 
                 dialog.cont.add(slider).width(200).row();
                 dialog.cont.add(label).row();
+                 */
                             
                 dialog.cont.pane(p => {
                         
@@ -179,18 +181,14 @@ function panel(){
                 button.row();
                 button.add(unit.localizedName);
 
- button.clicked(() => {
-    Vars.ui.showInfoToast(value + ":" + unit, 10);
-const p = Vars.player;
+                 button.clicked(() => {
+//                Vars.ui.showInfoToast(value + ":" + unit, 10);
+                const p = Vars.player;
 
-unit.spawn(build.team(), build.x, build.y, build.unit().rotation);
-for (let i = value; i > 0; i--){
-    Vars.ui.showInfoToast("loop tick " + i, 5);
-    unit.spawn(p.team(), p.x, p.y, p.unit().rotation);
-}
+                unit.spawn(build.team(), build.x, build.y, build.unit().rotation);
 
-    Sounds.waveSpawn.play();
-});
+                Sounds.waveSpawn.play();
+                });
                         
                 p.add(button).size(width,height).padTop(10);
                 p.add().width(10);
