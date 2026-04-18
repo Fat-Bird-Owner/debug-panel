@@ -62,11 +62,13 @@ function panel(){
 
                     const teams = Team.all;
                     const dialog = new BaseDialog("dialog");
-   
-                    let width = Core.graphics.getWidth() * 0.15;
-                    let height = Core.graphics.getHeight() * 0.15;
 
-                    if (height > width) height = Core.graphics.getHeight() * 0.05;
+                    let count = 0;
+   
+                    let width = Core.graphics.getWidth() * 0.5;
+                    let height = Core.graphics.getHeight() * 0.5;
+
+                    //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
                     dialog.cont.pane(p => {
                     for (let i = 0; i < teams.length; i++){
@@ -82,6 +84,13 @@ function panel(){
                     });
 
                     p.add(button).size(width,height);
+                    count++;
+
+                    if (count >= 3){
+                    p.row();
+                    count = 0;
+                    }
+                            
                     }
                     }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
 
