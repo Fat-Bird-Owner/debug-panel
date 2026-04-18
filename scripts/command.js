@@ -232,12 +232,7 @@ function panel(){
                         function output(string){
                         try{
                         if (!consoleTable) return;
-                           consoleTable.row();
-                           consoleTable.pane(t => {
-                           let tableS = new Table();
-                           tableS.add(string).row();
-                           t.add(tableS).grow();
-                           });
+                           consoleTable.add(string).row();
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
