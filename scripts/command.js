@@ -232,6 +232,7 @@ function panel(){
                         function output(string){
                         try{
                         if (!consoleTable) return;
+                           consoleTable.row();
                            consoleTable.table(Tex.pane,t => {
                            t.pane(p => {
                            p.add(string);
