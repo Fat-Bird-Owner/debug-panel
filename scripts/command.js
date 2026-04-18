@@ -233,7 +233,7 @@ function panel(){
                         try{
                         if (!consoleTable) return;
                            consoleTable.row();
-                           consoleTable.pane(Tex.pane,t => {
+                           consoleTable.pane(t => {
                            let tableS = new Table();
                            tableS.add(string).row();
                            t.add(tableS).grow();
