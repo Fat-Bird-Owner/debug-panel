@@ -79,7 +79,6 @@ function panel(){
                     button.image(Tex.whiteui).size(60).color(team.color);
                     button.row();
                     button.add(team.name);
-                    button.padTop(10);
                     button.add().width(10);
                             
                     button.clicked(() => {
@@ -91,7 +90,7 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);
                     }});
 
-                    p.add(button).size(width,height);
+                    p.add(button).size(width,height).padTop(10);
                     count++;
 
                     if (count >= 5){
