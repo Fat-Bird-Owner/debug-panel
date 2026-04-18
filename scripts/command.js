@@ -229,11 +229,14 @@ function panel(){
                    let errorV = null;
                             
                         function output(string){
+                        try{
                         if (!consoleTable) return;
                            consoleTable.table(Tex.pane,t => {
                            t.add(string).row();
                            });
-                        }
+                        } catch(e){
+                        Vars.ui.showInfoToast(e,5);
+                        }}
                             
                     button.clicked(() => {
                     try{
