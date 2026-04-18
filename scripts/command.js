@@ -184,7 +184,7 @@ function panel(){
                 Vars.ui.showInfoToast(value + ":" + unit, 10);
                 const p = Vars.player;
 
-                for (let i = 0; i < value; i++){
+                for (let i = 0; i < value+1; i++){
                 unit.spawn(build.team(), build.x, build.y, build.unit().rotation);
                 }
                          
