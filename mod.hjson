@@ -5,10 +5,23 @@ repo: "Fat-Bird-Owner/debug-panel"
 subtitle: "v1[grey[]] - [accent[]]Debug Panel[[]]"
 author: "Fat Bird's Owner"
 
-description: ""
+description: "
+Debug panel with a varity of features.
+
+Such as:[accent]
+- Clear unit
+- Change team
+- Stop player
+- Disable gameover
+- Disable unitCap
+- Editor mode [grey](Crashes if saved while enabled)[]
+- Spawn unit/Unit library
+- Fill core
+- And run javascript
+"
 
 iosCompatible: true
-version: "v1 - [accent]Debug Panel[]"
+version: "v1[grey] - [accent]Debug Panel[]"
 minGameVersion: "156"
 dependencies: []
 hidden: false
