@@ -26,6 +26,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.unit-library")],
                 [Core.bundle.format("commandblock.commands.fill-core")],
                 [Core.bundle.format("commandblock.commands.run-javascript")],
+                [Core.bundle.format("commandblock.commands.status")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -298,7 +299,47 @@ function panel(){
                    
                     } catch(e){
                     Vars.ui.showInfoToast(e,10);       
-                    }}
+                    }} else if (i == 9){
+
+                    const dialog = new BaseDialog("dialog");
+
+                    let count = 0;
+   
+                    let width = Core.graphics.getWidth() * 0.075;
+                    let height = Core.graphics.getHeight() * 0.075;
+                            
+                    dialog.cont.pane(p => {
+                    Vars.content.statusEffects().each(e => {
+                            
+                    const button = new Button(Styles.squareTogglet);
+                    button.image(e.uiIcon).size(60);
+                    button.row();
+                    button.add(e.name);
+                            
+                    button.clicked(() => {
+                    try{
+                    const player = Vars.player;
+                    player.unit().apply(e,100*60);
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+
+                    p.add(button).size(width,height).padTop(10);
+                    p.add().width(10);
+                    count++;
+
+                    if (count >= 6){
+                    p.row();
+                    count = 0;
+                    }
+                            
+                    });
+                    }).grow();
+
+                    dialog.addCloseButton();
+                    dialog.show();
+                        
+                    }
             }
         );
 
