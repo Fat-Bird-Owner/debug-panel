@@ -213,8 +213,12 @@ function panel(){
                     let consoleTable = null;
                             
                     consolePanel = new BaseDialog("panel");
-                    consolePanel.cont.top();
+                    consolePanel.cont.top().row();
 
+                    const button = new Button();
+                    button.add("Use");
+                    consolePanel.cont.add(button);
+                            
                      consolePanel.cont.pane(p => {
                      consoleTable = new Table();
                      p.add(consoleTable).grow();
@@ -230,8 +234,6 @@ function panel(){
                 
                     consolePanel.cont.add(field).width(Core.graphics.getWidth() / 2);
                             
-                    const button = new Button();
-                    button.add("Use");
                     button.clicked(() => {
                     try{
                     eval("try{ " + field.getText() + "} catch(e) { output(e)}");
@@ -240,7 +242,6 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);  
                     }});
 
-                    consolePanel.cont.add(button);
                     consolePanel.addCloseButton();
                     }
   
