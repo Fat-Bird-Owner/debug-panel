@@ -234,8 +234,8 @@ function panel(){
                         if (!consoleTable) return;
                            consoleTable.table(Tex.pane,t => {
                            t.add(string);
-                           t.row();
                            });
+                           consolePanel.row();
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
