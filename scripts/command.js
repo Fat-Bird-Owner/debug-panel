@@ -146,7 +146,7 @@ function panel(){
                 Sounds.uiChat.play();
                 });
                         
-                p.add(button).size(width,height);;
+                p.add(button).size(width,height).padTop(10);
                 p.add().width(10);
                 count++;
                    if(count % 3 == 0){
