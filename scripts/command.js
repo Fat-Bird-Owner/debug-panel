@@ -221,7 +221,12 @@ function panel(){
 
                     const button = new Button();
                     button.add("Use");
+
+                    const clearButton = new Button();
+                    clearButton.add("clear");
+                            
                     consolePanel.cont.add(button);
+                    consolePanel.cont.add(clearButton);
                     consolePanel.cont.row();
                 
                         consolePanel.cont.pane(p => {
@@ -250,6 +255,13 @@ function panel(){
                     output(String(e));  
                     }});
 
+                    clearButton.clicked(() => {
+                    try{
+                    consoleTable.clear();
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+                            
                     consolePanel.addCloseButton();
                     }
   
