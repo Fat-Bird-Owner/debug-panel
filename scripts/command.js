@@ -187,7 +187,7 @@ function panel(){
                 Vars.ui.showInfoToast(value,10);
                 for (let i = 0; i < value; i++){
                 unitType.spawn(build.team(),build.x,build.y,build.unit().rotation);
-                Vars.ui.hudfrag.showToast(i, 5);
+                Vars.ui.hudfrag.showToast(i);
                 }
                 
                 Sounds.waveSpawn.play();
