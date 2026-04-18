@@ -79,11 +79,11 @@ function panel(){
                     const player = Vars.player;
                     player.team(teams[i]);
                     dialog.hide();
-                    }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
+                    });
 
                     p.add(button).size(width,height);
                     }
-                    });
+                    }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
 
                     } catch (err) {
                         Vars.ui.showInfoToast(String(err), 15);
