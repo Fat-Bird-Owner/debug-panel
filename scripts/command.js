@@ -233,9 +233,10 @@ function panel(){
                         try{
                         if (!consoleTable) return;
                            consoleTable.table(Tex.pane,t => {
-                           t.add(string);
+                           t.pane(p => {
+                           p.add(string);
                            });
-                           consolePanel.row();
+                           });
                         } catch(e){
                         Vars.ui.showInfoToast(e,5);
                         }}
