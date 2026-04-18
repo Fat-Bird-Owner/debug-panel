@@ -65,8 +65,8 @@ function panel(){
 
                     let count = 0;
    
-                    let width = Core.graphics.getWidth() * 0.10;
-                    let height = Core.graphics.getHeight() * 0.10;
+                    let width = Core.graphics.getWidth() * 0.085;
+                    let height = Core.graphics.getHeight() * 0.085;
 
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
@@ -79,7 +79,9 @@ function panel(){
                     button.image(Tex.whiteui).size(60).color(team.color);
                     button.row();
                     button.add(team.name);
-
+                    button.padTop(10);
+                    button.add().width(10);
+                            
                     button.clicked(() => {
                     try{
                     const player = Vars.player;
