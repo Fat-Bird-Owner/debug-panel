@@ -223,10 +223,12 @@ function panel(){
                     button.add("Use");
                     consolePanel.cont.add(button);
                     consolePanel.cont.row();
-                            
+                
+                   consolePanel.cont.pane(p => {
                    consoleTable = new Table();
                    consolePanel.cont.add(consoleTable);
-
+                   });
+                            
                    let errorV = null;
                             
                         function output(string){
