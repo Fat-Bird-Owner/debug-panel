@@ -216,7 +216,8 @@ function panel(){
                     consolePanel.cont.top();
 
                      consolePanel.cont.pane(p => {
-                     consoleTable = p;
+                     consoleTable = new table();
+                     p.add(consoleTable).grow();
                      }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() /2);
                             
                         function output(string){
