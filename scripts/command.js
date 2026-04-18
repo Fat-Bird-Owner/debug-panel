@@ -224,10 +224,12 @@ function panel(){
                     consolePanel.cont.add(button);
                     consolePanel.cont.row();
                 
-                   consolePanel.cont.pane(p => {
-                   consoleTable = new Table();
-                   consolePanel.cont.add(consoleTable);
-                   }).size(0, Core.graphics.getHeight() / 2);
+                        consolePanel.cont.pane(p => {
+
+                         consoleTable = new Table();
+                         p.add(consoleTable).grow(); // IMPORTANT: attach to pane
+
+                        }).size(Core.graphics.getWidth() / 2, Core.graphics.getHeight() / 2);
                             
                    let errorV = null;
                             
