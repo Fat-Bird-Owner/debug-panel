@@ -181,11 +181,12 @@ function panel(){
 
  button.clicked(() => {
     Vars.ui.showInfoToast(value + ":" + unit, 10);
+const p = Vars.player;
 
-    for (let i = 0; i < value; i++){
-        Vars.ui.showInfoToast("loop tick " + i, 5);
-        unit.spawn(build.team(), build.x, build.y, 0);
-    }
+for (let i = 0; i < value; i++){
+    Vars.ui.showInfoToast("loop tick " + i, 5);
+    unit.spawn(p.team(), p.x, p.y, p.unit().rotation);
+}
 
     Sounds.waveSpawn.play();
 });
