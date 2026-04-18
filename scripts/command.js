@@ -65,22 +65,25 @@ function panel(){
 
                     let count = 0;
    
-                    let width = Core.graphics.getWidth() * 0.05;
-                    let height = Core.graphics.getHeight() * 0.05;
+                    let width = Core.graphics.getWidth() * 0.10;
+                    let height = Core.graphics.getHeight() * 0.10;
 
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
                     dialog.cont.pane(p => {
                     for (let i = 0; i < teams.length; i++){
+
+                    let team = teams[i]
+                            
                     const button = new Button(Styles.squareTogglet);
-                    button.image(Tex.whiteui).size(60).color(teams[i].color);
+                    button.image(Tex.whiteui).size(60).color(team.color);
                     button.row();
-                    button.add(teams[i].name);
+                    button.add(team.name);
 
                     button.clicked(() => {
                     try{
                     const player = Vars.player;
-                    player.team(teams[i]);
+                    player.team(team);
                     dialog.hide();
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
