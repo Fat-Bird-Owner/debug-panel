@@ -251,7 +251,7 @@ function panel(){
                     const clearButton = new Button();
                     clearButton.add("clear");
 
-                    comsole.cont.row();
+                    consolePanel.cont.row();
                     consolePanel.cont.add(button);
                     consolePanel.cont.add(clearButton);
                     consolePanel.cont.row();
