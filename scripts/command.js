@@ -4,6 +4,7 @@ var lastTeam = 1;
 var consolePanel = null;
 var value = 0;
 var unitsTab = null;
+var timeScaleDialog = null;
 
 function panel(){
 
@@ -28,6 +29,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.fill-core")],
                 [Core.bundle.format("commandblock.commands.run-javascript")],
                 [Core.bundle.format("commandblock.commands.status")],
+                [Core.bundle.format("Timescale")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -354,6 +356,39 @@ function panel(){
 
                     dialog.addCloseButton();
                     dialog.show();
+                        
+                    } else if (i == 10){
+
+                    if (timescaleDialog == null){
+                    timeScaleDialog = new BaseDialog
+
+                    const slider = new Slider(0, 9, 0.25, false);
+                    const button = new Button();
+                    const label = new Label("1.00");
+
+                    button.add(new Image(Icon.play));
+
+                    slider.changed(() => {
+                    speed = slider.getValue() + 1;
+                    label.setText(speed.toFixed(2));
+                    });
+
+                    button.clicked(() => {
+                    speed = 1;   
+                    slider.setValue(0);
+                    label.setText(speed.toFixed(2));
+                    });
+
+                    timeScaleDialog.add(slider).width(150);
+                    timeScaleDialog.add().width(15);
+                    timeScaleDialog.add(label);
+                    timeScaleDialog.add().width(15);
+                    timeScaleDialog.add(button);
+                    timeScaleDialog.addCloseButton()
+                            
+                    }
+                
+                    timeScaleDialog.show();
                         
                     }
             }
