@@ -434,7 +434,9 @@ function panel(){
                             
                     }
                     }).grow();
-                                
+
+                    dialog.addCloseButton();
+                    dialog.show();
                         
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
