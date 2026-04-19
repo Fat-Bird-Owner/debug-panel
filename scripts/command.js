@@ -360,7 +360,7 @@ function panel(){
                     } else if (i == 10){
 
                     if (timescaleDialog == null){
-                    timeScaleDialog = new BaseDialog
+                    timeScaleDialog = new BaseDialog(Core.bundle.format("commandBlock.timescale"));
 
                     const slider = new Slider(0, 9, 0.25, false);
                     const button = new Button();
