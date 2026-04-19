@@ -330,7 +330,7 @@ function panel(){
                     const button = new Button(Styles.squareTogglet);
                     button.image(e.uiIcon).size(60);
                     button.row();
-                    button.labelWrap(e.name);
+                    button.labelWrap(e.name).left();
                             
                     button.clicked(() => {
                     try{
