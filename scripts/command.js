@@ -30,7 +30,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.fill-core")],
                 [Core.bundle.format("commandblock.commands.run-javascript")],
                 [Core.bundle.format("commandblock.commands.status")],
-                [Core.bundle.format("Timescale")],
+                [Core.bundle.format("commandBlock.timescale")],
                 [Core.bundle.format("close")]
             ],
             i => {
