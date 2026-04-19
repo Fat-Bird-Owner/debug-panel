@@ -438,7 +438,7 @@ function panel(){
                     const texField = new TextField(set.patch);
                     patchScreen.cont.pane(p => {
                     p.add(texField).grow();
-                    });
+                    }).grow();
 
                     patchScreen.show();
                     });
