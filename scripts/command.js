@@ -5,6 +5,7 @@ var consolePanel = null;
 var value = 0;
 var unitsTab = null;
 var timeScaleDialog = null;
+var speed = 1;
 
 function panel(){
 
