@@ -370,6 +370,10 @@ function panel(){
 
                     button.add(new Image(Icon.play));
 
+                    Time.setDeltaProvider(() => {
+                    return Core.graphics.getDeltaTime() * 60 * speed;
+                    });
+                            
                     slider.changed(() => {
                     try {
                     speed = slider.getValue() + 1;
