@@ -411,12 +411,13 @@ function panel(){
                     try { 
                     const dialog = new BaseDialog("patcher");
                     const patcher = Vars.state.patcher;
+                    const patches = patcher.patches;
 
                     dialog.addCloseButton();
 
                     dialog.cont.pane(p => {
-                    for (let i = 0; i < patcher.size; i++){
-                    const set = patcher.get(i);
+                    for (let i = 0; i < patches.size; i++){
+                    const set = patches.get(i);
                     const button = new Button();
 
                     button.add(set.name);
