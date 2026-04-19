@@ -358,7 +358,8 @@ function panel(){
                     dialog.show();
                         
                     } else if (i == 10){
-
+                    try{ 
+                            
                     if (timescaleDialog == null){
                     timeScaleDialog = new BaseDialog(Core.bundle.format("commandBlock.timescale"));
 
@@ -389,8 +390,10 @@ function panel(){
                     }
                 
                     timeScaleDialog.show();
-                        
-                    }
+
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }}
             }
         );
 
