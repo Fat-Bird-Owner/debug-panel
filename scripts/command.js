@@ -361,6 +361,11 @@ function panel(){
                     } else if (i == 10){
                     try{ 
                             
+                    if (Vars.mods.getMod("tc") != null){
+                    Vars.ui.showInfoToast("Time control is active not taking effect");
+                    return;
+                    }
+                            
                     if (timeScaleDialog == null){
                     timeScaleDialog = new BaseDialog(Core.bundle.format("commandBlock.timescale"));
 
