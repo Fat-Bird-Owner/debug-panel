@@ -421,7 +421,14 @@ function panel(){
                     const set = patches.get(i);
                     const button = new Button();
 
-                    button.add(set.name);
+                    let name = ""
+                    if (set.name != ""){
+                    name = set.name;
+                    } else {
+                    name = "[grey]Unnamed";
+                    }
+                            
+                    button.add(name);
                     
                     button.clicked(() => {
                     dialog.hide();
@@ -432,6 +439,7 @@ function panel(){
 
                     if (count >= 3){
                     p.row();
+                    count = 0;
                     }
                             
                     }
