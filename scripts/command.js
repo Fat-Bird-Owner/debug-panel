@@ -442,6 +442,12 @@ function panel(){
                     p.add(texField).grow();
                     }).grow();
 
+                    texField.changed(() => {
+                    const patchText = texField.getText();
+                    set.patch = patchText;
+                    patchScreen.hide();
+                    patcher.apply();
+                    });
                     patchScreen.show();
 
                     } catch(e){
