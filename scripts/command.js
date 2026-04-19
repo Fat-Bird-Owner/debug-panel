@@ -432,6 +432,15 @@ function panel(){
                     
                     button.clicked(() => {
                     dialog.hide();
+                    const patchScreen = new BaseDialog(name);
+                    patchScreen.addCloseButton();
+
+                    const texField = new TextField(set.patch);
+                    patchScreen.cont.pane(p => {
+                    p.add(texField).grow();
+                    });
+
+                    patchScreen.show();
                     });
 
                     p.add(button).growX().height(150);
