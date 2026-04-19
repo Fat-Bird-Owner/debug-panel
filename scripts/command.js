@@ -446,17 +446,8 @@ function panel(){
                     try{
                     const patchText = texField.getText().split("\n");
 
-                    const seq = new Seq();
-
-                    for(let i = 0; i < patchText.length; i++){
-                    const line = patchText[i].trim();
-                    if(line.length > 0){
-                    seq.add(line);
-                    }
-                    }
-
-                    set.patch = seq;
-                    const newPatches = patcher.patches
+                    set.patch = patchText;
+                    const newPatches = patcher.patches;
                     patcher.apply(newPatches);
                     patchScreen.hide();
                     Vars.ui.hudfrag.showToast(Core.bundle.format("commandBlock.patch.apply"));
