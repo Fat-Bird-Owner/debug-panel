@@ -17,7 +17,8 @@ Such as:[accent[]]
 - Editor mode [grey[]](Crashes if saved while enabled)[[]]
 - Spawn unit/Unit library
 - Fill core
-- And run javascript
+- run javascript
+- And change timescale
 "
 
 iosCompatible: true
