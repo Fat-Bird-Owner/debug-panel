@@ -388,7 +388,7 @@ function panel(){
                     timeScaleDialog.cont.add(label);
                     timeScaleDialog.cont.add().width(15);
                     timeScaleDialog.cont.add(button);
-                    timeScaleDialog.cont.addCloseButton()
+                    timeScaleDialog.addCloseButton()
                             
                     }
                 
