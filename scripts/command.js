@@ -446,8 +446,9 @@ function panel(){
                     try{
                     const patchText = texField.getText();
                     set.patch = patchText;
-                    patchScreen.hide();
+
                     patcher.apply();
+                    patchScreen.hide();
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
