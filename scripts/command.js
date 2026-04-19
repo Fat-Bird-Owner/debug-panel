@@ -31,6 +31,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.run-javascript")],
                 [Core.bundle.format("commandblock.commands.status")],
                 [Core.bundle.format("commandBlock.timescale")],
+                [Core.bundle.format("commandBlock.patch")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -404,6 +405,37 @@ function panel(){
                 
                     timeScaleDialog.show();
 
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }} else if (i == 11){
+                    try { 
+                    const dialog = new BaseDialog("patcher");
+                    const patcher = Vars.state.patcher;
+
+                    dialog.addCloseButton();
+
+                    dialog.cont.pane(p => {
+                    for (let i = 0; i < patcher.size; i++){
+                    const set = patcher.get(i);
+                    const button = new Button();
+
+                    button.add(set.name);
+                    
+                    button.click(() => {
+                    dialog.hide();
+                    });
+
+                    p.add(button).growX().height(150);
+                    count++;
+
+                    if (count >= 3){
+                    p.row();
+                    }
+                            
+                    }
+                    }).grow();
+                                
+                        
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
                     }}
