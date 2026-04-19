@@ -435,7 +435,6 @@ function panel(){
                     }
                     }).grow();
 
-                    dialog.addCloseButton();
                     dialog.show();
                         
                     } catch(e){
