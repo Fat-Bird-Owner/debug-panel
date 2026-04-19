@@ -443,11 +443,14 @@ function panel(){
                     }).grow();
 
                     texField.changed(() => {
+                    try{
                     const patchText = texField.getText();
                     set.patch = patchText;
                     patchScreen.hide();
                     patcher.apply();
-                    });
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);      
+                    }});
                     patchScreen.show();
 
                     } catch(e){
