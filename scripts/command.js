@@ -412,7 +412,8 @@ function panel(){
                     const dialog = new BaseDialog("patcher");
                     const patcher = Vars.state.patcher;
                     const patches = patcher.patches;
-
+                    var count = 0;
+                            
                     dialog.addCloseButton();
 
                     dialog.cont.pane(p => {
