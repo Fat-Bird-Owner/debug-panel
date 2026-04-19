@@ -435,7 +435,8 @@ function panel(){
                     const patchScreen = new BaseDialog(name);
                     patchScreen.addCloseButton();
 
-                    const texField = new TextField(set.patch);
+                    const texField = new TextArea(set.patch);
+                    texField.setWrap(true);
                     patchScreen.cont.pane(p => {
                     p.add(texField).grow();
                     }).grow();
