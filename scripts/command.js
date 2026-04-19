@@ -370,9 +370,12 @@ function panel(){
                     button.add(new Image(Icon.play));
 
                     slider.changed(() => {
+                    try {
                     speed = slider.getValue() + 1;
                     label.setText(speed.toFixed(2));
-                    });
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);      
+                    }});
 
                     button.clicked(() => {
                     speed = 1;   
