@@ -364,7 +364,7 @@ function panel(){
                     if (timeScaleDialog == null){
                     timeScaleDialog = new BaseDialog(Core.bundle.format("commandBlock.timescale"));
 
-                    const slider = new Slider(0, 9, 0.25, false);
+                    const slider = new Slider(0, 9, 0.05, false);
                     const button = new Button();
                     const label = new Label("1.00");
 
