@@ -327,7 +327,6 @@ function panel(){
                     dialog.cont.pane(p => {
                     Vars.content.statusEffects().each(e => {
 
-                    if (e.show == false) return;
                     const button = new Button(Styles.squareTogglet);
                     button.image(e.uiIcon).size(60);
                     button.row();
