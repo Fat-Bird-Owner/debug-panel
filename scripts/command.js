@@ -444,10 +444,10 @@ function panel(){
 
                     texField.changed(() => {
                     try{
-                    const patchText = texField.getText();
+                    const patchText = texField.getText().split("\n");
                     set.patch = patchText;
 
-                    patcher.apply(patchText.split("\n");
+                    patcher.apply(patchText);
                     patchScreen.hide();
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
