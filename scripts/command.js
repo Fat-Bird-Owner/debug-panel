@@ -447,7 +447,16 @@ function panel(){
                     const patchText = texField.getText().split("\n");
                     set.patch = patchText;
 
-                    patcher.apply(patchText);
+                    const seq = new Seq();
+
+                    for(let i = 0; i < patchText.length; i++){
+                    const line = patchText[i].trim();
+                    if(line.length > 0){
+                    seq.add(line);
+                    }
+                    }
+
+                    patcher.apply(seq);
                     patchScreen.hide();
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
