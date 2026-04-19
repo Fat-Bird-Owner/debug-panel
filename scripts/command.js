@@ -431,6 +431,8 @@ function panel(){
                     button.add(name);
                     
                     button.clicked(() => {
+                    try{ 
+                            
                     dialog.hide();
                     const patchScreen = new BaseDialog(name);
                     patchScreen.addCloseButton();
@@ -442,7 +444,10 @@ function panel(){
                     }).grow();
 
                     patchScreen.show();
-                    });
+
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
 
                     p.add(button).growX().height(150);
                     count++;
