@@ -444,11 +444,19 @@ function panel(){
 
                     texField.changed(() => {
                     try{
-                    const patchText = texField.getText().split("\n");
+                    const patchText = texField.getText();
 
-                    set.patch = patchText;
-                    const newPatches = patcher.patches;
-                    patcher.apply(newPatches);
+                    const seq = new Seq();
+
+                    texField.getText().split("\n").forEach(line => {
+                    line = line.trim();
+                    if(line.length > 0){
+                    seq.add(line);
+                    }
+                    });
+
+                    set.patch = seq
+                            
                     patchScreen.hide();
                     Vars.ui.hudfrag.showToast(Core.bundle.format("commandBlock.patch.apply"));
                     } catch(e){
