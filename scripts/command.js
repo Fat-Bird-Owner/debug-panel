@@ -362,7 +362,7 @@ function panel(){
                     try{ 
                             
                     if (Vars.mods.getMod("tc") != null){
-                    Vars.ui.showInfoToast("Time control is active not taking effect");
+                    Vars.ui.showInfoToast("Time control is active not taking effect", 5);
                     return;
                     }
                             
