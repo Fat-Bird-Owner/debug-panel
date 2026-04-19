@@ -383,12 +383,12 @@ function panel(){
                     label.setText(speed.toFixed(2));
                     });
 
-                    timeScaleDialog.add(slider).width(150);
-                    timeScaleDialog.add().width(15);
-                    timeScaleDialog.add(label);
-                    timeScaleDialog.add().width(15);
-                    timeScaleDialog.add(button);
-                    timeScaleDialog.addCloseButton()
+                    timeScaleDialog.cont.add(slider).width(150);
+                    timeScaleDialog.cont.add().width(15);
+                    timeScaleDialog.cont.add(label);
+                    timeScaleDialog.cont.add().width(15);
+                    timeScaleDialog.cont.add(button);
+                    timeScaleDialog.cont.addCloseButton()
                             
                     }
                 
