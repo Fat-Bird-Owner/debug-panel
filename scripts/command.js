@@ -422,7 +422,7 @@ function panel(){
 
                     button.add(set.name);
                     
-                    button.click(() => {
+                    button.clicked(() => {
                     dialog.hide();
                     });
 
