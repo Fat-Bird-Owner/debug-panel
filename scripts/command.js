@@ -447,8 +447,11 @@ function panel(){
                     const patchText = texField.getText().split("\n");
                     const seq = new Seq();
                     set.patch = patchText;
-                    seq.add(patchText);
 
+                    patches.each(p => {
+                    seq.add(p.patch);
+                    });
+                            
                     patcher.apply(seq);
                     patchScreen.hide();
                     } catch(e){
