@@ -455,10 +455,6 @@ function panel(){
                     const patchText = texField.getText().split("\n");
                     const seq = new Seq();
                     set.patch = patchText;
-
-                    if (set.error){
-                    Vars.ui.showText("[red]Error", set.warnings);
-                    }
                          
                     for(let i = 0; i < patches.size; i++){
                     const p = patches.get(i);
@@ -467,6 +463,11 @@ function panel(){
                             
                     patcher.apply(seq);
                     Vars.ui.hudfrag.showToast(Icon.file, "Applied the new patch");
+
+                    if (set.error){
+                    Vars.ui.showText("[red]Error", set.warnings);
+                    }
+                            
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
