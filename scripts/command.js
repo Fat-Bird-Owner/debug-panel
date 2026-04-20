@@ -443,7 +443,7 @@ function panel(){
                     }).grow();
 
                     const button = new Button();
-                    button.image(Icon.file);
+                    button.image(Icon.file).size(60);
                     button.add().width(10);
                     button.add("apply");
 
