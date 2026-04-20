@@ -446,7 +446,9 @@ function panel(){
                     button.image(Icon.file);
                     button.add().width(10);
                     button.add("apply");
-                
+
+                    patchScreen.cont.add(button);
+                            
                     button.clicked(() => {
                     try{
                     const patchText = texField.getText();
