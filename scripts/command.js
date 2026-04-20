@@ -443,12 +443,11 @@ function panel(){
                     }).grow();
 
 
-                    patchScreen.row();
+                    patchScreen.cont.row();
                     const button = new Button();
                     button.image(Icon.file).size(60);
                     button.add().width(10);
                     button.add("apply");
-
                     patchScreen.cont.add(button);
                             
                     button.clicked(() => {
@@ -463,7 +462,7 @@ function panel(){
                     }
                             
                     patcher.apply(seq);
-                    Vars.ui.hudfrag.show(Icon.file, "Applied the new patch");
+                    Vars.ui.hudfrag.showToast(Icon.file, "Applied the new patch");
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
