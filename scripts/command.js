@@ -466,6 +466,23 @@ function panel(){
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
+                            
+                    patchScreen.show();
+
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+
+                    p.add(button).growX().height(150);
+                    count++;
+
+                    if (count >= 3){
+                    p.row();
+                    count = 0;
+                    }
+                            
+                    }
+                    }).grow();
 
                     const newPatch = new Button();
                     newPatch.image(Icon.add).size(60);
@@ -492,23 +509,6 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);      
                     }});
                             
-                    patchScreen.show();
-
-                    } catch(e){
-                    Vars.ui.showInfoToast(e,5);
-                    }});
-
-                    p.add(button).growX().height(150);
-                    count++;
-
-                    if (count >= 3){
-                    p.row();
-                    count = 0;
-                    }
-                            
-                    }
-                    }).grow();
-
                     dialog.show();
                         
                     } catch(e){
