@@ -456,6 +456,10 @@ function panel(){
                     const seq = new Seq();
                     set.patch = patchText;
 
+                    if (set.error){
+                    Vars.ui.showText("[red]Error", set.warnings);
+                    }
+                         
                     for(let i = 0; i < patches.size; i++){
                     const p = patches.get(i);
                     seq.add(p.patch);
