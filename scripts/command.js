@@ -31,6 +31,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.run-javascript")],
                 [Core.bundle.format("commandblock.commands.status")],
                 [Core.bundle.format("commandBlock.timescale")],
+                [Core.bundle.format("commandBlock.patch")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -404,6 +405,72 @@ function panel(){
                 
                     timeScaleDialog.show();
 
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }} else if (i == 11){
+                    try { 
+                    const dialog = new BaseDialog("patcher");
+                    const patcher = Vars.state.patcher;
+                    const patches = patcher.patches;
+                    var count = 0;
+                            
+                    dialog.addCloseButton();
+
+                    dialog.cont.pane(p => {
+                    for (let i = 0; i < patches.size; i++){
+                    const set = patches.get(i);
+                    const button = new Button();
+
+                    let name = ""
+                    if (set.name != ""){
+                    name = set.name;
+                    } else {
+                    name = "[grey]Unnamed";
+                    }
+                            
+                    button.add(name);
+                    
+                    button.clicked(() => {
+                    try{ 
+                            
+                    dialog.hide();
+                    const patchScreen = new BaseDialog(name);
+                    patchScreen.addCloseButton();
+
+                    const texField = new TextArea(set.patch);
+                    patchScreen.cont.pane(p => {
+                    p.add(texField).grow();
+                    }).grow();
+
+                    texField.changed(() => {
+                    try{
+                    const patchText = texField.getText().split("\n");
+                    set.patch = patchText;
+
+                    patcher.apply(patchText);
+                    patchScreen.hide();
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);      
+                    }});
+                    patchScreen.show();
+
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+
+                    p.add(button).growX().height(150);
+                    count++;
+
+                    if (count >= 3){
+                    p.row();
+                    count = 0;
+                    }
+                            
+                    }
+                    }).grow();
+
+                    dialog.show();
+                        
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
                     }}
