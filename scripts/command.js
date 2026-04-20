@@ -437,11 +437,11 @@ function panel(){
                     const patchScreen = new BaseDialog(name);
                     patchScreen.addCloseButton();
 
-                    const button = new button();
                     patchScreen.cont.pane(p => {
 
                     Vars.content.each(c => {
                     if(c instanceof UnlockableContent){
+                    const button = new button();
                     button.image(c.uiIcon).size(60);
                     button.row();
                     button.add(c.localizedName);
