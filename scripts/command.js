@@ -488,10 +488,12 @@ function panel(){
                     newPatch.image(Icon.add).size(60);
                     newPatch.add().width(10);
                     newPatch.add("New patch");
+                    dialog.cont.row();
                     dialog.cont.add(newPatch);
                             
                     newPatch.clicked(() => {
-                    try{
+                    try{       
+                    const seq = new Seq();
 
                     for(let i = 0; i < patches.size; i++){
                     const p = patches.get(i);
