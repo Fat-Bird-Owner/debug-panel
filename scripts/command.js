@@ -464,7 +464,8 @@ function panel(){
                     patcher.apply(seq);
                     Vars.ui.hudfrag.showToast(Icon.file, "Applied the new patch");
 
-                    if (set.error){
+                    const newSet = patches.get(i);
+                    if (newSet.error){
                     Vars.ui.showText("[red]Error", set.warnings);
                     }
                             
