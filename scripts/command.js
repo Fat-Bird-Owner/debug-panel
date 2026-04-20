@@ -446,13 +446,13 @@ function panel(){
                     patchScreen.cont.row();
                     const button = new Button();
                     button.image(Icon.file).size(60);
-                    button.add().width(10);
+                    button.add().width(5);
                     button.add("apply");
                     patchScreen.cont.add(button);
                             
                     button.clicked(() => {
                     try{
-                    const patchText = texField.getText().split("\n");
+                    const patchText = texField.getText();
                     const seq = new Seq();
                     set.patch = patchText;
                          
@@ -491,7 +491,7 @@ function panel(){
 
                     const newPatch = new Button();
                     newPatch.image(Icon.add).size(60);
-                    newPatch.add().width(10);
+                    newPatch.add().width(5);
                     newPatch.add("New patch");
                     dialog.cont.row();
                     dialog.cont.add(newPatch);
