@@ -467,7 +467,30 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);      
                     }});
 
+                    const newPatch = new Button();
+                    newPatch.image(Icon.add).size(60);
+                    newPatch.add().width(10);
+                    newPatch.add("New patch");
+                    patchScreen.add().width(10);
+                    patchScreen.add(newPatch);
+                            
+                    newPatch.clicked(() => {
+                    try{
+                    const patchText = texField.getText();
+                    const seq = new Seq();
+                    set.patch = patchText;
 
+                    for(let i = 0; i < patches.size; i++){
+                    const p = patches.get(i);
+                    seq.add(p.patch);
+                    }
+                    seq.add("name: New patch");
+                            
+                    patcher.apply(seq);
+                    Vars.ui.hudfrag.showToast(Icon.add, "Added new patch file");
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);      
+                    }});
                             
                     patchScreen.show();
 
