@@ -442,7 +442,12 @@ function panel(){
                     p.add(texField).grow();
                     }).grow();
 
-                    texField.changed(() => {
+                    const button = new Button();
+                    button.image(Icon.file);
+                    button.add().width(10);
+                    button.add("apply");
+                
+                    button.clicked(() => {
                     try{
                     const patchText = texField.getText();
                     const seq = new Seq();
@@ -454,10 +459,13 @@ function panel(){
                     }
                             
                     patcher.apply(seq);
-                    patchScreen.hide();
+                    Vars.ui.hudfrag.show(Icon.file, "Applied the new patch");
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
+
+
+                            
                     patchScreen.show();
 
                     } catch(e){
