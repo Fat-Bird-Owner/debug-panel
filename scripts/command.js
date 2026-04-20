@@ -449,7 +449,7 @@ function panel(){
                     set.patch = patchText;
 
                     patches.each(p => {
-                    seq.add(p.patch);
+                    seq.add(p);
                     });
                             
                     patcher.apply(seq);
