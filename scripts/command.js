@@ -444,7 +444,7 @@ function panel(){
 
                     texField.changed(() => {
                     try{
-                    const patchText = texField.getText().split("\n");
+                    const patchText = texField.getText();
                     const seq = new Seq();
                     set.patch = patchText;
 
