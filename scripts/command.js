@@ -450,7 +450,7 @@ function panel(){
 
                     for(let i = 0; i < patches.size; i++){
                     const p = patches.get(i);
-                    seq.add(p);
+                    seq.add(p.patch);
                     }
                             
                     patcher.apply(seq);
