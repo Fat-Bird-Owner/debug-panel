@@ -437,9 +437,18 @@ function panel(){
                     const patchScreen = new BaseDialog(name);
                     patchScreen.addCloseButton();
 
-                    const texField = new TextArea(set.patch);
+                    const button = new button();
                     patchScreen.cont.pane(p => {
-                    p.add(texField).growX().height(Core.graphics.getHeight() * 0.5);
+
+                    Vars.content.each(c => {
+                    if(c instanceof UnlockableContent){
+                    button.image(c.uiIcon).size(60);
+                    button.row();
+                    button.add(c.localizedName);
+                    p.add(button).growX().height(Core.graphics.getHeight() * 0.5);
+                    }
+                    });
+                            
                     }).grow();
 
 
