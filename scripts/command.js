@@ -439,7 +439,7 @@ function panel(){
 
                     const texField = new TextArea(set.patch);
                     patchScreen.cont.pane(p => {
-                    p.add(texField).grow();
+                    p.add(texField).growX().height(Core.graphics.getHeight() * 0.5);
                     }).grow();
 
 
@@ -452,7 +452,7 @@ function panel(){
                             
                     button.clicked(() => {
                     try{
-                    const patchText = texField.getText();
+                    const patchText = texField.getText().split("\n");
                     const seq = new Seq();
                     set.patch = patchText;
 
