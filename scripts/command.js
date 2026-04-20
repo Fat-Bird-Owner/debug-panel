@@ -442,6 +442,8 @@ function panel(){
                     p.add(texField).grow();
                     }).grow();
 
+
+                    patchScreen.row();
                     const button = new Button();
                     button.image(Icon.file).size(60);
                     button.add().width(10);
