@@ -488,14 +488,10 @@ function panel(){
                     newPatch.image(Icon.add).size(60);
                     newPatch.add().width(10);
                     newPatch.add("New patch");
-                    dialog.add().width(10);
-                    dialog.add(newPatch);
+                    dialog.cont.add(newPatch);
                             
                     newPatch.clicked(() => {
                     try{
-                    const patchText = texField.getText();
-                    const seq = new Seq();
-                    set.patch = patchText;
 
                     for(let i = 0; i < patches.size; i++){
                     const p = patches.get(i);
