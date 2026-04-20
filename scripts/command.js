@@ -448,9 +448,10 @@ function panel(){
                     const seq = new Seq();
                     set.patch = patchText;
 
-                    patches.each(p => {
+                    for(let i = 0; i < patches.size; i++){
+                    const p = patches.get(i);
                     seq.add(p);
-                    });
+                    }
                             
                     patcher.apply(seq);
                     patchScreen.hide();
