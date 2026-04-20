@@ -415,7 +415,7 @@ function panel(){
                     var count = 0;
                             
                     dialog.addCloseButton();
-
+                            
                     dialog.cont.pane(p => {
                     for (let i = 0; i < patches.size; i++){
                     const set = patches.get(i);
@@ -471,8 +471,8 @@ function panel(){
                     newPatch.image(Icon.add).size(60);
                     newPatch.add().width(10);
                     newPatch.add("New patch");
-                    patchScreen.add().width(10);
-                    patchScreen.add(newPatch);
+                    dialog.add().width(10);
+                    dialog.add(newPatch);
                             
                     newPatch.clicked(() => {
                     try{
