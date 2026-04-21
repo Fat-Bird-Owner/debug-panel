@@ -453,10 +453,8 @@ function panel(){
 
                     const patchScreen = new BaseDialog("patcher");
                     patchScreen.addCloseButton();
-
-
                                     
-                    patchScreen.const.pane(p => {
+                    patchScreen.cont.pane(p => {
 
                     let count = 0;
                             
@@ -472,6 +470,8 @@ function panel(){
                             
                     }
                     }).grow();
+
+                    patchScreen.show()
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
