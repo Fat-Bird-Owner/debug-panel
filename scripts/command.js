@@ -434,41 +434,53 @@ function panel(){
                     try{ 
                             
                     dialog.hide();
-                    const patchScreen = new BaseDialog(name);
+                    Vars.ui.showTextInput("datapatcher", "Input content name", 9999, "", false, text => {
+                    try {
+                    const content = Vars.content.block(text);
+
+                    if (!content){
+                    content = Vars.content.unit(text);
+                    } else if (!content) {
+                    content = Vars.content.statusEffect(text);
+                    } else if (!content) {
+                    content = Vars.content.planet(text);
+                    } else if (!content) {
+                    content = Vars.content.sector(text);
+                    } else {
+                    Vars.ui.hudfrag.showToast(text + " [red]Not found");
+                    return;
+                    }
+
+                    const patchScreen = new BaseDialog("patcher");
                     patchScreen.addCloseButton();
 
-                    patchScreen.cont.pane(p => {
+
+                                    
+                    patchScreen.const.pane(p => {
 
                     let count = 0;
                             
-                    Vars.content.each(c => {
-                    if(c instanceof UnlockableContent){
+                    for (let k in content){
                     const button = new Button();
-                    button.add(new Image(c.uiIcon)).size(60);
-                    button.row();
-                    button.add(c.localizedName);
-                    p.add(button).size(200,80);
+                    button.add(k).size(200,80);
 
                     if (count >= 3){
-                    p.row();
-                    count = 0;
+                    p.add(button);
                     } else {
-                    count++;
+                    p.row();
                     }
-                        
+                            
                     }
                     });
                             
-                    }).grow();
-
-
-                    patchScreen.cont.row();            
-                    patchScreen.show();
-
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
                     }});
 
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+                                    
                     p.add(button).growX().height(150);
                     count++;
 
@@ -499,6 +511,7 @@ function panel(){
                             
                     patcher.apply(seq);
                     Vars.ui.hudfrag.showToast(Icon.add, "Added new patch file");
+                    dialog.hide();
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);      
                     }});
