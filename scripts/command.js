@@ -439,13 +439,23 @@ function panel(){
 
                     patchScreen.cont.pane(p => {
 
+                    let count = 0;
+                            
                     Vars.content.each(c => {
                     if(c instanceof UnlockableContent){
                     const button = new Button();
                     button.image(c.uiIcon).size(60);
                     button.row();
                     button.add(c.localizedName);
-                    p.add(button).growX().height(Core.graphics.getHeight() * 0.5);
+                    p.add(button).size(200,80);
+
+                    if (count >= 3){
+                    p.row();
+                    count = 0;
+                    } else {
+                    count++;
+                    }
+                        
                     }
                     });
                             
