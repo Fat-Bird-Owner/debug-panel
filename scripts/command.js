@@ -460,10 +460,12 @@ function panel(){
 
                     for (let k in content){
                     const type = content[k];
+                    const property = k;
+                            
                     if (typeof type != "function" && typeof type != "object") {
                             
-                    p.button(k + "\n[grey](" + type + ")[]" , () => {
-                    Vars.ui.showInfoToast(k, 5);
+                    p.button(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]", () => {
+                    Vars.ui.showInfoToast(property, 5);
                     }).size(200, 80).padTop(10);
                     p.add().width(10);
 
