@@ -444,7 +444,7 @@ function panel(){
                     Vars.content.each(c => {
                     if(c instanceof UnlockableContent){
                     const button = new Button();
-                    button.image(c.uiIcon).size(60);
+                    button.add(new Image(c.uiIcon)).size(60);
                     button.row();
                     button.add(c.localizedName);
                     p.add(button).size(200,80);
