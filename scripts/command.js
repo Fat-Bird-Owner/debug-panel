@@ -460,7 +460,7 @@ function panel(){
                             
                     for (let k in content){
                     const button = new Button();
-                    button.add(String(k));
+                    //button.add(String(k));
                     p.add(button).size(200,80);
 
                     if (count >= 3){
