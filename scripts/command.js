@@ -436,7 +436,7 @@ function panel(){
                     dialog.hide();
                     Vars.ui.showTextInput("datapatcher", "Input content name", 9999, "", false, text => {
                     try {
-                    const content = Vars.content.block(text);
+                    var content = Vars.content.block(text);
 
                     if (!content){
                     content = Vars.content.unit(text);
