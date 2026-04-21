@@ -471,7 +471,7 @@ function panel(){
                     }
                             
                     }
-                    });
+                    }).grow();
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
