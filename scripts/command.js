@@ -461,11 +461,13 @@ function panel(){
                     for (let k in content){
                     const button = new Button();
                     button.add(k).size(200,80);
+                    p.add(button);
 
                     if (count >= 3){
-                    p.add(button);
-                    } else {
                     p.row();
+                    count = 0;
+                    } else {
+                    count++;
                     }
                             
                     }
