@@ -463,8 +463,7 @@ function panel(){
                     const property = k;
                             
                     if (typeof type != "function" && typeof type != "object") {
-                    const label = new Label();
-                    label.setText(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]"); 
+                    const label = new Label(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]");
                             
                     p.button(label, () => {
                     if (typeof type == "boolean"){
