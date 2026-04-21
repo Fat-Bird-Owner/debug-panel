@@ -463,9 +463,14 @@ function panel(){
                     const property = k;
                             
                     if (typeof type != "function" && typeof type != "object") {
+                    const label = new Label();
+                    label.setText(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]"); 
                             
-                    p.button(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]", () => {
-                    Vars.ui.showInfoToast(property, 5);
+                    p.button(label, () => {
+                    if (typeof type == "boolean"){
+                    set.add("\n" + content + "." + property + ":" + String(!type));
+                    label.setText(k + "\n[grey](" + typeof type + ":[] " + type + "[grey])[]");
+                    }
                     }).size(200, 80).padTop(10);
                     p.add().width(10);
 
