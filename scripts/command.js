@@ -462,8 +462,9 @@ function panel(){
 
                     p.button(k, () => {
                     print(k);
-                    }).size(200, 80);
-
+                    }).size(200, 80).padTop(10);
+                    p.add().width(10);
+                            
                     count++;
                     if(count % 3 === 0) p.row();
                     }
