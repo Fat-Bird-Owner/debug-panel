@@ -457,23 +457,20 @@ function panel(){
                     patchScreen.cont.pane(p => {
 
                     let count = 0;
-                            
-                    for (let k in content){
-                    const button = new Button();
-                    //button.add(String(k));
-                    p.add(button).size(200,80);
 
-                    if (count >= 3){
-                    p.row();
-                    count = 0;
-                    } else {
+                    for (let k in content){
+
+                    p.button(k, () => {
+                    print(k);
+                    }).size(200, 80);
+
                     count++;
+                    if(count % 3 === 0) p.row();
                     }
-                            
-                    }
+
                     }).grow();
 
-                    patchScreen.show()
+                    patchScreen.show();
                             
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
