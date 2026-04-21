@@ -460,7 +460,7 @@ function panel(){
 
                     for (let k in content){
                     const type = content[k];
-                    if (typeof type == "function" || typeof type == "object") {
+                    if (typeof type != "function" && typeof type != "object") {
                             
                     p.button(k + "\n[grey](" + type + ")[]" , () => {
                     Vars.ui.showInfoToast(k, 5);
