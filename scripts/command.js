@@ -35,6 +35,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.timescale")],
                 [Core.bundle.format("commandBlock.patch")],
                 [Core.bundle.format("commandBlock.pixMap")],
+                [Core.bundle.format("commandBlock.effects")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -581,6 +582,11 @@ function panel(){
 
                     table.show();     
                 
+                    } else if (i == 13){
+                        
+                    const d = Vars.ui.effects.withAllEffects();
+                    d.show();
+
                     }
             }
         );
