@@ -536,7 +536,9 @@ function panel(){
                     }} else if (i == 12){
 
                     if (Vars.state.map != lastMap){
-                        
+
+                    lastMap = Vars.state.map;
+                            
                     const w = Vars.world.width();
                     const h = Vars.world.height();
                     const scale = 3;
