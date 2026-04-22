@@ -562,7 +562,7 @@ function panel(){
 
                     let table = new BaseDialog("Map");
                     table.addCloseButton();
-                    table.add(image).grow();
+                    table.cont.add(image).grow();
 
                     table.show();     
                 
