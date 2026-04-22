@@ -535,7 +535,7 @@ function panel(){
 
                     const w = Vars.world.width();
                     const h = Vars.world.height();
-                    const scale = 3,
+                    const scale = 3;
                     const pixmap = new Packages.arc.graphics.Pixmap(Math.floor(w/scale), Math.floor(h/scale));
 
                     for(let x = 0; x < w/scale; x++){
