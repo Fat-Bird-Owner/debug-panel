@@ -552,7 +552,7 @@ function panel(){
                     let color = Color.darkGray;
 
                     if(tile.overlay() != null && tile.overlay().itemDrop != null){
-                    if (tile.block() == null) {
+                    if (tile.block() == Blocks.air) {
                     color = tile.overlay().itemDrop.color;
                     } else {
                     color = Color.lime;
@@ -571,7 +571,7 @@ function panel(){
                     const texture = new Texture(pixmap);
                     const image = new Image(new TextureRegion(texture));
 
-                    const x = Core.graphics.getWidth() * 0.35;
+                    const x = Core.graphics.getWidth() * 0.40;
                             
                     table = new BaseDialog("Map");
                     table.addCloseButton();
