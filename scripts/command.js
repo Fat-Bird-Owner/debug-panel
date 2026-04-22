@@ -6,6 +6,8 @@ var value = 0;
 var unitsTab = null;
 var timeScaleDialog = null;
 var speed = 1;
+var lastMap = null;
+var table = null;
 
 function panel(){
 
@@ -533,6 +535,8 @@ function panel(){
                     Vars.ui.showInfoToast(e,5);
                     }} else if (i == 12){
 
+                    if (Vars.state.map != lastMap){
+                        
                     const w = Vars.world.width();
                     const h = Vars.world.height();
                     const scale = 3;
@@ -560,9 +564,11 @@ function panel(){
                     const texture = new Texture(pixmap);
                     const image = new Image(new TextureRegion(texture));
 
-                    let table = new BaseDialog("Map");
+                    table = new BaseDialog("Map");
                     table.addCloseButton();
                     table.cont.add(image).grow();
+                            
+                }
 
                     table.show();     
                 
