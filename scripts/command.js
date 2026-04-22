@@ -552,7 +552,12 @@ function panel(){
                     let color = Color.darkGray;
 
                     if(tile.overlay() != null && tile.overlay().itemDrop != null){
+                    if (tile.block() == null) {
                     color = tile.overlay().itemDrop.color;
+                    } else {
+                    color = Color.lime;
+                    } 
+                            
                     }else if(tile.block().solid){
                     color = tile.block().mapColor;
                     }else{
