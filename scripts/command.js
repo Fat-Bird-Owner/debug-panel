@@ -32,6 +32,7 @@ function panel(){
                 [Core.bundle.format("commandblock.commands.status")],
                 [Core.bundle.format("commandBlock.timescale")],
                 [Core.bundle.format("commandBlock.patch")],
+                [Core.bundle.format("commandBlock.pixMap")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -530,7 +531,41 @@ function panel(){
                         
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
-                    }}
+                    }} else if (i == 12){
+
+                    const w = Vars.world.width();
+                    const h = Vars.world.height();
+                    const scale = 3,
+                    const pixmap = new Packages.arc.graphics.Pixmap(Math.floor(w/scale), Math.floor(h/scale));
+
+                    for(let x = 0; x < w/scale; x++){
+                    for(let y = 0; y < h/scale; y++){
+                    const tile = Vars.world.tile(x*scale, y*scale);
+                    if(!tile) continue;
+
+                    let color = Packages.arc.graphics.Color.darkGray;
+
+                    if(tile.overlay() != null && tile.overlay().itemDrop != null){
+                    color = tile.overlay().itemDrop.color;
+                    }else if(tile.block().solid){
+                    color = Packages.arc.graphics.Color.gray;
+                    }else{
+                    color = Packages.arc.graphics.Color.clear;
+                    }
+
+                    pixmap.set(x, pixmap.getHeight() - y - 1, color.rgba());
+                    }
+                    }
+
+                    const texture = new Packages.arc.graphics.Texture(pixmap);
+                    const image = new Image(new TextureRegion(texture));
+
+                    let table = new BaseDialog("Map");
+                    table.add(image).grow();
+
+                    table.show();     
+                
+                    }
             }
         );
 
