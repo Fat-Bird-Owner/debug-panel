@@ -561,6 +561,7 @@ function panel(){
                     const image = new Image(new TextureRegion(texture));
 
                     let table = new BaseDialog("Map");
+                    table.addCloseButton();
                     table.add(image).grow();
 
                     table.show();     
