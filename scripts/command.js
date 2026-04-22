@@ -561,7 +561,7 @@ function panel(){
                     }else if(tile.block().solid){
                     color = tile.block().mapColor;
                     }else{
-                    color = Color.darkGray;
+                    color = tile.floor().mapColor;;
                     }
 
                     pixmap.set(x, pixmap.getHeight() - y - 1, color.rgba());
