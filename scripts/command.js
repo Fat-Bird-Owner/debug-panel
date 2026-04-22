@@ -541,7 +541,7 @@ function panel(){
                             
                     const w = Vars.world.width();
                     const h = Vars.world.height();
-                    const scale = 3;
+                    const scale = 1;
                     const pixmap = new Pixmap(Math.floor(w/scale), Math.floor(h/scale));
 
                     for(let x = 0; x < w/scale; x++){
