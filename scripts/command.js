@@ -566,9 +566,11 @@ function panel(){
                     const texture = new Texture(pixmap);
                     const image = new Image(new TextureRegion(texture));
 
+                    const x = Core.graphics.getWidth() * 0.5;
+                            
                     table = new BaseDialog("Map");
                     table.addCloseButton();
-                    table.cont.add(image).grow();
+                    table.cont.add(image).grow(x,x);
                             
                 }
 
