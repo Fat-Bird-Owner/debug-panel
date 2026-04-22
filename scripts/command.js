@@ -554,7 +554,7 @@ function panel(){
                     if(tile.overlay() != null && tile.overlay().itemDrop != null){
                     color = tile.overlay().itemDrop.color;
                     }else if(tile.block().solid){
-                    color = Color.gray;
+                    color = tile.block().mapColor;
                     }else{
                     color = Color.darkGray;
                     }
