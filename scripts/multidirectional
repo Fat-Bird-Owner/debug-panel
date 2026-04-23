@@ -1,0 +1,35 @@
+Events.on(TapEvent, e => {
+try {
+const tile = e.tile;
+if (tile.block() != Blocks.mechanicalDrill) return;
+
+const dialog = new BaseDialog("idk");
+dialog.cont.pane(p => {
+
+if count = 0;
+
+Vars.content.items().each(t => {
+try {
+const button = new Button();
+button.image(t.uiIcon).size(60);
+
+p.add(button);
+
+if (count >= 6){
+p.row();
+count = 0;
+} else {
+count++;
+}
+
+} catch(e){
+Vars.ui.showInfoToast(e,5);
+}}) ;
+}).grow();
+
+dialog.addCloseButton();
+dialog.show();
+
+} catch(e){
+Vars.ui.showInfoToast(e,5);
+}});
