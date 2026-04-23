@@ -6,7 +6,7 @@ if (tile.block() != Blocks.mechanicalDrill) return;
 const dialog = new BaseDialog("idk");
 dialog.cont.pane(p => {
 
-if count = 0;
+let count = 0;
 
 Vars.content.items().each(t => {
 try {
