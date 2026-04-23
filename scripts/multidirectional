@@ -13,7 +13,18 @@ try {
 const button = new Button();
 button.image(t.uiIcon).size(60);
 
-p.add(button);
+const item = t;
+
+p.add(button).size(100).padTop(15);
+p.add().width(15);
+
+p.clicked(() => {
+try {
+tile.build.dominantItem = item;
+dialog.hide();
+} catch(e){
+Vars.ui.show
+}});
 
 if (count >= 6){
 p.row();
