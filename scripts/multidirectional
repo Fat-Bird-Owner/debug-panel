@@ -19,7 +19,7 @@ p.add().width(15);
 
 p.clicked(() => {
 try {
-tile.build.dominantItem = item;
+tile.build.dominantItem = t;
 dialog.hide();
 } catch(e){
 Vars.ui.show
