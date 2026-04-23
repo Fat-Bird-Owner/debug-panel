@@ -22,7 +22,7 @@ try {
 tile.build.dominantItem = t;
 dialog.hide();
 } catch(e){
-Vars.ui.show
+Vars.ui.showInfoToast(e,5);
 }});
 
 if (count >= 8){
