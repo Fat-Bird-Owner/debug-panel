@@ -11,9 +11,8 @@ let count = 0;
 Vars.content.items().each(t => {
 try {
 const button = new Button();
-button.image(t.uiIcon).size(60);
-
 const item = t;
+button.image(t.uiIcon).size(60);
 
 p.add(button).size(100).padTop(15);
 p.add().width(15);
@@ -26,7 +25,7 @@ dialog.hide();
 Vars.ui.show
 }});
 
-if (count >= 6){
+if (count >= 8){
 p.row();
 count = 0;
 } else {
