@@ -589,9 +589,13 @@ function panel(){
                     d.show();
 
                     } else if (i == 14){
+
+                    if (!Vars.player || !Vars.player.team()) return;
                     Groups.unit.each(u => {
                     try{  
 
+                    if (u.team != Vars.player.team) return;
+                            
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
                     }});
