@@ -36,6 +36,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.patch")],
                 [Core.bundle.format("commandBlock.pixMap")],
                 [Core.bundle.format("commandBlock.effects")],
+                [Core.bundle.format("commandBlock.unitAI")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -587,6 +588,13 @@ function panel(){
                     const d = Vars.ui.effects.withAllEffects();
                     d.show();
 
+                    } else if (i == 14){
+                    Groups.unit.each(u => {
+                    try{  
+
+                    } catch(e){
+                    Vars.ui.showInfoToast(e, 5);
+                    }});
                     }
             }
         );
