@@ -595,8 +595,7 @@ function panel(){
                     try{  
 
                     if (u.team != Vars.player.team() || u == Vars.player.unit()) return;
-                    if (u.type.naval) u.controller(new NavalAI());
-                    else if (u.type.flying) u.controller(new FlyingAI());
+                    if (u.type.flying) u.controller(new FlyingAI());
                     else u.controller(new GroundAI());
         
                     } catch(e){
