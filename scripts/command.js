@@ -589,7 +589,8 @@ function panel(){
                     d.show();
 
                     } else if (i == 14){
-
+                    Vars.ui.hudfrag.showToast(Icon.admin, Core.bundle.format("commandblock.showtoast.unitAI"));
+                        
                     if (!Vars.player || !Vars.player.team()) return;
                     Groups.unit.each(u => {
                     try{  
