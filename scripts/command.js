@@ -594,8 +594,11 @@ function panel(){
                     Groups.unit.each(u => {
                     try{  
 
-                    if (u.team != Vars.player.team) return;
-                            
+                    if (u.team != Vars.player.team || u == Vars.player.unit()) return;
+                    if (u.type.naval) u.controller(new NavalAI());
+                    else if (u.type.flying) u.controller(new FlyingAI());
+                    else u.controller(new GroundAI());
+        
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
                     }});
