@@ -37,6 +37,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.pixMap")],
                 [Core.bundle.format("commandBlock.effects")],
                 [Core.bundle.format("commandBlock.unitAI")],
+                [Core.bundle.format("commandBlock.defenseAI")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -598,6 +599,19 @@ function panel(){
                     if (u.team != Vars.player.team() || u == Vars.player.unit()) return;
                     if (u.type.flying) u.controller(new FlyingAI());
                     else u.controller(new GroundAI());
+        
+                    } catch(e){
+                    Vars.ui.showInfoToast(e, 5);
+                    }});
+                    } else if (i == 15){
+                    Vars.ui.hudfrag.showToast(Icon.admin, Core.bundle.format("commandblock.showtoast.defendAI"));
+                        
+                    if (!Vars.player || !Vars.player.team()) return;
+                    Groups.unit.each(u => {
+                    try{  
+
+                    if (u.team != Vars.player.team() || u == Vars.player.unit()) return;
+                    u.controller(new DefenderAI());
         
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
