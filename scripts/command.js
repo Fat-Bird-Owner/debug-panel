@@ -611,7 +611,7 @@ function panel(){
                     try{  
 
                     if (u.team != Vars.player.team() || u == Vars.player.unit()) return;
-                    u.controller(new CommandAI());
+                    u.controller(new RepairAI());
         
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
