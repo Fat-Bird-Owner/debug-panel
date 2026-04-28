@@ -610,7 +610,7 @@ function panel(){
                     Groups.unit.each(u => {
                     try{  
 
-                    if (u.team != Vars.player.team() || u == Vars.player.unit()) return;
+                    if (u.team != Vars.player.team() || u == Vars.player.unit() || u.type.buildSpeed <= 0) return;
                     u.controller(new BuilderAI(false, 15 * Vars.tilesize));
         
                     } catch(e){
