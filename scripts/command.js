@@ -38,7 +38,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.effects")],
                 [Core.bundle.format("commandBlock.unitAI")],
                 [Core.bundle.format("commandBlock.defenseAI")],
-                [Core.bundle.format("commandBlock.sounds")]
+                [Core.bundle.format("commandBlock.sounds")],
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -619,7 +619,6 @@ function panel(){
                     }});
                     } else if (i == 16){
 
-                    const teams = Team.all;
                     const dialog = new BaseDialog("dialog");
 
                     let count = 0;
@@ -630,7 +629,7 @@ function panel(){
                     //if (height > width) height = Core.graphics.getHeight() * 0.05;
                             
                     dialog.cont.pane(p => {
-                    Object.key(Sounds).forEach(s => {
+                    Object.keys(Sounds).forEach(s => {
 
                     let sound = s;
                             
