@@ -591,6 +591,7 @@ function panel(){
 
                     } else if (i == 14){
                     Vars.ui.hudfrag.showToast(Icon.admin, Core.bundle.format("commandblock.showtoast.unitAI"));
+                    Vars.pathfinder.updateWorld();
                         
                     if (!Vars.player || !Vars.player.team()) return;
                     Groups.unit.each(u => {
