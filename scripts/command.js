@@ -639,7 +639,7 @@ function panel(){
                             
                     button.clicked(() => {
                     try{
-                    Sounds[s].play();
+                    Core.audio.play(Sounds[s], 1, 1, 1, false);
                     Vars.ui.showInfoToast(s,5);
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
