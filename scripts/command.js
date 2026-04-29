@@ -38,6 +38,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.effects")],
                 [Core.bundle.format("commandBlock.unitAI")],
                 [Core.bundle.format("commandBlock.defenseAI")],
+                [Core.bundle.format("commandBlock.sounds")]
                 [Core.bundle.format("close")]
             ],
             i => {
@@ -616,6 +617,49 @@ function panel(){
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
                     }});
+                    } else if (i == 16){
+
+                    const teams = Team.all;
+                    const dialog = new BaseDialog("dialog");
+
+                    let count = 0;
+   
+                    let width = Core.graphics.getWidth() * 0.17;
+                    let height = Core.graphics.getHeight() * 0.17;
+
+                    //if (height > width) height = Core.graphics.getHeight() * 0.05;
+                            
+                    dialog.cont.pane(p => {
+                    Object.key(Sounds).forEach(s => {
+
+                    let sound = s;
+                            
+                    const button = new Button(Styles.squareTogglet);
+                    button.row();
+                    button.add(sound);
+                            
+                    button.clicked(() => {
+                    try{
+                    Sounds[sound].play();
+                    } catch(e){
+                    Vars.ui.showInfoToast(e,5);
+                    }});
+
+                    p.add(button).size(width,height).padTop(10);
+                    p.add().width(10);
+                    count++;
+
+                    if (count >= 5){
+                    p.row();
+                    count = 0;
+                    }
+                            
+                    }
+                    }).grow();
+
+                    dialog.addCloseButton();
+                    dialog.show();
+                        
                     }
             }
         );
