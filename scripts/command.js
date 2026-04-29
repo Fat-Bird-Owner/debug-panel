@@ -649,7 +649,7 @@ function panel(){
                     p.add().width(10);
                     count++;
 
-                    if (count >= 5){
+                    if (count >= 3){
                     p.row();
                     count = 0;
                     }
