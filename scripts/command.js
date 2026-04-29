@@ -639,7 +639,8 @@ function panel(){
                             
                     button.clicked(() => {
                     try{
-                    Sounds[sound].play();
+                    Sounds[s].play();
+                    Vars.ui.showInfoToast(s,5);
                     } catch(e){
                     Vars.ui.showInfoToast(e,5);
                     }});
