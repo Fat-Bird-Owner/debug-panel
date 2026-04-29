@@ -654,7 +654,7 @@ function panel(){
                     count = 0;
                     }
                             
-                    }
+                    });
                     }).grow();
 
                     dialog.addCloseButton();
