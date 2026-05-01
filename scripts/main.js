@@ -1,4 +1,5 @@
 const panel = require("dbp/command");
+require("lighting");
 
 Events.on(ClientLoadEvent, () => {
 try{
