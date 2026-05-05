@@ -4,6 +4,8 @@ require("lighting");
 Events.on(ClientLoadEvent, () => {
 try{
 
+    Vars.ui.settings.game.checkPref("console", true);
+    
     let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
     overlaymarkerTable.row();
 
