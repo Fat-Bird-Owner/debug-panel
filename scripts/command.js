@@ -566,7 +566,7 @@ function panel(){
                     }else if(tile.block().solid){
                     color = tile.block().mapColor;
                     }else{
-                    color = tile.floor().mapColor;;
+                    color = tile.floor().mapColor;
                     }
 
                     pixmap.set(x, pixmap.getHeight() - y - 1, color.rgba());
@@ -612,7 +612,7 @@ function panel(){
                 regionTab.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
                 let count = 0;
                             
-                unitsTab.cont.pane(p => {
+                regionTab.cont.pane(p => {
                         
                 Core.atlas.getRegions.each(regions => {
                 try{
