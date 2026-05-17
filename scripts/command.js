@@ -627,7 +627,7 @@ function panel(){
                         
                 button.image(regions).size(40).pad(12);
                 button.row();
-                button.add(unit.name);
+                button.add(regions.name);
                         
                 button.clicked(() => {
                 try {
