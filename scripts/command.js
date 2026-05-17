@@ -661,7 +661,7 @@ Vars.ui.showInfoToast(String(e), 5);
 }
 });
 
-}).width(Core.graphics.getWidth() * 0.95).height(Core.graphics.getHeight() * 0.75).growY();
+}).width(Core.graphics.getWidth() * 0.75).growY();
 
 regionTab.addCloseButton();
 }
