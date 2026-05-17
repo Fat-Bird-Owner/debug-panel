@@ -606,7 +606,8 @@ function panel(){
                     Vars.ui.showInfoToast(e, 5);
                     }});
                     } else if (i == 15){
-
+                    try {
+                            
                 if(regionTab == null){
 regionTab = new BaseDialog("Texture Atlas");
 regionTab.cont.add("Atlas Regions").top().row();
