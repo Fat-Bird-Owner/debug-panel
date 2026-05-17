@@ -614,7 +614,7 @@ function panel(){
                             
                 unitsTab.cont.pane(p => {
                         
-                Core.atlas.getRegions(regions => {
+                Core.atlas.getRegions.each(regions => {
                 try{
                   if(regions == null) return;
                         
