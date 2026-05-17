@@ -619,12 +619,11 @@ regionTab.cont.pane(p => {
 
 const regions = Core.atlas.getRegions();
 
-for(let r = 0; r < regions.size; r++){
+regions.each(region => {
 try{
 
-const region = regions.get(r);
-
-if(region == null || !region.name) continue;
+if(region == null) return;
+if(region.found && !region.found()) return;
 
 let width = Core.graphics.getWidth() * 0.15;
 let height = Core.graphics.getHeight() * 0.15;
@@ -635,14 +634,14 @@ height = Core.graphics.getHeight() * 0.05;
 
 const button = new Button(Styles.squareTogglet);
 
-button.image(region).size(40).pad(12);
+button.add(new Image(region)).size(40).pad(12);
 button.row();
-button.add(region.name);
+button.add(String(region.name));
 
 button.clicked(() => {
 try{
-Core.app.setClipboardText(region.name);
-Vars.ui.showInfoToast(region.name, 3);
+Core.app.setClipboardText(String(region.name));
+Vars.ui.showInfoToast(String(region.name), 3);
 }catch(e){
 Vars.ui.showInfoToast(String(e), 5);
 }
@@ -660,9 +659,9 @@ p.row();
 }catch(e){
 Vars.ui.showInfoToast(String(e), 5);
 }
-}
+});
 
-}).width(Core.graphics.getWidth()).growY();
+}).width(Core.graphics.getWidth() * 0.95).growY();
 
 regionTab.addCloseButton();
 }
