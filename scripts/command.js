@@ -607,50 +607,64 @@ function panel(){
                     }});
                     } else if (i == 15){
 
-                if (regionTab == null){  
-                regionTab = new BaseDialog("Units");
-                regionTab.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
-                let count = 0;
-                            
-                regionTab.cont.pane(p => {
-                        
-                Core.atlas.getRegions.each(regions => {
-                try{
-                  if(regions == null) return;
-                        
-                let width = Core.graphics.getWidth() * 0.15;
-                let height = Core.graphics.getHeight() * 0.15;
+                if(regionTab == null){
+regionTab = new BaseDialog("Texture Atlas");
+regionTab.cont.add("Atlas Regions").top().row();
 
-                if (height > width) height = Core.graphics.getHeight() * 0.05;
-                        
-                const button = new Button(Styles.squareTogglet);
-                        
-                button.image(regions).size(40).pad(12);
-                button.row();
-                button.add(regions.name);
-                        
-                button.clicked(() => {
-                try {
-                Core.app.setClipboardText(regions.name);
-                        
-                } catch(e){ Vars.ui.showInfoToast(e,5)}
-                });
-                        
-                p.add(button).size(width,height).padTop(10);
-                p.add().width(10);
-                count++;
-                   if(count % 3 == 0){
-                        p.row();
-                    }
-                } catch(e){
-                Vars.ui.showInfoToast(e, 5);           
-                }});
-                        
-                }).width(Core.graphics.getWidth()).growY();
-                    //dialog.cont.pane({}).size(400,300);
-                    regionTab.addCloseButton();
-                }
-                    regionTab.show();
+let count = 0;
+
+regionTab.cont.pane(p => {
+
+const regions = Core.atlas.getRegions();
+
+for(let i = 0; i < regions.size; i++){
+try{
+const region = regions.get(i);
+
+if(region == null) continue;
+
+let width = Core.graphics.getWidth() * 0.15;
+let height = Core.graphics.getHeight() * 0.15;
+
+if(height > width){
+height = Core.graphics.getHeight() * 0.05;
+}
+
+const button = new Button(Styles.squareTogglet);
+
+button.image(region).size(40).pad(12);
+button.row();
+button.add(region.name);
+
+button.clicked(() => {
+try{
+Core.app.setClipboardText(region.name);
+Vars.ui.showInfoToast(region.name, 3);
+}catch(e){
+Vars.ui.showInfoToast(String(e), 5);
+}
+});
+
+p.add(button).size(width, height).padTop(10);
+p.add().width(10);
+
+count++;
+
+if(count % 3 == 0){
+p.row();
+}
+
+}catch(e){
+Vars.ui.showInfoToast(String(e), 5);
+}
+}
+
+}).width(Core.graphics.getWidth()).growY();
+
+regionTab.addCloseButton();
+}
+
+regionTab.show();
         
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
