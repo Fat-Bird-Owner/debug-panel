@@ -8,6 +8,7 @@ var timeScaleDialog = null;
 var speed = 1;
 var lastMap = null;
 var table = null;
+var regionTab = null;
 
 function panel(){
 
