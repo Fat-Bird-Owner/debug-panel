@@ -606,9 +606,10 @@ function panel(){
                     Vars.ui.showInfoToast(e, 5);
                     }});
                     } else if (i == 15){
-                    try {
-                            
-                if(regionTab == null){
+try{
+
+if(regionTab == null){
+
 regionTab = new BaseDialog("Texture Atlas");
 regionTab.cont.add("Atlas Regions").top().row();
 
@@ -618,11 +619,12 @@ regionTab.cont.pane(p => {
 
 const regions = Core.atlas.getRegions();
 
-for(let i = 0; i < regions.size; i++){
+for(let r = 0; r < regions.size; r++){
 try{
-const region = regions.get(i);
 
-if(region == null) continue;
+const region = regions.get(r);
+
+if(region == null || !region.name) continue;
 
 let width = Core.graphics.getWidth() * 0.15;
 let height = Core.graphics.getHeight() * 0.15;
@@ -666,12 +668,11 @@ regionTab.addCloseButton();
 }
 
 regionTab.show();
-        
-                    } catch(e){
-                    Vars.ui.showInfoToast(e, 5);
-                    }});
-                    
-                    } else if (i == 16){
+
+}catch(e){
+Vars.ui.showInfoToast(String(e), 5);
+}
+} else if (i == 16){
 
                     const dialog = new BaseDialog("dialog");
 
