@@ -37,7 +37,7 @@ function panel(){
                 [Core.bundle.format("commandBlock.pixMap")],
                 [Core.bundle.format("commandBlock.effects")],
                 [Core.bundle.format("commandBlock.unitAI")],
-                [Core.bundle.format("commandBlock.defenseAI")],
+                [Core.bundle.format("commandBlock.textureAtlas")],
                 [Core.bundle.format("commandBlock.sounds")],
                 [Core.bundle.format("close")]
             ],
@@ -605,18 +605,56 @@ function panel(){
                     Vars.ui.showInfoToast(e, 5);
                     }});
                     } else if (i == 15){
-                    Vars.ui.hudfrag.showToast(Icon.admin, Core.bundle.format("commandblock.showtoast.defendAI"));
-                        
-                    if (!Vars.player || !Vars.player.team()) return;
-                    Groups.unit.each(u => {
-                    try{  
 
-                    if (u.team != Vars.player.team() || u == Vars.player.unit() || u.type.buildSpeed <= 0) return;
-                    u.controller(new BuilderAI(false, 15 * Vars.tilesize));
+                if (regionTab == null){  
+                regionTab = new BaseDialog("Units");
+                regionTab.cont.add(Core.bundle.format("commandBlock.dialog.unitLib.info")).top().row();
+                let count = 0;
+                            
+                unitsTab.cont.pane(p => {
+                        
+                Core.atlas.getRegions(regions => {
+                try{
+                  if(regions == null) return;
+                        
+                let width = Core.graphics.getWidth() * 0.15;
+                let height = Core.graphics.getHeight() * 0.15;
+
+                if (height > width) height = Core.graphics.getHeight() * 0.05;
+                        
+                const button = new Button(Styles.squareTogglet);
+                        
+                button.image(regions).size(40).pad(12);
+                button.row();
+                button.add(unit.name);
+                        
+                button.clicked(() => {
+                try {
+                Core.app.setClipboardText(regions.name);
+                        
+                } catch(e){ Vars.ui.showInfoToast(e,5)}
+                });
+                        
+                p.add(button).size(width,height).padTop(10);
+                p.add().width(10);
+                count++;
+                   if(count % 3 == 0){
+                        p.row();
+                    }
+                } catch(e){
+                Vars.ui.showInfoToast(e, 5);           
+                }});
+                        
+                }).width(Core.graphics.getWidth()).growY();
+                    //dialog.cont.pane({}).size(400,300);
+                    regionTab.addCloseButton();
+                }
+                    regionTab.show();
         
                     } catch(e){
                     Vars.ui.showInfoToast(e, 5);
                     }});
+                    
                     } else if (i == 16){
 
                     const dialog = new BaseDialog("dialog");
