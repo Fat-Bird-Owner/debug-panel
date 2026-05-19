@@ -21,9 +21,9 @@ Events.on(WorldLoadEvent, () => {
 try {
 
 const current = Vars.state.getSector();
+if (!current || !current.planet) return;
+  
 const planet = current.planet;
-
-if (!current || !planet) return;
   
 planet.sectors.each(sector => {
 try{
