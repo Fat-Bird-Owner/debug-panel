@@ -2,41 +2,76 @@ const panel = require("dbp/command");
 require("redirect");
 
 Events.on(ClientLoadEvent, () => {
-try{
+    try {
+        Vars.ui.settings.game.checkPref("console", true);
+        
+        let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
+        if (!overlaymarkerTable) return; 
+        
+        overlaymarkerTable.row();
 
-    Vars.ui.settings.game.checkPref("console", true);
-    
-    let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
-    overlaymarkerTable.row();
+        let tab = new Table();
+        overlaymarkerTable.add(tab).bottom().left();
 
-    let tab = new Table();
-    overlaymarkerTable.add(tab).bottom().left();
-
-    tab.table(Tex.pane, t => {
-        let b = new Button(Styles.none);
-        let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
-        let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
-        b.button(icon, () => {
-
+        tab.table(Tex.pane, t => {
+            let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
+            t.add(lab).colspan(6).row();
+            
+            const icons = [
+                Icon.none,        
+                Icon.lock,       
+                Icon.commandRally,         
+                Icon.defense,      
+                Icon.edit,       
+                Icon.waves,        
+                Icon.units,         
+                Icon.effect,         
+                Icon.terminal,      
+                Icon.list,       
+                Icon.play,         
+                Icon.file,         
+                Icon.map,          
+                Icon.list,       
+                Icon.admin,        
+                Icon.image,        
+                Icon.defense         
+            ];
+            
+            for (let i = 0; i <= 16; i++) {
+                const id = i;
+                let btnIcon = icons[id] || Core.atlas.find("error");
+                const icon = new TextureRegionDrawable(btnIcon);
+                
+                t.button(icon, () => {
+                    try {
+                        if (id == 0) panel.clearUnits();
+                        else if (id == 1) panel.stopPlayer();
+                        else if (id == 2) panel.changeTeam();
+                        else if (id == 3) panel.toggleGameOver();
+                        else if (id == 4) panel.toggleEditor();
+                        else if (id == 5) panel.toggleUnitCap();
+                        else if (id == 6) panel.openUnitLibrary();
+                        else if (id == 7) panel.fillCore();
+                        else if (id == 8) panel.runJavaScript();
+                        else if (id == 9) panel.openStatusEffects();
+                        else if (id == 10) panel.openTimeScale();
+                        else if (id == 11) panel.openPatcher();
+                        else if (id == 12) panel.generatePixMap();
+                        else if (id == 13) panel.openEffects();
+                        else if (id == 14) panel.runUnitAI();
+                        else if (id == 15) panel.openTextureAtlas();
+                        else if (id == 16) panel.openSounds();
+                    } catch (e) {
+                        Vars.ui.showInfoToast(String(e), 15);
+                    }
+                }).size(50);
+            
+                if ((i + 1) % 6 === 0) t.row();
+            }
         });
+        tab.visibility = () => !Vars.net.client();
 
-        t.add(lab).row();
-        t.add(b);
-
-        t.clicked(() => {
-        try{
-        
-        panel.panel();
-        
-        } catch(e){
-        Vars.ui.showInfoToast(e,15);
-        }});
-    });
-
-    tab.visibility = () => {
-        return (!Vars.net.client() ? true : false)
+    } catch (e) {
+        Vars.ui.showText("e", String(e));
     }
-
-} catch(e){
-Vars.ui.showInfoToast(e,15);
-}});
+});
