@@ -18,20 +18,20 @@ Events.on(ClientLoadEvent, () => {
             t.add(lab).colspan(6).row();
             
             const icons = [
-                Icon.units,        
-                Icon.cancel,       
-                Icon.host,         
+                Icon.none,        
+                Icon.lock,       
+                Icon.commandRally,         
                 Icon.defense,      
                 Icon.edit,       
                 Icon.waves,        
-                Icon.book,         
-                Icon.box,         
-                Icon.turret,      
-                Icon.logic,       
+                Icon.units,         
+                Icon.effect,         
+                Icon.terminal,      
+                Icon.list,       
                 Icon.play,         
                 Icon.file,         
                 Icon.map,          
-                Icon.effect,       
+                Icon.list,       
                 Icon.admin,        
                 Icon.image,        
                 Icon.defense         
