@@ -17,12 +17,31 @@ Events.on(ClientLoadEvent, () => {
             let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
             t.add(lab).colspan(6).row();
             
-            let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
+            const icons = [
+                Icon.units,        
+                Icon.cancel,       
+                Icon.host,         
+                Icon.defense,      
+                Icon.pencil,       
+                Icon.waves,        
+                Icon.book,         
+                Icon.fill,         
+                Icon.command,      
+                Icon.status,       
+                Icon.time,         
+                Icon.file,         
+                Icon.map,          
+                Icon.effect,       
+                Icon.admin,        
+                Icon.image,        
+                Icon.audio         
+            ];
             
             for (let i = 0; i <= 16; i++) {
                 const id = i;
+                let btnIcon = icons[id] || Icon.command; 
                 
-                t.button(icon, () => {
+                t.button(btnIcon, () => {
                     try {
                         if (id == 0) panel.clearUnits();
                         else if (id == 1) panel.stopPlayer();
