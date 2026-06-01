@@ -1,5 +1,5 @@
 const panel = require("dbp/command");
-require("lighting");
+require("redirect");
 
 Events.on(ClientLoadEvent, () => {
 try{
