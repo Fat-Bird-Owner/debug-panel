@@ -89,8 +89,8 @@ function toggleGameOver() {
     try {
         Sounds.uiButton.play();
         const gameOver = Vars.state.rules.canGameOver;
-        Vars.state.rules.canGameOver = !gameOver;
-        Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-cancanover") + "[lightgrey]" + !gameOver);
+        Vars.state.rules.canGameOver = !Vars.state.rules.canGameOver;
+        Vars.ui.hudfrag.showToast(Icon.tree, Core.bundle.format("commandblock.showtoast.toggle-cancanover") + "[lightgrey] " + !Vars.state.rules.canGameOver);
     } catch (e) {
         Vars.ui.showInfoToast(e, 5);
     }
@@ -449,6 +449,8 @@ function openPatcher() {
 }
 
 function generatePixMap() {
+try{
+    
     if (Vars.state.map != lastMap) {
         lastMap = Vars.state.map;
 
@@ -485,7 +487,9 @@ function generatePixMap() {
         table.cont.add(image).size(x, x);
     }
     table.show();
-}
+    
+} catch(e){
+}}
 
 function openEffects() {
     const d = Vars.ui.effects.withAllEffects();
@@ -566,6 +570,8 @@ function openSounds() {
 
     dialog.cont.pane(p => {
         Object.keys(Sounds).forEach(s => {
+            if (typeof s == "function" || typeof s == "object") return;
+            
             let sound = s;
             const button = new Button(Styles.squareTogglet);
             button.row();
