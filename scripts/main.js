@@ -2,62 +2,56 @@ const panel = require("dbp/command");
 require("redirect");
 
 Events.on(ClientLoadEvent, () => {
-try{
-
-    Vars.ui.settings.game.checkPref("console", true);
-    
-    let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
-    overlaymarkerTable.row();
-
-    let tab = new Table();
-    overlaymarkerTable.add(tab).bottom().left();
-
-    tab.table(Tex.pane, t => {
-        let b = new Button(Styles.none);
-        let buttons = 0;
-        let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
-        let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
+    try {
+        Vars.ui.settings.game.checkPref("console", true);
         
-        for (let i = 0; i < 16; i++){
+        let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
+        if (!overlaymarkerTable) return; 
         
-        const id = i;
-        
-        b.button(icon, () => {
-        try{
+        overlaymarkerTable.row();
 
-        if (id == 0) panel.clearUnits();
-        else if (id == 1) panel.stopPlayer();
-        else if (id == 2) panel.changeTeam();
-        else if (id == 3) panel.toggleGameOver();
-        else if (id == 4) panel.toggleEditor();
-        else if (id == 5) panel.toggleUnitCap();
-        else if (id == 6) panel.openUnitLibrary();
-        else if (id == 7) panel.fillCore();
-        else if (id == 8) panel.runJavaScript();
-        else if (id == 9) panel.openStatusEffects();
-        else if (id == 10) panel.openTimeScale();
-        else if (id == 11) panel.openPatcher();
-        else if (id == 12) panel.generatePixMap();
-        else if (id == 13) panel.openEffects();
-        else if (id == 14) panel.runUnitAI();
-        else if (id == 15) panel.openTextureAtlas();
-        else if (id == 16) panel.openSounds();
+        let tab = new Table();
+        overlaymarkerTable.add(tab).bottom().left();
+
+        tab.table(Tex.pane, t => {
+            let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
+            t.add(lab).row();
             
-        } catch(e){
-        Vars.ui.showInfoToast(e,15);
-        });   
+            let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
+            
+            for (let i = 0; i <= 16; i++) {
+                const id = i;
+                
+                t.button(icon, () => {
+                    try {
+                        if (id == 0) panel.clearUnits();
+                        else if (id == 1) panel.stopPlayer();
+                        else if (id == 2) panel.changeTeam();
+                        else if (id == 3) panel.toggleGameOver();
+                        else if (id == 4) panel.toggleEditor();
+                        else if (id == 5) panel.toggleUnitCap();
+                        else if (id == 6) panel.openUnitLibrary();
+                        else if (id == 7) panel.fillCore();
+                        else if (id == 8) panel.runJavaScript();
+                        else if (id == 9) panel.openStatusEffects();
+                        else if (id == 10) panel.openTimeScale();
+                        else if (id == 11) panel.openPatcher();
+                        else if (id == 12) panel.generatePixMap();
+                        else if (id == 13) panel.openEffects();
+                        else if (id == 14) panel.runUnitAI();
+                        else if (id == 15) panel.openTextureAtlas();
+                        else if (id == 16) panel.openSounds();
+                    } catch (e) {
+                        Vars.ui.showInfoToast(String(e), 15);
+                    }
+                });
+            
+                if ((i + 1) % 6 === 0) t.row();
+            }
         });
+        tab.visibility = () => !Vars.net.client();
 
-        t.add(lab).row();
-        t.add(b);
-        }
-        
-    });
-
-    tab.visibility = () => {
-        return (!Vars.net.client() ? true : false)
+    } catch (e) {
+        Vars.ui.showInfoToast(String(e), 15);
     }
-
-} catch(e){
-Vars.ui.showInfoToast(e,15);
-}});
+});
