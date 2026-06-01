@@ -72,6 +72,6 @@ Events.on(ClientLoadEvent, () => {
         tab.visibility = () => !Vars.net.client();
 
     } catch (e) {
-        Vars.ui.showInfoToast(String(e), 15);
+        Vars.ui.showText("e", String(e));
     }
 });
