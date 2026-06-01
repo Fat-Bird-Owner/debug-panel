@@ -26,7 +26,7 @@ Events.on(ClientLoadEvent, () => {
                 Icon.waves,        
                 Icon.book,         
                 Icon.box,         
-                Icon.commands,      
+                Icon.rally,      
                 Icon.logic,       
                 Icon.play,         
                 Icon.file,         
