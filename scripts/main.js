@@ -22,19 +22,19 @@ Events.on(ClientLoadEvent, () => {
                 Icon.cancel,       
                 Icon.host,         
                 Icon.defense,      
-                Icon.pencil,       
+                Icon.edit,       
                 Icon.waves,        
                 Icon.book,         
-                Icon.fill,         
+                Icon.box,         
                 Icon.command,      
-                Icon.status,       
-                Icon.time,         
+                Icon.logic,       
+                Icon.play,         
                 Icon.file,         
                 Icon.map,          
                 Icon.effect,       
                 Icon.admin,        
                 Icon.image,        
-                Icon.audio         
+                Icon.voice         
             ];
             
             for (let i = 0; i <= 16; i++) {
