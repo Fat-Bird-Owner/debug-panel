@@ -34,7 +34,7 @@ Events.on(ClientLoadEvent, () => {
                 Icon.effect,       
                 Icon.admin,        
                 Icon.image,        
-                Icon.voice         
+                Icon.defense         
             ];
             
             for (let i = 0; i <= 16; i++) {
