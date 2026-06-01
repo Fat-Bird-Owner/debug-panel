@@ -40,8 +40,9 @@ Events.on(ClientLoadEvent, () => {
             for (let i = 0; i <= 16; i++) {
                 const id = i;
                 let btnIcon = icons[id] || Icon.command; 
+                const icon = new TextureRegionDrawable(btnIcon);
                 
-                t.button(btnIcon, () => {
+                t.button(icon, () => {
                     try {
                         if (id == 0) panel.clearUnits();
                         else if (id == 1) panel.stopPlayer();
