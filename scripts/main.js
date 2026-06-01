@@ -15,7 +15,7 @@ Events.on(ClientLoadEvent, () => {
 
         tab.table(Tex.pane, t => {
             let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
-            t.add(lab).row();
+            t.add(lab).colspan(6).row();
             
             let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
             
@@ -44,7 +44,7 @@ Events.on(ClientLoadEvent, () => {
                     } catch (e) {
                         Vars.ui.showInfoToast(String(e), 15);
                     }
-                });
+                }).size(50);
             
                 if ((i + 1) % 6 === 0) t.row();
             }
