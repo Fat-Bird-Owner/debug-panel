@@ -14,23 +14,44 @@ try{
 
     tab.table(Tex.pane, t => {
         let b = new Button(Styles.none);
+        let buttons = 0;
         let lab = new Label("[accent]" + Core.bundle.format("commandblock.title"));
         let icon = new TextureRegionDrawable(Core.atlas.find("dbp-command-block"));
+        
+        for (let i = 0; i < 16; i++){
+        
+        const id = i;
+        
         b.button(icon, () => {
+        try{
 
+        if (id == 0) panel.clearUnits();
+        else if (id == 1) panel.stopPlayer();
+        else if (id == 2) panel.changeTeam();
+        else if (id == 3) panel.toggleGameOver();
+        else if (id == 4) panel.toggleEditor();
+        else if (id == 5) panel.toggleUnitCap();
+        else if (id == 6) panel.openUnitLibrary();
+        else if (id == 7) panel.fillCore();
+        else if (id == 8) panel.runJavaScript();
+        else if (id == 9) panel.openStatusEffects();
+        else if (id == 10) panel.openTimeScale();
+        else if (id == 11) panel.openPatcher();
+        else if (id == 12) panel.generatePixMap();
+        else if (id == 13) panel.openEffects();
+        else if (id == 14) panel.runUnitAI();
+        else if (id == 15) panel.openTextureAtlas();
+        else if (id == 16) panel.openSounds();
+            
+        } catch(e){
+        Vars.ui.showInfoToast(e,15);
+        });   
         });
 
         t.add(lab).row();
         t.add(b);
-
-        t.clicked(() => {
-        try{
+        }
         
-        panel.panel();
-        
-        } catch(e){
-        Vars.ui.showInfoToast(e,15);
-        }});
     });
 
     tab.visibility = () => {
