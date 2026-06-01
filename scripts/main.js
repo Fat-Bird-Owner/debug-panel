@@ -39,7 +39,7 @@ Events.on(ClientLoadEvent, () => {
             
             for (let i = 0; i <= 16; i++) {
                 const id = i;
-                let btnIcon = icons[id] || Icon.command; 
+                let btnIcon = icons[id] || Core.atlas.find("error");
                 const icon = new TextureRegionDrawable(btnIcon);
                 
                 t.button(icon, () => {
