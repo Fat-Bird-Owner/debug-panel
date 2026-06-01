@@ -6,7 +6,7 @@ try{
 
     Vars.ui.settings.game.checkPref("console", true);
     
-    let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
+    let overlaymarkerTable = Vars.ui.hudGroup.find("waves");
     overlaymarkerTable.row();
 
     let tab = new Table();
