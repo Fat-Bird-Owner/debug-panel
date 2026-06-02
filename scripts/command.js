@@ -143,7 +143,7 @@ function openUnitLibrary() {
                         button.add(unit.localizedName);
 
                         button.clicked(() => {
-                            unit.spawn(build.team(), build.x, build.y, build.unit().rotation);
+                            unit.spawn(build.team(), build.x, build.y, build.unit().rotation || 0);
                             Sounds.waveSpawn.play();
                         });
 
