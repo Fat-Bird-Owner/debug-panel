@@ -31,10 +31,10 @@ Events.on(ClientLoadEvent, () => {
                 Icon.play,         
                 Icon.file,         
                 Icon.map,          
-                Icon.list,       
-                Icon.admin,        
+                Icon.book,       
+                Icon.modeAttack,        
                 Icon.image,        
-                Icon.defense         
+                Icon.chat         
             ];
             
             for (let i = 0; i <= 16; i++) {
