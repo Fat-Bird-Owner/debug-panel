@@ -3,5 +3,5 @@ size: 1
 buildVisibility: sandboxOnly
 name: "Infini-Source"
 
-itemCapacity: 1000
+itemCapacity: 0
 craftTime: 1
