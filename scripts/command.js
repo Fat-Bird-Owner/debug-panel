@@ -636,7 +636,7 @@ dialog.cont.pane(p => {
 
         buttons++;
 
-        if(buttons >= 4){
+        if(buttons >= 7){
 
             p.row();
             buttons = 0;
