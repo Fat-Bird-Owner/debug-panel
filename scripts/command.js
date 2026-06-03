@@ -618,7 +618,9 @@ dialog.cont.pane(p => {
 
         const button = new Button();
 
-        button.add(icon);
+        button.add(icon).setFontScale(1.5);
+        button.row();
+        button.add(i);
 
         button.clicked(() => {
 
