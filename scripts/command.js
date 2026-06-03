@@ -634,11 +634,11 @@ dialog.cont.pane(p => {
         });
 
         p.add(button)
-            .size(128, 128);
+            .size(160, 160);
 
         buttons++;
 
-        if(buttons >= 7){
+        if(buttons >= 5){
 
             p.row();
             buttons = 0;
