@@ -68,7 +68,7 @@ Events.on(ClientLoadEvent, () => {
                     } catch (e) {
                         Vars.ui.showInfoToast(String(e), 15);
                     }
-                }).size(50).pad(4).padTop(4);
+                }).size(40).pad(4).padTop(4);
             
                 if ((i + 1) % 6 === 0) t.row();
             }
