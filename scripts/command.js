@@ -601,6 +601,58 @@ function openSounds() {
     dialog.show();
 }
 
+function emojis(){
+try {
+
+const dialog = new BaseDialog("emoji");
+
+dialog.addCloseButton();
+
+dialog.cont.pane(p => {
+
+    let buttons = 0;
+
+    for(let i in Iconc){
+
+        const icon = String.fromCharCode(Iconc[i]);
+
+        const button = new Button();
+
+        button.add(icon);
+
+        button.clicked(() => {
+
+            Core.app.setClipboardText(icon);
+
+            Vars.ui.showInfoToast(
+                "Copied: " + icon,
+                2
+            );
+
+        });
+
+        p.add(button)
+            .size(128, 128);
+
+        buttons++;
+
+        if(buttons >= 4){
+
+            p.row();
+            buttons = 0;
+
+        }
+
+    }
+
+}).grow();
+
+dialog.show();
+    
+} catch(e){
+Vars.ui.showInfoToast(e,5);    
+}}
+
 // ==========================================
 // EXPORTS ALL FUNCTIONS
 // ==========================================
@@ -622,3 +674,4 @@ exports.openEffects = openEffects;
 exports.runUnitAI = runUnitAI;
 exports.openTextureAtlas = openTextureAtlas;
 exports.openSounds = openSounds;
+exports.emojis = emojis;
