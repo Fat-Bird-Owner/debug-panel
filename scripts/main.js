@@ -35,10 +35,11 @@ Events.on(ClientLoadEvent, () => {
                 Icon.book,       
                 Icon.modeAttack,        
                 Icon.image,        
-                Icon.chat         
+                Icon.chat,
+                Icon.admin
             ];
             
-            for (let i = 0; i <= 16; i++) {
+            for (let i = 0; i <= 17; i++) {
                 const id = i;
                 let btnIcon = icons[id] || Core.atlas.find("error");
                 const icon = new TextureRegionDrawable(btnIcon);
@@ -62,6 +63,8 @@ Events.on(ClientLoadEvent, () => {
                         else if (id == 14) panel.runUnitAI();
                         else if (id == 15) panel.openTextureAtlas();
                         else if (id == 16) panel.openSounds();
+                        else if (id == 17) panel.emojis();
+                        
                     } catch (e) {
                         Vars.ui.showInfoToast(String(e), 15);
                     }
