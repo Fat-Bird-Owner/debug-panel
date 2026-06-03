@@ -9,7 +9,7 @@ array.push(new ItemStack(item, 1));
 }); 
   
 block.outputItems = array;
-block.itemCapacity = infinite;
+block.itemCapacity = Infinity;
   
 } catch(e){
 Vars.ui.showText("e", e);  
