@@ -2,3 +2,6 @@ type: GenericCrafter
 size: 1
 buildVisibility: sandboxOnly
 name: "Infini-Source"
+
+itemCapacity: 1000
+craftTime: 1
