@@ -1,6 +1,6 @@
 Events.on(ContentInitEvent, () => {
 try{
-const block = Vars.content.block("dp-infini-source");
+const block = Vars.content.block("dbp-infini-source");
 let array = [];  
 Vars.content.items().each(item => {
 try {          
