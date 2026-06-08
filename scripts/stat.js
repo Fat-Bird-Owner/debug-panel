@@ -9,8 +9,6 @@ try {
 
 for (let i = 0; i < blocks.length; i++){
 const block = Vars.content.block(blocks[i]);
-Vars.ui.content.show(block);
-Vars.ui.content.hide();
 
 block.health = 200000000;
 block.targetable = false;
@@ -19,6 +17,9 @@ block.envEnabled = -1;
 block.explosivenessScale = 0;
 block.flammabilityScale = 0;
 block.enableDrawStatus = false;
+
+Vars.ui.content.show(block);
+Vars.ui.content.hide();
   
 block.stats.remove(Stat.productionTime);
 block.stats.remove(Stat.output);
