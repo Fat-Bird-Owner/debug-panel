@@ -10,7 +10,6 @@ array.push(new LiquidStack(liquid, 1));
 }); 
   
 block.outputLiquids = array;
-block.liquidCapacity = 999999999;
   
 } catch(e){
 Vars.ui.showText("e", e);  
