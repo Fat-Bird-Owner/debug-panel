@@ -14,7 +14,7 @@ Vars.ui.content.hide();
 
 block.health = 200000000;
 block.targetable = false;
-block.underBullet = true;
+block.underBullets = true;
 block.envEnabled = -1;
 block.explosivenessScale = 0;
 block.flammabilityScale = 0;
