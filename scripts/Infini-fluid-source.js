@@ -5,7 +5,7 @@ const block = Vars.content.block("dbp-infini-fluid-source");
 let array = [];  
 Vars.content.liquids().each(liquid => {
 try {          
-array.push(new LiquidStack(liquid, 1));     
+array.push(new LiquidStack(liquid, 10));     
 } catch(e) {} 
 }); 
   
