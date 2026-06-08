@@ -1,6 +1,7 @@
 const blocks = [
 "dbp-infini-fluid-source",
-"dbp-infini-source"
+"dbp-infini-source",
+"dbp-infini-omni-source"
 ]
 
 Events.on(ClientLoadEvent, () => {
