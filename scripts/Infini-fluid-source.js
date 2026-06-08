@@ -11,6 +11,9 @@ array.push(new LiquidStack(liquid, 10));
   
 block.outputLiquids = array;
   
+const omni = Vars.content.block("dbp-infini-omni-source");
+omni.outputLiquids = array;
+  
 } catch(e){
 Vars.ui.showText("e", e);  
 }});
