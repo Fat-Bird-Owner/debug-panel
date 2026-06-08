@@ -8,5 +8,6 @@ itemCapacity: 0
 craftTime: 1
 hasItems: true
 displayFlow: false
-liquidCapacity: 1000
+liquidCapacity: 10000
 outputLiquid: water/0
+ignoreLiquidFullness: true
