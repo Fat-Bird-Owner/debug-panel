@@ -4,8 +4,8 @@ buildVisibility: sandboxOnly
 name: "Infini-Fluid Source"
 category: liquid
   
-itemCapacity: 0
+liquidCapacity: 0
 craftTime: 1
-hasItems: true
 displayFlow: false
 ignoreLiquidFullness: true
+
