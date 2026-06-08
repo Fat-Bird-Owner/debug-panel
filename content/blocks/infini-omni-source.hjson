@@ -11,3 +11,4 @@ displayFlow: false
 liquidCapacity: 10000
 outputLiquid: water/0
 ignoreLiquidFullness: true
+allowConfigInventory: true
