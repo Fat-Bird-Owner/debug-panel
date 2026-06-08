@@ -1,0 +1,12 @@
+type: GenericCrafter
+size: 1
+buildVisibility: sandboxOnly
+name: "Infini-Omni Source"
+category: effect
+  
+itemCapacity: 0
+craftTime: 1
+hasItems: true
+displayFlow: false
+liquidCapacity: 1000
+outputLiquid: water/0
