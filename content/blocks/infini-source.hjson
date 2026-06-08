@@ -7,3 +7,4 @@ itemCapacity: 0
 craftTime: 1
 hasItems: true
 displayFlow: false
+allowConfigInventory: true
