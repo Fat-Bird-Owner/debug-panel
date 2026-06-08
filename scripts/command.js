@@ -214,7 +214,7 @@ function runJavaScript() {
             function output(string) {
                 try {
                     if (!consoleTable) return;
-                    consoleTable.add(string).row();
+                    consoleTable.add(String(string)).row();
                 } catch (e) {
                     Vars.ui.showInfoToast(e, 5);
                 }
