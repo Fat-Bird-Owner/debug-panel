@@ -1,6 +1,7 @@
 const panel = require("dbp/command");
 require("redirect");
 require("infini-source");
+require("Infini-fluid-source");
 
 Events.on(ClientLoadEvent, () => {
     try {
