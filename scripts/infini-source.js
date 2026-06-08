@@ -10,6 +10,10 @@ array.push(new ItemStack(item, 1));
   
 block.outputItems = array;
 block.itemCapacity = 999999999;
+
+const omni = Vars.content.block("dbp-infini-omni-source");
+omni.outputItems = array;
+omni.itemCapacity = 999999999;
   
 } catch(e){
 Vars.ui.showText("e", e);  
