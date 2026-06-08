@@ -12,6 +12,14 @@ const block = Vars.content.block(blocks[i]);
 Vars.ui.content.show(block);
 Vars.ui.content.hide();
 
+block.health = 200000000;
+block.targetable = false;
+block.underBullet = true;
+block.envEnabled = -1;
+block.explosivenessScale = 0;
+block.flammabilityScale = 0;
+block.enableDrawStatus = false;
+  
 block.stats.remove(Stat.productionTime);
 block.stats.remove(Stat.output);
 }
