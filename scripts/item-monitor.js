@@ -1,5 +1,3 @@
-try{ 
-
 let diffs = {};
 const historyTimeSpan = 1; // Time in seconds over which to check changes
 const rebuildInterval = 200; // ms between UI rebuilds (~5/sec)
@@ -258,7 +256,4 @@ try {
 
 } catch(e){Vars.ui.showText("NumString", e)}
 }
-  
-} catch(e) { 
-Vars.ui.showText(e,5);
-}
+
