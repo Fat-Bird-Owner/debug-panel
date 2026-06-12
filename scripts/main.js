@@ -3,6 +3,7 @@ require("redirect");
 require("infini-source");
 require("Infini-fluid-source");
 require("stat");
+require("item-monitor");
 
 Events.on(ClientLoadEvent, () => {
     try {
