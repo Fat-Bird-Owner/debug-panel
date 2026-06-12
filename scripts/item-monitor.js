@@ -19,6 +19,8 @@ let columnIndex = 0;
 let visibleResourceCount = 0;
 
 Events.on(ClientLoadEvent, () => {
+try {
+    
     contentTable = new Table(Styles.black6);
     contentTable.touchable = Touchable.enabled;
     contentTable.pack();
@@ -39,9 +41,12 @@ Events.on(ClientLoadEvent, () => {
             injectTimer = null;
         }
     }, 0, 3);
+
+} catch(e){Vars.ui.showText("WLE", e)}
 });
 
 Events.on(WorldLoadEvent, () => {
+try {
     diffs = {};
     isInjected = false;
     lastRebuildTime = 0;
@@ -56,9 +61,12 @@ Events.on(WorldLoadEvent, () => {
             injectTimer = null;
         }
     }, 0, 3);
+    
+} catch(e){Vars.ui.showText("WLE", e)}
 });
 
 Events.run(Trigger.update, () => {
+try {
     if (isInjected) {
         const now = Time.millis();
         if (now - lastRebuildTime >= rebuildInterval) {
@@ -66,17 +74,24 @@ Events.run(Trigger.update, () => {
             lastRebuildTime = now;
         }
     }
+    
+} catch(e){Vars.ui.showText("Update", e)}
 });
 
 function injectTable() {
+try{ 
     if (!isInjected) {
         const resourceTable = createTable(contentTable);
         isInjected = true;
         coreItemsCollapser.setTable(resourceTable);
     }
+
+} catch(e){Vars.ui.showText("inject", e)}
 }
 
 function createTable(table) {
+try {
+    
     const tableW = new Table();
     tableW.touchable = Touchable.enabled;
     tableW.add(table);
@@ -84,29 +99,40 @@ function createTable(table) {
 
     // Cycle column count on click, reset to 4 if next option exceeds visible resources
     tableW.clicked(() => {
+    try {
         const nextIndex = (columnIndex + 1) % columnOptions.length;
         if (columnOptions[nextIndex] > visibleResourceCount) {
             columnIndex = 0;
         } else {
             columnIndex = nextIndex;
         }
+
+    } catch(e){Vars.ui.showText("T - Click", e)}
     });
 
     return tableW;
+
+} catch(e){Vars.ui.showText("CreateTable", e)}
 }
 
 function rebuildTable() {
+try {
     contentTable.clearChildren();
     buildTable();
+
+} catch(e){Vars.ui.showText("Rebuild Table", e)}
 }
 
 function buildTable() {
+try {
+    
     const resourcesTable = contentTable.table().get();
     const currentItems = Vars.player.team().items();
     const activeItems = {};
     let i = 0;
 
     currentItems.each((item, amount) => {
+    try{ 
         if (!diffs[item]) {
             diffs[item] = {
                 lastAmount: amount,
@@ -116,6 +142,7 @@ function buildTable() {
                 flickering: false,
                 lastSeenBelow: 0 // Last time we saw this resource below showThreshold but > 0
             };
+        
         }
 
         let diff = diffs[item];
@@ -188,6 +215,8 @@ function buildTable() {
         if (++i % columnOptions[columnIndex] == 0) {
             resourcesTable.row();
         }
+
+    } catch(e){Vars.ui.showText("Each", e)}
     });
 
     // Prune stale entries that are no longer in the current item set
@@ -205,13 +234,18 @@ function buildTable() {
     visibleResourceCount = i;
 
     contentTable.row();
+
+} catch(e){Vars.ui.showText("BuildTable", e)}
 }
 
 function padNumber(num) {
+try {
     return num.toString().padStart(2, '0');
+} catch(e){Vars.ui.showText("PadNum", e)}
 }
 
 function numberToString(num) {
+try {
     if (num < 0) return '-' + numberToString(Math.abs(num));
     if (num < 1000) return num.toString();
 
@@ -221,6 +255,8 @@ function numberToString(num) {
     const numStr = (num / Math.pow(1000, order)).toPrecision(3);
 
     return numStr + unitname;
+
+} catch(e){Vars.ui.showText("NumString", e)}
 }
   
 } catch(e) { 
