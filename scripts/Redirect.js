@@ -14,7 +14,7 @@ try{
 if(sector != current){
 sector.info.destination = current;
 
-if (sector.info.export.size() != 0) exports++;
+if (sector.info.export.size != 0) exports++;
 }
 
 }catch(e){}
