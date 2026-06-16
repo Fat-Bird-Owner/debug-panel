@@ -1,4 +1,4 @@
-const panel = require("dbp/command");
+const panel = require("dbp/Command");
 require("dbp/Redirect");
 require("dbp/Infini-source");
 require("dbp/Infini-fluid-source");
