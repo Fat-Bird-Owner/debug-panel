@@ -713,7 +713,7 @@ try {
         if(playerTile == null) return;
 
         var ore = playerTile.overlay().itemDrop;
-        if (ore == null) playerTile.floor().itemDrop;
+        if (ore == null) ore = playerTile.floor().itemDrop;
 
         if(ore == null) return;
 
