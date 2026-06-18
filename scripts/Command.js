@@ -680,7 +680,7 @@ function flood(start, ore, vein, visited){
             if(visited[k]) continue;
             visited[k] = true;
 
-            if(tile.overlay() != ore && tile.floor().itemDrop != ore.itemDrop) continue;
+            if(tile.overlay().itemDrop != ore && tile.floor().itemDrop != ore) continue;
 
             vein.push(tile);
 
@@ -712,9 +712,10 @@ try {
 
         if(playerTile == null) return;
 
-        var ore = playerTile.overlay();
+        var ore = playerTile.overlay().itemDrop;
+        if (ore == null) playerTile.floor().itemDrop;
 
-        if(ore == Blocks.air) return;
+        if(ore == null) return;
 
         var vein = [];
         var visited = {};
