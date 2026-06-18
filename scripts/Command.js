@@ -680,7 +680,7 @@ function flood(start, ore, vein, visited){
             if(visited[k]) continue;
             visited[k] = true;
 
-            if(tile.overlay() != ore) continue;
+            if(tile.overlay() != ore && tile.floor().itemDrop != ore.itemDrop) continue;
 
             vein.push(tile);
 
