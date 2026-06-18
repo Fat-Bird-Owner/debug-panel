@@ -747,7 +747,7 @@ try {
 
                 if(veinSet[key(other)]) continue;
 
-                if(other.floor() == Blocks.sand) continue;
+                //if(other.floor() == Blocks.sand) continue;
 
                 var count = 0;
 
