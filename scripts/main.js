@@ -3,6 +3,7 @@ require("dbp/Redirect");
 require("dbp/Infini-source");
 require("dbp/Infini-fluid-source");
 require("dbp/Stat");
+let drill = null;
 
 Events.on(ClientLoadEvent, () => {
     try {
@@ -38,16 +39,22 @@ Events.on(ClientLoadEvent, () => {
                 Icon.modeAttack,        
                 Icon.image,        
                 Icon.chat,
-                Icon.admin
+                Icon.admin,
+                Icon.production
             ];
             
-            for (let i = 0; i <= 17; i++) {
+            for (let i = 0; i <= 18; i++) {
                 const id = i;
                 let btnIcon = icons[id] || Core.atlas.find("error");
                 const icon = new TextureRegionDrawable(btnIcon);
                 
                 t.button(icon, () => {
                     try {
+                        
+                        if (Vars.player.selectedBlock != null) {
+                        drill = Vars.player.selectedBlock
+                        }
+                        
                         if (id == 0) panel.clearUnits();
                         else if (id == 1) panel.stopPlayer();
                         else if (id == 2) panel.changeTeam();
@@ -66,6 +73,14 @@ Events.on(ClientLoadEvent, () => {
                         else if (id == 15) panel.openTextureAtlas();
                         else if (id == 16) panel.openSounds();
                         else if (id == 17) panel.emojis();
+                        else if (id == 18) {
+                        if (drill == null){
+                        Vars.ui.showInfoToast("No drills selected", 3);
+                        return;
+                        }
+                        
+                        panel.vainFiller(drill);
+                        }
                         
                     } catch (e) {
                         Vars.ui.showInfoToast(String(e), 15);
