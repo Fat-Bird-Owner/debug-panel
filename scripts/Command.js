@@ -655,6 +655,154 @@ dialog.show();
 Vars.ui.showInfoToast(e,5);    
 }}
 
+// VainFiller Functions//
+
+function key(tile){
+    try{
+        return tile.x + "," + tile.y;
+    }catch(e){
+        Vars.ui.showInfoToast("" + e, 5);
+    }
+}
+
+function flood(start, ore, vein, visited){
+    try{
+
+        var queue = [start];
+
+        while(queue.length > 0){
+
+            var tile = queue.shift();
+            if(tile == null) continue;
+
+            var k = key(tile);
+
+            if(visited[k]) continue;
+            visited[k] = true;
+
+            if(tile.overlay() != ore) continue;
+
+            vein.push(tile);
+
+            for(var i = 0; i < 4; i++){
+
+                var p = Geometry.d4[i];
+
+                var other = Vars.world.tile(
+                    tile.x + p.x,
+                    tile.y + p.y
+                );
+
+                if(other != null){
+                    queue.push(other);
+                }
+            }
+        }
+
+    }catch(e){
+        Vars.ui.showInfoToast("" + e, 5);
+    }
+}
+
+function vainFiller(drill) {
+try {
+
+
+        var playerTile = Vars.player.tileOn();
+
+        if(playerTile == null) return;
+
+        var ore = playerTile.overlay();
+
+        if(ore == Blocks.air) return;
+
+        var vein = [];
+        var visited = {};
+
+        flood(playerTile, ore, vein, visited);
+
+        var veinSet = {};
+        var i;
+
+        for(i = 0; i < vein.length; i++){
+            veinSet[key(vein[i])] = true;
+        }
+
+        var filled = [];
+
+        for(i = 0; i < vein.length; i++){
+
+            var tile = vein[i];
+
+            for(var j = 0; j < 4; j++){
+
+                var p = Geometry.d4[j];
+
+                var other = Vars.world.tile(
+                    tile.x + p.x,
+                    tile.y + p.y
+                );
+
+                if(other == null) continue;
+
+                if(veinSet[key(other)]) continue;
+
+                if(other.floor() == Blocks.sand) continue;
+
+                var count = 0;
+
+                for(var k = 0; k < 4; k++){
+
+                    var p2 = Geometry.d4[k];
+
+                    var n = Vars.world.tile(
+                        other.x + p2.x,
+                        other.y + p2.y
+                    );
+
+                    if(n != null && veinSet[key(n)]){
+                        count++;
+                    }
+                }
+
+                if(count >= 3){
+                    filled.push(other);
+                }
+            }
+        }
+
+        for(i = 0; i < filled.length; i++){
+            veinSet[key(filled[i])] = true;
+            vein.push(filled[i]);
+        }
+
+        Vars.player.unit().plans.clear();
+
+        for(i = 0; i < vein.length; i++){
+
+            var tile = vein[i];
+
+            if(tile.build != null) continue;
+
+            Vars.player.unit().plans.add(
+                new BuildPlan(
+                    tile.x,
+                    tile.y,
+                    0,
+                    drill
+                )
+            );
+        }
+
+        Vars.ui.showInfoToast(
+            "Added " + vein.length + " drill plans",
+            5
+        );
+
+} catch(e) {
+Vars.ui.showInfoToast(e + "[red]- VainFiller" ,5);
+}}
+
 // ==========================================
 // EXPORTS ALL FUNCTIONS
 // ==========================================
@@ -677,3 +825,4 @@ exports.runUnitAI = runUnitAI;
 exports.openTextureAtlas = openTextureAtlas;
 exports.openSounds = openSounds;
 exports.emojis = emojis;
+exports.vainFiller = vainFiller;
