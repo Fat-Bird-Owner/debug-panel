@@ -695,6 +695,7 @@ function flood(start, ore, vein, visited){
 
                 if(other != null){
                     queue.push(other);
+                    if (queue.length >= 65) return;
                 }
             }
         }
