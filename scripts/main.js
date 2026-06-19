@@ -8,7 +8,7 @@ let drill = null;
 Events.on(ClientLoadEvent, () => {
     try {
         Vars.ui.settings.game.checkPref("console", true);
-        Vars.ui.planet.debugSelect = true;
+        //Vars.ui.planet.debugSelect = true;
         
         let overlaymarkerTable = Vars.ui.hudGroup.find("overlaymarker");
         if (!overlaymarkerTable) return; 
