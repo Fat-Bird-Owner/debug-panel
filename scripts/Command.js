@@ -665,126 +665,177 @@ function key(tile){
     }
 }
 
-function flood(start, ore, vein, visited){
+function getConnectedTiles(start, maxTiles){
     try{
 
         var queue = [start];
+        var visited = {};
+        var result = [];
 
-        while(queue.length > 0){
+        var ore = start.drop();
+
+        while(queue.length > 0 && result.length < maxTiles){
 
             var tile = queue.shift();
-            if(tile == null) continue;
+            if(!tile) continue;
 
             var k = key(tile);
 
             if(visited[k]) continue;
             visited[k] = true;
 
-            if(tile.overlay().itemDrop != ore && tile.floor().itemDrop != ore) continue;
+            if(tile.drop() != ore) continue;
 
-            vein.push(tile);
+            result.push(tile);
 
-            for(var i = 0; i < 4; i++){
+            for(var dx = -1; dx <= 1; dx++){
+                for(var dy = -1; dy <= 1; dy++){
 
-                var p = Geometry.d4[i];
+                    if(dx == 0 && dy == 0) continue;
 
-                var other = Vars.world.tile(
-                    tile.x + p.x,
-                    tile.y + p.y
-                );
+                    var other = Vars.world.tile(
+                        tile.x + dx,
+                        tile.y + dy
+                    );
 
-                if(other != null){
-                    queue.push(other);
-                    if (queue.length >= 65) return;
+                    if(other){
+                        queue.push(other);
+                    }
                 }
             }
         }
+
+        return result;
+
+    }catch(e){
+        Vars.ui.showInfoToast("" + e, 5);
+        return [];
+    }
+}
+
+function countOre(tile, drill){
+    try{
+
+        var count = 0;
+
+        var linked = tile.getLinkedTilesAs(
+            drill,
+            new Seq()
+        );
+
+        for(var i = 0; i < linked.size; i++){
+
+            var other = linked.get(i);
+
+            if(drill.canMine(other)){
+                count++;
+            }
+        }
+
+        return count;
+
+    }catch(e){
+        Vars.ui.showInfoToast("" + e, 5);
+        return 0;
+    }
+}
+
+function overlaps(x1, y1, s1, x2, y2, s2){
+    try{
+
+        var a1 = x1 - (s1 - 1) / 2;
+        var b1 = y1 - (s1 - 1) / 2;
+
+        var a2 = x2 - (s2 - 1) / 2;
+        var b2 = y2 - (s2 - 1) / 2;
+
+        return (
+            a1 < a2 + s2 &&
+            a1 + s1 > a2 &&
+            b1 < b2 + s2 &&
+            b1 + s1 > b2
+        );
 
     }catch(e){
         Vars.ui.showInfoToast("" + e, 5);
     }
 }
 
-function vainFiller(drill) {
-try {
+function vainFiller(drill){
+    try{
 
+        var start = Vars.player.tileOn();
+        if(!start) return;
 
-        var playerTile = Vars.player.tileOn();
+        var team = Vars.player.team();
 
-        if(playerTile == null) return;
+        var candidates = getConnectedTiles(
+            start,
+            300
+        );
 
-        var ore = playerTile.overlay().itemDrop;
-        if (ore == null) ore = playerTile.floor().itemDrop;
+        var scored = [];
 
-        if(ore == null) return;
+        for(var i = 0; i < candidates.length; i++){
 
-        var vein = [];
-        var visited = {};
+            var tile = candidates[i];
 
-        flood(playerTile, ore, vein, visited);
+            if(!Build.validPlace(
+                drill,
+                team,
+                tile.x,
+                tile.y,
+                0
+            )) continue;
 
-        var veinSet = {};
-        var i;
-
-        for(i = 0; i < vein.length; i++){
-            veinSet[key(vein[i])] = true;
+            scored.push({
+                tile: tile,
+                score: countOre(tile, drill)
+            });
         }
 
-        var filled = [];
+        scored.sort(function(a, b){
+            return b.score - a.score;
+        });
 
-        for(i = 0; i < vein.length; i++){
+        var selected = [];
 
-            var tile = vein[i];
+        for(var i = 0; i < scored.length; i++){
 
-            for(var j = 0; j < 4; j++){
+            if(selected.length >= 35) break;
 
-                var p = Geometry.d4[j];
+            var candidate = scored[i];
+            var blocked = false;
 
-                var other = Vars.world.tile(
-                    tile.x + p.x,
-                    tile.y + p.y
-                );
+            for(var j = 0; j < selected.length; j++){
 
-                if(other == null) continue;
+                var existing = selected[j];
 
-                if(veinSet[key(other)]) continue;
-
-                //if(other.floor() == Blocks.sand) continue;
-
-                var count = 0;
-
-                for(var k = 0; k < 4; k++){
-
-                    var p2 = Geometry.d4[k];
-
-                    var n = Vars.world.tile(
-                        other.x + p2.x,
-                        other.y + p2.y
-                    );
-
-                    if(n != null && veinSet[key(n)]){
-                        count++;
-                    }
-                }
-
-                if(count >= 3){
-                    filled.push(other);
+                if(
+                    overlaps(
+                        candidate.tile.x,
+                        candidate.tile.y,
+                        drill.size,
+                        existing.x,
+                        existing.y,
+                        drill.size
+                    )
+                ){
+                    blocked = true;
+                    break;
                 }
             }
-        }
 
-        for(i = 0; i < filled.length; i++){
-            veinSet[key(filled[i])] = true;
-            vein.push(filled[i]);
+            if(!blocked){
+                selected.push(candidate.tile);
+            }
         }
 
         Vars.player.unit().plans.clear();
 
-        for(i = 0; i < vein.length; i++){
+        for(var i = 0; i < selected.length; i++){
 
-            var tile = vein[i];
-
-            if(tile.build != null) continue;
+            var tile = selected[i];
 
             Vars.player.unit().plans.add(
                 new BuildPlan(
@@ -797,13 +848,14 @@ try {
         }
 
         Vars.ui.showInfoToast(
-            "Added " + vein.length + " drill plans",
+            "Placed " + selected.length + " optimized drills",
             5
         );
 
-} catch(e) {
-Vars.ui.showInfoToast(e + "[red]- VainFiller" ,5);
-}}
+    }catch(e){
+        Vars.ui.showInfoToast("" + e, 5);
+    }
+}
 
 // ==========================================
 // EXPORTS ALL FUNCTIONS
