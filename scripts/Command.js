@@ -728,9 +728,12 @@ function countOre(tile, drill){
 
             var other = linked.get(i);
 
-            if(drill.canMine(other)){
+            if(drill.canMine && drill.canMine(other)){
                 count++;
-            }
+            } else if (!drill.canMine){
+                count++;
+            } 
+            
         }
 
         return count;
