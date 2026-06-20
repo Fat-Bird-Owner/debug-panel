@@ -673,7 +673,8 @@ function getConnectedTiles(start, maxTiles){
         var result = [];
 
         var ore = start.drop();
-
+        if (ore == null && start.floor()) ore = start.floor().liquidDrop;
+        
         while(queue.length > 0 && result.length < maxTiles){
 
             var tile = queue.shift();
@@ -684,7 +685,7 @@ function getConnectedTiles(start, maxTiles){
             if(visited[k]) continue;
             visited[k] = true;
 
-            if(tile.drop() != ore) continue;
+            if(tile.drop() != ore && tile.floor().liquidDrop != ore) continue;
 
             result.push(tile);
 
