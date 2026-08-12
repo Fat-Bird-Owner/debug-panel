@@ -91,7 +91,7 @@ Events.on(ClientLoadEvent, () => {
                 if ((i + 1) % 6 === 0) t.row();
             }
         });
-        tab.visibility = () => !Vars.net.client();
+        tab.visibility = () => Vars.ui.hudfrag.shown && !Vars.net.client();
 
     } catch (e) {
         Vars.ui.showText("e", String(e));
