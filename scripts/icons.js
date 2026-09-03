@@ -1,11 +1,6 @@
 function loadIcons(){
-    let availableFonts = Seq.with(Fonts.def, Fonts.outline);
-    let fontSize = Fonts.def.getData().lineHeight /
-                   Fonts.def.getData().scaleY;
-
     let iconProperties = new java.util.Properties();
 
-    // Load icon mappings
     try{
         let reader = Vars.tree
             .get("icons/vanilla-icons.properties")
@@ -14,90 +9,73 @@ function loadIcons(){
         try{
             iconProperties.load(reader);
         }finally{
-            try{
-                reader.close();
-            }catch(e){}
+            reader.close();
         }
     }catch(e){
         return;
     }
 
-    // Iterate through properties
-    try{
-        let entries = iconProperties.entrySet().iterator();
+    let entries = iconProperties.entrySet().iterator();
 
-        while(entries.hasNext()){
-            let entry = entries.next();
+    while(entries.hasNext()){
+        let entry = entries.next();
 
-            try{
-                let codePointStr = String(entry.getKey());
-                let valueParts = String(entry.getValue()).split("\\|");
+        try{
+            let codePoint = parseInt(String(entry.getKey()));
+            let valueParts = String(entry.getValue()).split("\\|");
 
-                if(valueParts.length < 2){
-                    continue;
-                }
+            if(valueParts.length < 2) continue;
 
-                let codePoint = parseInt(codePointStr);
-                if(isNaN(codePoint)){
-                    continue;
-                }
+            let contentName = valueParts[0];
+            let textureName = valueParts[1];
 
-                let textureName = valueParts[1];
+            let region = Core.atlas.find(textureName);
 
-                let region;
+            Fonts.registerIcon(
+                contentName,
+                textureName,
+                codePoint,
+                region
+            );
 
-                try{
-                    region = Core.atlas.find(textureName);
-                }catch(e){
-                    continue;
-                }
+            let iconFont = Fonts.icon;
 
-                if(region == null){
-                    continue;
-                }
+            let size = Fonts.icon.getData().lineHeight /
+                       Fonts.icon.getData().scaleY;
 
-                let scaledSize;
+            let out = Scaling.fit.apply(
+                region.width,
+                region.height,
+                size,
+                size
+            );
 
-                try{
-                    scaledSize = Scaling.fit.apply(
-                        region.width,
-                        region.height,
-                        fontSize,
-                        fontSize
-                    );
-                }catch(e){
-                    continue;
-                }
+            let glyph = new Font.Glyph();
 
-                let glyph;
+            glyph.id = codePoint;
+            glyph.srcX = 0;
+            glyph.srcY = 0;
+            glyph.width = out.x | 0;
+            glyph.height = out.y | 0;
 
-                try{
-                    glyph = constructGlyph(
-                        codePoint,
-                        region,
-                        scaledSize,
-                        fontSize
-                    );
-                }catch(e){
-                    continue;
-                }
+            glyph.u = region.u;
+            glyph.v = region.v2;
+            glyph.u2 = region.u2;
+            glyph.v2 = region.v;
 
-                // Register glyph in both fonts
-                for(let i = 0; i < availableFonts.size; i++){
-                    try{
-                        availableFonts.get(i)
-                            .getData()
-                            .setGlyph(codePoint, glyph);
-                    }catch(e){}
-                }
+            glyph.xoffset = 0;
+            glyph.yoffset = -size;
+            glyph.xadvance = size;
 
-            }catch(e){
-                // Ignore invalid icon entries
-            }
+            glyph.kerning = null;
+            glyph.fixedWidth = true;
+            glyph.page = 0;
+
+            iconFont.getData().setGlyph(codePoint, glyph);
+
+        }catch(e){
+            Log.err(e);
         }
-
-    }catch(e){
-        // Failed to iterate properties
     }
 }
 
