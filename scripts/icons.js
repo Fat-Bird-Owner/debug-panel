@@ -130,3 +130,7 @@ function constructGlyph(id, region, size, fontSize){
 
     return glyph;
 }
+
+Events.on(ClientLoadEvent, () => {
+loadIcons();
+});
