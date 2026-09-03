@@ -3,7 +3,7 @@ require("dbp/Redirect");
 require("dbp/Infini-source");
 require("dbp/Infini-fluid-source");
 require("dbp/Stat");
-require("dbp/icons");
+//require("dbp/icons");
 let drill = null;
 
 Events.on(ClientLoadEvent, () => {
