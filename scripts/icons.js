@@ -1,81 +1,57 @@
 function loadIcons(){
-    let iconProperties = new java.util.Properties();
+    Log.info("=== ICON LOADER START ===");
+
+    let props = new java.util.Properties();
 
     try{
         let reader = Vars.tree
-            .get("icons/vanilla-icons.properties")
+            .get("icons/dbp-icons.properties")
             .reader(512);
 
         try{
-            iconProperties.load(reader);
+            props.load(reader);
         }finally{
             reader.close();
         }
+
+        Log.info("Properties loaded: " + props.size());
     }catch(e){
+        Log.err("FAILED TO LOAD ICON PROPERTIES");
+        Log.err(e);
         return;
     }
 
-    let entries = iconProperties.entrySet().iterator();
+    let entry = props.get("59558");
 
-    while(entries.hasNext()){
-        let entry = entries.next();
+    Log.info("Entry 59558: " + entry);
 
-        try{
-            let codePoint = parseInt(String(entry.getKey()));
-            let valueParts = String(entry.getValue()).split("\\|");
+    try{
+        let parts = String(entry).split("\\|");
 
-            if(valueParts.length < 2) continue;
+        let contentName = parts[0];
+        let textureName = parts[1];
 
-            let contentName = valueParts[0];
-            let textureName = valueParts[1];
+        Log.info("Name: " + contentName);
+        Log.info("Texture: " + textureName);
 
-            let region = Core.atlas.find(textureName);
+        let region = Core.atlas.find(textureName);
 
-            Fonts.registerIcon(
-                contentName,
-                textureName,
-                codePoint,
-                region
-            );
+        Log.info("Region: " + region);
+        Log.info("Region texture: " + region.texture);
+        Log.info("Region size: " + region.width + "x" + region.height);
 
-            let iconFont = Fonts.icon;
+        Fonts.registerIcon(
+            contentName,
+            textureName,
+            59558,
+            region
+        );
 
-            let size = Fonts.icon.getData().lineHeight /
-                       Fonts.icon.getData().scaleY;
+        Log.info("=== REGISTERED ===");
 
-            let out = Scaling.fit.apply(
-                region.width,
-                region.height,
-                size,
-                size
-            );
-
-            let glyph = new Font.Glyph();
-
-            glyph.id = codePoint;
-            glyph.srcX = 0;
-            glyph.srcY = 0;
-            glyph.width = out.x | 0;
-            glyph.height = out.y | 0;
-
-            glyph.u = region.u;
-            glyph.v = region.v2;
-            glyph.u2 = region.u2;
-            glyph.v2 = region.v;
-
-            glyph.xoffset = 0;
-            glyph.yoffset = -size;
-            glyph.xadvance = size;
-
-            glyph.kerning = null;
-            glyph.fixedWidth = true;
-            glyph.page = 0;
-
-            iconFont.getData().setGlyph(codePoint, glyph);
-
-        }catch(e){
-            Log.err(e);
-        }
+    }catch(e){
+        Log.err("FAILED TO REGISTER ICON");
+        Log.err(e);
     }
 }
 
