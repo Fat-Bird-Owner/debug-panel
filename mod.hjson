@@ -23,7 +23,7 @@ Such as:[accent[]]
 "
 
 iosCompatible: true
-version: "589"
+version: "591"
 minGameVersion: "156"
 dependencies: []
 hidden: false
